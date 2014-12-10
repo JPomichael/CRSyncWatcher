@@ -1,0 +1,792 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5D8EE2B9-E1E1-4C23-995C-4483C3D62714}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CodeBuilder</RootNamespace>
+    <AssemblyName>CodeBuilder</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DtoToEntity\PreAdminMappingToEntity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PreAdminMappingToEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\CityAreaCodeDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\CrawlPicInfoDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\CrawlSightInfoDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\EntityDto.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\AcDataService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\AdminUserClassService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\AdminUserExtensionService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\AdminUserIndividuationService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\AdminUserLogService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\AdminUserService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\AdWebsiteInfoService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ArticleClassService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ArticleCommService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ArticleInfoService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\CityInfoMoreService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\CityInfoService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ClientActivityService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\DemoClassService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\DemoInfoService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\DiscountClassService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\DiscountCommService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\DisCountInfoService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\GuestBookService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\HotelCommService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\HotelDailyRates2Service.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\HotelPicService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\HotelPropertyInfo2Service.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\HotelPropertyInfoService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\HotelReservationInfoService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\HotelRoomInfoService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ICityAreaCodeService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ICrawlPicInfoService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ICrawlSightInfoService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IpAddressService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Service\IAcDataService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IAdminUserClassService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IAdminUserExtensionService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IAdminUserIndividuationService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IAdminUserLogService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IAdminUserService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IAdWebsiteInfoService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IArticleClassService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IArticleCommService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IArticleInfoService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ICityInfoMoreService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ICityInfoService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IClientActivityService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IDemoClassService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IDemoInfoService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IDiscountClassService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IDiscountCommService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IDisCountInfoService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IGuestBookService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IHotelCommService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IHotelDailyRates2Service.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IHotelPicService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IHotelPropertyInfo2Service.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IHotelPropertyInfoService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IHotelReservationInfoService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IHotelRoomInfoService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IIpAddressService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ILinksClassService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ILinksInfoService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ILogService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IMenuTreeService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IMvcControllerActionClassService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IMvcControllerActionService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IMvcControllerClassService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IMvcControllerRolePermissionService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IMvcControllerService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\INewsClassService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\INewsInfoService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IPermissionCategoriesService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IPermissionsService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IphoneCountService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\Iphone_lyService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IPicClassService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IPicCommService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IPicInfoService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IRolePermissionsService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IRolesService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ISearchInfoService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IService1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ISightClassService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ISightCommService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ISightInfoCirHotelService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ISightInfoCirSightService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ISightInfoService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ISightInfoSortService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ISightTicketService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ISightVouchItemService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ISightVouchService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IThemeActivityClassService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IThemeActivityService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ITourClassService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ITourInfoService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ITourPlanDetailService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ITourPlanService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ITripIndexInfoService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ITripListService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IT_DailyRatesService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IUserActionService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IUserRolesService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IVideoClassService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IVideoCommService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IVideoInfoService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IVouchHotelInfoService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IVouchInfoService.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EntityDto\Sys_AcDataDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_AdminUserClassDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_AdminUserDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_AdminUserExtensionDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_AdminUserIndividuationDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_AdminUserLogDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_AdWebsiteInfoDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_ArticleClassDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_ArticleCommDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_ArticleInfoDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_CityInfoDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_CityInfoMoreDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_ClientActivityDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_DemoClassDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_DemoInfoDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_DiscountClassDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_DiscountCommDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_DisCountInfoDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_GuestBookDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_HotelCommDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_HotelDailyRates2Dto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_HotelPicDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_HotelPropertyInfo2Dto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_HotelPropertyInfoDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_HotelReservationInfoDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_HotelRoomInfoDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_IpAddressDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_LinksClassDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_LinksInfoDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_LogDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_MenuTreeDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_MvcControllerActionClassDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_MvcControllerActionDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_MvcControllerClassDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_MvcControllerDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_MvcControllerRolePermissionDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_NewsClassDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_NewsInfoDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_PermissionCategoriesDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_PermissionsDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_phoneCountDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\sys_phone_lyDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_PicClassDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_PicCommDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_PicInfoDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_RolePermissionsDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_RolesDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_SearchInfoDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_SightClassDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_SightCommDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_SightInfoCirHotelDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_SightInfoCirSightDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_SightInfoDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_SightInfoSortDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_SightTicketDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_SightVouchDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_SightVouchItemDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_ThemeActivityClassDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_ThemeActivityDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_TourClassDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_TourInfoDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_TourPlanDetailDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_TourPlanDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_UserActionDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_UserRolesDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_VideoClassDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_VideoCommDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_VideoInfoDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_VouchHotelInfoDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\Sys_VouchInfoDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\TripIndexInfoDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\TripListDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDto\T_DailyRatesDto.cs">
+      <DependentUpon>EntityDto.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\CityAreaCodeService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\CrawlPicInfoService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\CrawlSightInfoService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\LinksClassService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\LinksInfoService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\LogService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\MenuTreeService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\MvcControllerActionClassService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\MvcControllerActionService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\MvcControllerClassService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\MvcControllerRolePermissionService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\MvcControllerService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\NewsClassService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\NewsInfoService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\PermissionCategoriesService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\PermissionsService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\phoneCountService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\phone_lyService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\PicClassService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\PicCommService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\PicInfoService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\RolePermissionsService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\RolesService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\SearchInfoService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\Service.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Service\Service1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\SightClassService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\SightCommService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\SightInfoCirHotelService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\SightInfoCirSightService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\SightInfoService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\SightInfoSortService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\SightTicketService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\SightVouchItemService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\SightVouchService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ThemeActivityClassService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ThemeActivityService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\TourClassService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\TourInfoService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\TourPlanDetailService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\TourPlanService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\TripIndexInfoService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\TripListService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\T_DailyRatesService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\UserActionService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\UserRolesService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\VideoClassService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\VideoCommService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\VideoInfoService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\VouchHotelInfoService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\VouchInfoService.cs">
+      <DependentUpon>Service.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DtoToEntity\PreAdminMappingToEntity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PreAdminMappingToEntity.cs</LastGenOutput>
+    </None>
+    <None Include="EntityDto\EntityDto.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EntityDto.cs</LastGenOutput>
+      <CustomToolNamespace>iPow.Domain.Dto</CustomToolNamespace>
+    </None>
+    <None Include="Service\IService.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IService1.cs</LastGenOutput>
+      <CustomToolNamespace>iPow.Application.SysService</CustomToolNamespace>
+    </None>
+    <None Include="Service\Service.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Service1.cs</LastGenOutput>
+      <CustomToolNamespace>iPow.Application.SysService</CustomToolNamespace>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

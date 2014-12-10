@@ -1,0 +1,439 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AD3FE0D3-9E6E-46BE-97B3-8132A39867B8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CRS.Sync.Watcher.Service</RootNamespace>
+    <AssemblyName>CRS.Sync.Watcher.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="City\CityService.Add.cs" />
+    <Compile Include="City\CityService.cs" />
+    <Compile Include="City\CityService.Get.cs" />
+    <Compile Include="City\ICityService.cs" />
+    <Compile Include="City\CityService.Modify.cs" />
+    <Compile Include="Country\CountryService.Add.cs" />
+    <Compile Include="Country\CountryService.cs" />
+    <Compile Include="Country\CountryService.Delete.cs" />
+    <Compile Include="Country\CountryService.Get.cs" />
+    <Compile Include="Country\CountryService.Modify.cs" />
+    <Compile Include="Country\ICountryService.cs" />
+    <Compile Include="Hotel\HotelService.Add.cs" />
+    <Compile Include="Hotel\HotelService.cs" />
+    <Compile Include="Hotel\HotelService.Delete.cs" />
+    <Compile Include="Hotel\HotelService.Get.cs" />
+    <Compile Include="Hotel\HotelService.Modify.cs" />
+    <Compile Include="Hotel\IHotelService.cs" />
+    <Compile Include="House\HouseService.Add.cs" />
+    <Compile Include="House\HouseService.cs" />
+    <Compile Include="House\HouseService.Delete.cs" />
+    <Compile Include="House\HouseService.Get.cs" />
+    <Compile Include="House\HouseService.Modify.cs" />
+    <Compile Include="House\IHouseService.cs" />
+    <Compile Include="Photo\IPhotoService.cs" />
+    <Compile Include="Photo\PhotoService.Add.cs" />
+    <Compile Include="Photo\PhotoService.cs" />
+    <Compile Include="Photo\PhotoService.Delete.cs" />
+    <Compile Include="Photo\PhotoService.Get.cs" />
+    <Compile Include="Photo\PhotoService.Modify.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Province\IProvinceService.cs" />
+    <Compile Include="Province\ProvinceService.cs" />
+    <Compile Include="Province\ProvinceService.Get.cs" />
+    <Compile Include="Province\ProvinceService.Add.cs" />
+    <Compile Include="Public\IPublicService.cs" />
+    <Compile Include="Public\PublicService.cs" />
+    <Compile Include="Public\PublicService.Delete.cs" />
+    <Compile Include="Public\PublicService.Get.cs" />
+    <Compile Include="Province\ProvinceService.Modify.cs" />
+    <Compile Include="Public\PublicService.Add.cs" />
+    <Compile Include="Service References\CRSCrsServiceRef\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WCFMobileServer\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Star\StarService.Modify.cs" />
+    <Compile Include="Star\IStarService.cs" />
+    <Compile Include="Star\StarService.cs" />
+    <Compile Include="Star\StarService.Add.cs" />
+    <Compile Include="Star\StarService.Get.cs" />
+    <Compile Include="WCFRefServieceFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.CardTransGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.CommonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.CustomerInfoDTOGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.DcPublicGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.GresGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.GresGet1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.HotelGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.HotelPayAccountGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.LowPriceGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.MemberLevelGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.OrderGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.PaymentRegGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.Pointitem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.RateCodeAndRmTypeGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.RateCodeControlGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.RateCodeDescriptGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.RateCodeGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.RateCodeInforGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.RateDetailGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.RedeemitemGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.RhvoWSGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.RmTypeDescriptGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.RmTypeGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.RoomRateWsGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.SalesContractWsGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.StoredValueAccountResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.StoredValueTransResultWS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CRSCrsServiceRef\CrsService.wsdl" />
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.CashBackConfigResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.CheckExistResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.DcPublicGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.EarliestLastestArriveTimeResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.ElongCreateOrderResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.ElongValidateCreditCardResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.ElongValidateOrderResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.EmailSMSTemplateCategoryCollectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.EmailSMSTemplateCategoryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.HotelGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.IntegralConfigResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.LoginResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.OrderGuaranteeRuleResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.OrderInfoCollectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.OrderInfoResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.OrderStateCollectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.OrderStateResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.ResultBase.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.ReviewableResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.SearchCntResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.SendInfoResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.TemplateCollectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.TemplateResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.UserBalanceCollectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.UserBalanceIncomcOutcomeSumResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.UserBalanceResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.UserCashBackCollectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.UserCashBackResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.UserCurrentBalanceResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.UserCurrentIntegralResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.UserInfoCollectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.UserInfoResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.UserIntegralCollectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.UserIntegralResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.UserIntegralValueResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.UserLevelResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.UserVerifyCollectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.UserVerifyResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.ValidateCodeMappingResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.ValidateTypeCollectionResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.ValidateTypeResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\MyMobileServer.wsdl" />
+    <None Include="Service References\WCFMobileServer\MyMobileServer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WCFMobileServer\MyMobileServer1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WCFMobileServer\MyMobileServer10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WCFMobileServer\MyMobileServer11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WCFMobileServer\MyMobileServer12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WCFMobileServer\MyMobileServer13.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WCFMobileServer\MyMobileServer14.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WCFMobileServer\MyMobileServer15.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WCFMobileServer\MyMobileServer2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WCFMobileServer\MyMobileServer3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WCFMobileServer\MyMobileServer4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WCFMobileServer\MyMobileServer5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WCFMobileServer\MyMobileServer6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WCFMobileServer\MyMobileServer7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WCFMobileServer\MyMobileServer8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WCFMobileServer\MyMobileServer9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CRS.Sync.Watcher.DLL\CRS.Sync.Watcher.DLL.csproj">
+      <Project>{92b1c535-386f-4a4f-9bd6-9bf95c619091}</Project>
+      <Name>CRS.Sync.Watcher.DLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CRS.Sync.Watcher.Domain\CRS.Sync.Watcher.Domain.csproj">
+      <Project>{b6632f62-ff9d-4a99-b643-84e672c9d2d5}</Project>
+      <Name>CRS.Sync.Watcher.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CRS.Sync.Watcher.Linq\CRS.Sync.Watcher.Linq.csproj">
+      <Project>{47b9ee45-1c33-41fd-87b3-a4aca536b737}</Project>
+      <Name>CRS.Sync.Watcher.Linq</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\CRSCrsServiceRef\" />
+    <WCFMetadataStorage Include="Service References\WCFMobileServer\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WCFMobileServer\MyMobileServer.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WCFMobileServer\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WCFMobileServer\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WCFMobileServer\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CRSCrsServiceRef\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CRSCrsServiceRef\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CRSCrsServiceRef\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。启用“NuGet 程序包还原”可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

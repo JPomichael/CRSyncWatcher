@@ -1,0 +1,3396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:ns2="http://webservice.system.business.ipegasus.armitage.com" xmlns:tns="http://xfire.super8.com/CrsService" xmlns:ns6="http://webservice.bonuspoint.business.ipegasus.armitage.com" xmlns:ns3="http://webservice.crs.business.ipegasus.armitage.com" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope" xmlns:ns5="http://foreign.ipegasus.armitage.com" xmlns:ns4="http://webservice.storedvalue.business.ipegasus.armitage.com" xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns1="http://webservice.guest.business.ipegasus.armitage.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xfire.super8.com/CrsService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://xfire.super8.com/CrsService">
+      <xsd:element name="deductPointRedeemItem">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" type="xsd:int" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deductPointRedeemItemResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:CommonResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getGroupCity">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="getGroupCityResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:DcPublicGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getOrderByAccidEmail">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getOrderByAccidEmailResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:OrderGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getCompMemberOrderList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getCompMemberOrderListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:OrderGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sendMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sendMessageResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getHotelListByDTO">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns1:QueryHotelDTO" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ArrayOfString">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getHotelListByDTOResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:HotelGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getPaymentReg">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getPaymentRegResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:PaymentRegGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getGresCancel">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in4" nillable="true" type="xsd:dateTime" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getGresCancelResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:RhvoWSGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getHotelRoomQty">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getHotelRoomQtyResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:RmTypeGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getGresCancelByAccid">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getGresCancelByAccidResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:RhvoWSGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="selectHotelRoomRateComCode">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in4" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in5" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="selectHotelRoomRateComCodeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:RoomRateWsGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getGRESDetail">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getGRESDetailResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns3:GresGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getHotelHotList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getHotelHotListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:HotelGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="modifyOrderInterface">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns2:OrderEdit" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="modifyOrderInterfaceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:CommonResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getAllRateCode">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="getAllRateCodeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:RateCodeGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getMemberOrderList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getMemberOrderListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:OrderGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addCustomerPoint">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:double" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addCustomerPointResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:CommonResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getHotelListByDistance">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" type="xsd:double" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" type="xsd:double" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in4" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in5" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getHotelListByDistanceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:HotelGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getSalesContract">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getSalesContractResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:SalesContractWsGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="storedValueAccountQueryByCardNo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="storedValueAccountQueryByCardNoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns4:StoredValueAccountResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="selectHotelHotelLowComCode">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="hotelId" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="rateCode" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="start" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="end" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="comCode" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="channel" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="selectHotelHotelLowComCodeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:LowPriceGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getOrder">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getOrderResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:OrderGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getOrderByAccidMobile">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getOrderByAccidMobileResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:OrderGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getStoredValueTrancByCardNo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getStoredValueTrancByCardNoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns4:StoredValueTransResultWS" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="cancelOrderInterface">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="cancelOrderInterfaceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:CommonResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="selectHotelRoomRate">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" nillable="true" type="xsd:dateTime" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="selectHotelRoomRateResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:RoomRateWsGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="selectHotelLowPrice">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="hotelId" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="rateCode" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="start" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="end" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="channel" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="selectHotelLowPriceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:LowPriceGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getfavorite">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns5:CustomerInfoDTO" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getfavoriteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns5:CustomerInfoDTOGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateGres">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" type="xsd:float" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateGresResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:OrderGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="selectHotelRoomRateComCodeByChannel">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="hotelId" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="rateCode" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="start" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="end" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="comCode" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="channel" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="selectHotelRoomRateComCodeByChannelResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:RoomRateWsGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getHotelPayAccount">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getHotelPayAccountResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:HotelPayAccountGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getHotelList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getHotelListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:HotelGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="rmTypeGetInterface">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns2:RmTypeWS" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="rmTypeGetInterfaceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:RmTypeGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="selectHotelRoomRateByChannel">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="hotelId" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="rateCode" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="start" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="end" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="channel" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="selectHotelRoomRateByChannelResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:RoomRateWsGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRateDetailByHotelRatecodeDate">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:dateTime" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRateDetailByHotelRatecodeDateResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:RateDetailGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="gresGetInterface">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="customerID" nillable="true" type="ns3:Gres" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="gresGetInterfaceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:GresGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getOrderListByHotelidEqid">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" nillable="true" type="xsd:dateTime" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getOrderListByHotelidEqidResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:OrderGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="cardTransAddInterface">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns2:CardTrans" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="cardTransAddInterfaceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:CommonResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="removefavorite">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns5:CustomerInfoDTO" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="removefavoriteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:CommonResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="cardTransGetInterface">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="customerID" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="cardTransGetInterfaceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:CardTransGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRmTypeDescript">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="hotelId" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="rmType" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRmTypeDescriptResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:RmTypeDescriptGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="dcPublicGetInterface">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="category" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="dcPublicGetInterfaceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:DcPublicGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRateCodeAndRmTypeByHotelId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRateCodeAndRmTypeByHotelIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns3:RateCodeAndRmTypeGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getMemberLevel">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:element name="getMemberLevelResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns3:MemberLevelGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRateCodeInfor">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="hotelId" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="rateCode" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRateCodeInforResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:RateCodeInforGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="gresGetInterface1">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="customerID" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="gresGetInterface1Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:GresGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="storedValueAccountQueryByCustId">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="storedValueAccountQueryByCustIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns4:StoredValueAccountResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="redeemitemGetInterface">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns1:Redeemitem" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="redeemitemGetInterfaceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:RedeemitemGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Querypointitem">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="QuerypointitemResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns6:Pointitem" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRedeemitem">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRedeemitemResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:RedeemitemGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="checkOrderUpmp">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" type="xsd:double" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="checkOrderUpmpResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:CommonResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getDcPublic">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getDcPublicResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:DcPublicGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="hotelGetInterface">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns1:HotelDTO" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="hotelGetInterfaceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:HotelGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addCustomerPoint1">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" nillable="true" type="xsd:double" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in4" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addCustomerPoint1Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:CommonResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRateCodeDescript">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="hotelId" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="rateCode" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRateCodeDescriptResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:RateCodeDescriptGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addOrderInterface">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns2:Order" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addOrderInterfaceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:CommonResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addfavorite">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns5:CustomerInfoDTO" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addfavoriteResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns5:CustomerInfoDTOGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="pointCardAccGetInterface">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="customerID" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="pointCardAccGetInterfaceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns4:StoredValueAccountResult" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getOrderList">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:dateTime" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getOrderListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:OrderGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="insertPointitem">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="insertPointitemResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns6:Pointitem" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getGresAmend">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in4" nillable="true" type="xsd:dateTime" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getGresAmendResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:RhvoWSGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRateCodeControl">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" type="xsd:long" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in1" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in2" nillable="true" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in3" nillable="true" type="xsd:dateTime" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="in4" nillable="true" type="xsd:dateTime" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getRateCodeControlResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns2:RateCodeControlGet" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addDayRmrate">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="in0" nillable="true" type="ns2:DayRmRate" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="addDayRmrateResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="out" nillable="true" type="ns1:CommonResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://webservice.guest.business.ipegasus.armitage.com">
+      <xsd:complexType name="CommonResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DcPublicGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="dcPublics" nillable="true" type="ns1:ArrayOfDcPublic" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfDcPublic">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="DcPublic" nillable="true" type="ns1:DcPublic" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DcPublic">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="category" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ename" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="remarks" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="seqid" type="xsd:int" />
+          <xsd:element minOccurs="0" name="status" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="QueryHotelDTO">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="city" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hightStar" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="lowStar" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="region" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="wechat" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="HotelGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelDTOs" nillable="true" type="ns1:ArrayOfHotelDTO" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfHotelDTO">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="HotelDTO" nillable="true" type="ns1:HotelDTO" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="HotelDTO">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="EAddress" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="EDescript" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="EIntro" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="EName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="EPolicy" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="address" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="attrib" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="attribCName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="attribEName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="beds" type="xsd:long" />
+          <xsd:element minOccurs="0" name="begDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="bookingEngineUrl" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="bounsItem" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="category" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="checkInTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="checkOutTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="circumjacent" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="city" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cityArea" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cityCName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cityEName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="commission" type="xsd:float" />
+          <xsd:element minOccurs="0" name="commissionMode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="country" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="countryCName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="countryEName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ctitle" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="currency" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="descript" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="distance" type="xsd:double" />
+          <xsd:element minOccurs="0" name="district" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="eAddress" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="eDescript" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="eIntro" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="eName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ePolicy" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="email" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="endDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="epreferentialDesc" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="epreferentialPic" nillable="true" type="tns:ArrayOfString" />
+          <xsd:element minOccurs="0" name="etcoef" type="xsd:float" />
+          <xsd:element minOccurs="0" name="etitle" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="fax" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="fbcoef" type="xsd:float" />
+          <xsd:element minOccurs="0" name="hightStar" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelCard" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="intro" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="landMark" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="landMarkCname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="landMarkEname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="locale" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="lowStar" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="lowestPrice" type="xsd:double" />
+          <xsd:element minOccurs="0" name="otcoef" type="xsd:float" />
+          <xsd:element minOccurs="0" name="photo1" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="photo2" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="photo3" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="policy" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="preferentialDesc" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="preferentialPic" nillable="true" type="tns:ArrayOfString" />
+          <xsd:element minOccurs="0" name="region" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="regionCName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="regionEName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="remarks" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmSourceType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmSourceTypeCName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmSourceTypeEName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmcoef" type="xsd:float" />
+          <xsd:element minOccurs="0" name="rooms" type="xsd:long" />
+          <xsd:element minOccurs="0" name="seats" type="xsd:long" />
+          <xsd:element minOccurs="0" name="seqId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="serviceMark" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="serviceMarkCname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="serviceMarkEname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="star" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="starcname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="starename" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="state" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="stateCName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="stateEName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="status" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="tel" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ttcoef" type="xsd:float" />
+          <xsd:element minOccurs="0" name="webOpen" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="webOrder" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="website" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="wsUrl" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="zipCode" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RhvoWSGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="rhvoWS" nillable="true" type="ns1:RhvoWS" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RhvoWS">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="amendDays" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="amendStatus" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cancelDays" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cancelStatus" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="enddate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="hotelid" type="xsd:long" />
+          <xsd:element minOccurs="0" name="pass" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ratecode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmtype" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="startdate" nillable="true" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RateCodeGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ratecodes" nillable="true" type="ns3:ArrayOfRateCode" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SalesContractWsGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="salesContractsWS" nillable="true" type="ns1:SalesContractWS" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SalesContractWS">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="contractCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="contractId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="contractType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="endDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="frtContractId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="frtProfileId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="hotelId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="marketSeg" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="operate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="owner" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ownerName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="profileCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="profileId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="profileName1" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="profileName2" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="profileName3" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="remarks" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="signDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="source" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="startDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="status" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RateDetailGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rateDetails" nillable="true" type="ns3:ArrayOfRateDetail" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GresGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="gres" nillable="true" type="ns3:ArrayOfGres" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RmTypeDescriptGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="rmTypeDescript" nillable="true" type="ns1:RmTypeDescript" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RmTypeDescript">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="aliasCn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="aliasEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="descript" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="edescript" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="rmType" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RateCodeInforGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rateCodeInfor" nillable="true" type="ns1:RateCodeInfor" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RateCodeInfor">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="aliasCn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="aliasEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="begDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="bookingThrough" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cardType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="contractId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="currency" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="dailyinvallocation" type="xsd:long" />
+          <xsd:element minOccurs="0" name="defaultShow" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="descript" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="discountOf" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="discountType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="discountValue" type="xsd:float" />
+          <xsd:element minOccurs="0" name="eName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="edescript" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="endDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="frtMarket" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="frtSource" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelId" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="isContract" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="isUpward" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="isdiscount" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="market" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="memberType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ptCoef" type="xsd:float" />
+          <xsd:element minOccurs="0" name="rateCat" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rateCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="remarks" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="roundType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="sellBegDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="sellEndDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="source" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="status" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="syncstatus" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="targetround" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="weekenddays" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Redeemitem">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="additional" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="arrange" type="xsd:long" />
+          <xsd:element minOccurs="0" name="category" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cost" type="xsd:double" />
+          <xsd:element minOccurs="0" name="deliver" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ename" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelid" type="xsd:long" />
+          <xsd:element minOccurs="0" name="itemid" type="xsd:long" />
+          <xsd:element minOccurs="0" name="picture" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="point" type="xsd:long" />
+          <xsd:element minOccurs="0" name="remarks" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="seqid" type="xsd:long" />
+          <xsd:element minOccurs="0" name="status" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RedeemitemGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="redeemitems" nillable="true" type="ns1:ArrayOfRedeemitem" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfRedeemitem">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Redeemitem" nillable="true" type="ns1:Redeemitem" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RateCodeDescriptGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rateCodeDescript" nillable="true" type="ns1:RateCodeDescript" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RateCodeDescript">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="aliasCn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="aliasEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="descript" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="edescript" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="rateCode" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://webservice.system.business.ipegasus.armitage.com">
+      <xsd:complexType name="OrderGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="orders" nillable="true" type="ns2:ArrayOfOrder" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfOrder">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Order" nillable="true" type="ns2:Order" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Order">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="accId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="adults" type="xsd:long" />
+          <xsd:element minOccurs="0" name="arrDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="arrDateTime" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="bookTel" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="booker" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="booktelccode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cardNo" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cardtypeCname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cardtypeEname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="channel" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="children" type="xsd:long" />
+          <xsd:element minOccurs="0" name="compCardNo" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="contractCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="contractId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="creditCard" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="creditCardSignName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="creditDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="creditType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ctrName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="currencycname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="currencycode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="currencyename" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="custId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="custName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="custtype" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cvvCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="depDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="depDateTime" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="docNo" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="docType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="email" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="engName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="equipmentid" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="gender" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="groupId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="gstName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="gstTel" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelCName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelEName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="hoteladdress" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hoteleaddress" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hoteletel" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="market" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="membertypeCname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="membertypeEname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="msgType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="nights" type="xsd:long" />
+          <xsd:element minOccurs="0" name="payStatus" type="xsd:int" />
+          <xsd:element minOccurs="0" name="paymount" type="xsd:double" />
+          <xsd:element minOccurs="0" name="paytype" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rateCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rateCodeCName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rateCodeEName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="remarks" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="resClerk" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="resDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="resId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="resMode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="resType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmNo" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmQty" type="xsd:long" />
+          <xsd:element minOccurs="0" name="rmRate" type="xsd:float" />
+          <xsd:element minOccurs="0" name="rmType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmTypeCName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmTypeEName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="source" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="specials" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="staffName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="status" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="statusCName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="statusEName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="telccode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="total" type="xsd:float" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PaymentRegGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="paymentReg" nillable="true" type="ns2:ArrayOfPaymentReg" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPaymentReg">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="PaymentReg" nillable="true" type="ns2:PaymentReg" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PaymentReg">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="channel" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsg" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="field1" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="field2" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="interfac" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="isprepay" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="pcode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="pename" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="pid" type="xsd:long" />
+          <xsd:element minOccurs="0" name="pname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ramark" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="status" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RmTypeGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsg" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="rmTypes" nillable="true" type="ns2:ArrayOfRmTypeWS" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfRmTypeWS">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="RmTypeWS" nillable="true" type="ns2:RmTypeWS" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RmTypeWS">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="EName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="aliasCn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="aliasEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="category" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="descript" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="eName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="edescript" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="features" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="photo1" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="photo2" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="qty" type="xsd:long" />
+          <xsd:element minOccurs="0" name="remarks" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmTypeDescripts" nillable="true" type="ns2:ArrayOfRmTypeDescriptWS" />
+          <xsd:element minOccurs="0" name="seqId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="status" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="stdPax" type="xsd:long" />
+          <xsd:element minOccurs="0" name="stdRate" type="xsd:float" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfRmTypeDescriptWS">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="RmTypeDescriptWS" nillable="true" type="ns2:RmTypeDescriptWS" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RmTypeDescriptWS">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="descript" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="edescript" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="rmType" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RoomRateWsGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="roomRateWS" nillable="true" type="ns2:ArrayOfRoomRateWS" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfRoomRateWS">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="RoomRateWS" nillable="true" type="ns2:RoomRateWS" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RoomRateWS">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="aliasCn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="aliasEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="amendDays" type="xsd:int" />
+          <xsd:element minOccurs="0" name="amendStatus" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="breakfastDesc" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="breakfastEDesc" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cancelDays" type="xsd:int" />
+          <xsd:element minOccurs="0" name="cancelStatus" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="contractCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="eintro" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="intro" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="minVacRooms" type="xsd:int" />
+          <xsd:element minOccurs="0" name="needGuarant" type="xsd:int" />
+          <xsd:element minOccurs="0" name="needPay" type="xsd:int" />
+          <xsd:element minOccurs="0" name="photo1" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="photo2" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rateCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rateCodeCName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rateCodeEName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rateDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="ratePrice" type="xsd:double" />
+          <xsd:element minOccurs="0" name="ratecodeDesc" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ratecodeEdesc" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmTypeCDesc" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmTypeCName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmTypeEDesc" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmTypeEName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmtypeSwitch" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="vacRooms" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="OrderEdit">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="remarks" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="resId" type="xsd:long" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LowPriceGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsg" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="lowPriceWS" nillable="true" type="ns2:ArrayOfLowPriceWS" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfLowPriceWS">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="LowPriceWS" nillable="true" type="ns2:LowPriceWS" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LowPriceWS">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="lowPrice" type="xsd:double" />
+          <xsd:element minOccurs="0" name="ratecode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmtypecode" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="HotelPayAccountGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsg" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelPayAccountDTOs" nillable="true" type="ns2:ArrayOfHotelPayAccountDTO" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfHotelPayAccountDTO">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="HotelPayAccountDTO" nillable="true" type="ns2:HotelPayAccountDTO" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="HotelPayAccountDTO">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="account" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="checkingcode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="describe" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ename" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelid" type="xsd:long" />
+          <xsd:element minOccurs="0" name="id" type="xsd:long" />
+          <xsd:element minOccurs="0" name="memo" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="merId" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="merchantName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="partner" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="payPublicKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="securityKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="status" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="type" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="userPrivateKey" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CardTrans">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="accId" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cardNo" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="conflag" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="consumpid" type="xsd:long" />
+          <xsd:element minOccurs="0" name="createFolio" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="custId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="custName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="descript" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="exchangeMode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="inAmount" type="xsd:double" />
+          <xsd:element minOccurs="0" name="itemCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="itemId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="operCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="operId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="opoint" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="outAmount" type="xsd:double" />
+          <xsd:element minOccurs="0" name="passwd" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="payMode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="refNo" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="systype" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="transDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="transType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="transid" type="xsd:long" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CardTransGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="cardTrans" nillable="true" type="ns2:ArrayOfCardTrans" />
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfCardTrans">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="CardTrans" nillable="true" type="ns2:CardTrans" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RateCodeControlGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rateCodeControl" nillable="true" type="ns2:RateCodeControl" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RateCodeControl">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="amendDays" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="amendStatus" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="booking" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cancelDays" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cancelStatus" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="maxStay" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="minStay" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="needPay" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rateCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmLimit" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmType" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DayRmRate">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="accDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="rateCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="resId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="rmRate" type="xsd:double" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://webservice.crs.business.ipegasus.armitage.com">
+      <xsd:complexType name="GresGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="errorMsg" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="gres" nillable="true" type="ns3:ArrayOfGres" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfGres">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Gres" nillable="true" type="ns3:Gres" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Gres">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="accId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="accType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="accstat" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="actdetid" type="xsd:long" />
+          <xsd:element minOccurs="0" name="address" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="adults" type="xsd:long" />
+          <xsd:element minOccurs="0" name="airFlight" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="airPick" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="airPort" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="airTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="arrDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="arrDateTime" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="averagePrice" type="xsd:double" />
+          <xsd:element minOccurs="0" name="birthDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="birthPlace" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="blockId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="bookAddr" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="bookCustId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="bookFax" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="bookFixTel" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="bookTel" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="booker" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="bookerEmail" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="brkfstDesc" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cardNo" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cashierNote" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="channelcode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="charge" type="xsd:double" />
+          <xsd:element minOccurs="0" name="chgToId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="children" type="xsd:long" />
+          <xsd:element minOccurs="0" name="city" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ckoClerk" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ckoDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="compCardNo" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="companyId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="confirmCount" type="xsd:long" />
+          <xsd:element minOccurs="0" name="confirmNo" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="contractCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="contractFrom" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="contractId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="country" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="creditCard" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="creditCardSignName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="creditDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="creditType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cshClerk" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cshDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ctrName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="custId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="custName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cvvCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="depDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="depDateTime" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="depFlight" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="docNo" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="docType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="drrs" nillable="true" type="ns3:ArrayOfDayRmRate" />
+          <xsd:element minOccurs="0" name="email" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="engName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="equipmentid" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="faxDocGresStatus" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="faxStatus" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="firm" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="fixed" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="frtAccId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="frtBlockId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="frtChgToId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="frtGroupId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="frtShareId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="gender" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="gresPackageDTO" nillable="true" type="ns3:ArrayOfGresPackageDTO" />
+          <xsd:element minOccurs="0" name="groupId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="groupMasterId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="gstName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="gstTel" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelAddress" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelArrDateSetId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="hotelCName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelEAddress" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelEName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelFax" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelFax2" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelFax2desc" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelFaxdesc" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="hotelTel" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelTel2" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="interests" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="locale" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="market" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="modifiedByPMS" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="msgType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="nation" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="nights" type="xsd:long" />
+          <xsd:element minOccurs="0" name="occupation" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="orderCount" type="xsd:long" />
+          <xsd:element minOccurs="0" name="otherRefCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="payMthd" type="xsd:long" />
+          <xsd:element minOccurs="0" name="payStatus" type="xsd:int" />
+          <xsd:element minOccurs="0" name="payment" type="xsd:double" />
+          <xsd:element minOccurs="0" name="paymount" type="xsd:double" />
+          <xsd:element minOccurs="0" name="paytype" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="pointReward" type="xsd:long" />
+          <xsd:element minOccurs="0" name="profileCName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="profileEName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="profileFrom" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rateCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rateCodeAliasCn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rateCodeAliasEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rateCodeCName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rateCodeEName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="recClerk" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="recDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="region" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="releaseDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="religion" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="remarks" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="remarksOnlyInGrp" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="resClerk" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="resClerkCname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="resClerkEname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="resDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="resId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="resMode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="resType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmNo" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmQty" type="xsd:long" />
+          <xsd:element minOccurs="0" name="rmRate" type="xsd:float" />
+          <xsd:element minOccurs="0" name="rmType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmTypeCName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmTypeEName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="salesClerk" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="salutation" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="shareId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="source" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="specials" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="staffName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="state" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="status" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="statusCName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="statusEName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="syncStatus" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="teamsCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="timeStamp" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="totalPrice" type="xsd:double" />
+          <xsd:element minOccurs="0" name="vip" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="visit" type="xsd:int" />
+          <xsd:element minOccurs="0" name="zipCode" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfDayRmRate">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="DayRmRate" nillable="true" type="ns3:DayRmRate" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DayRmRate">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="accDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="clerk" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ctime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="drrId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="fixed" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="frtAccId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="rateCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="remark" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="resId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="rmRate" type="xsd:double" />
+          <xsd:element minOccurs="0" name="source" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfGresPackageDTO">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="GresPackageDTO" nillable="true" type="ns3:GresPackageDTO" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="GresPackageDTO">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="accid" type="xsd:long" />
+          <xsd:element minOccurs="0" name="beginTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="createSource" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="createTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="createUser" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="endTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="gpid" type="xsd:long" />
+          <xsd:element minOccurs="0" name="hotelid" type="xsd:long" />
+          <xsd:element minOccurs="0" name="pgCansleQty" type="xsd:long" />
+          <xsd:element minOccurs="0" name="pgCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="pgName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="pgQty" type="xsd:long" />
+          <xsd:element minOccurs="0" name="pgSource" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ratecode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="resid" type="xsd:long" />
+          <xsd:element minOccurs="0" name="updateSource" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="updateTime" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="updateUser" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfRateCode">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="RateCode" nillable="true" type="ns3:RateCode" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RateCode">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="EName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="aliasCn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="aliasEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="amendDays" type="xsd:int" />
+          <xsd:element minOccurs="0" name="amendStatus" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="amendWrite" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="begDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="booking" type="xsd:int" />
+          <xsd:element minOccurs="0" name="bookingWrite" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="cancelDays" type="xsd:int" />
+          <xsd:element minOccurs="0" name="cancelStatus" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cancelWrite" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="cardType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="currency" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="dailyinvallocation" type="xsd:long" />
+          <xsd:element minOccurs="0" name="descript" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="discountOf" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="discountType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="discountValue" type="xsd:float" />
+          <xsd:element minOccurs="0" name="edescript" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="endDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="isContract" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="isUpward" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="isdiscount" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="market" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="maxStay" type="xsd:int" />
+          <xsd:element minOccurs="0" name="memberType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="minStay" type="xsd:int" />
+          <xsd:element minOccurs="0" name="operate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="paymentStatus" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="paymentWrite" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="ptCoef" type="xsd:float" />
+          <xsd:element minOccurs="0" name="rateCat" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rateCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rds" nillable="true" type="ns3:ArrayOfRateDetail" />
+          <xsd:element minOccurs="0" name="remarks" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmlimit" type="xsd:int" />
+          <xsd:element minOccurs="0" name="rmlimitWrite" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="roundType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="sellWrite" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="source" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="status" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="stayWrite" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="targetround" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="weekenddays" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfRateDetail">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="RateDetail" nillable="true" type="ns3:RateDetail" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RateDetail">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="detailId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="endDate" nillable="true" type="xsd:dateTime" />
+          <xsd:element minOccurs="0" name="hotelId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="person1" type="xsd:float" />
+          <xsd:element minOccurs="0" name="person2" type="xsd:float" />
+          <xsd:element minOccurs="0" name="person3" type="xsd:float" />
+          <xsd:element minOccurs="0" name="person4" type="xsd:float" />
+          <xsd:element minOccurs="0" name="person5" type="xsd:float" />
+          <xsd:element minOccurs="0" name="rateCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rateDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rmType" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="rtListId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="startDate" nillable="true" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RateCodeAndRmTypeGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="errorMsg" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ratecodes" nillable="true" type="ns3:ArrayOfRateCode" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="rmType" nillable="true" type="ns3:ArrayOfRmType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfRmType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="RmType" nillable="true" type="ns3:RmType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="RmType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="CName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="EName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="category" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="features" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="qty" type="xsd:long" />
+          <xsd:element minOccurs="0" name="remarks" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="seqId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="status" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="stdPax" type="xsd:long" />
+          <xsd:element minOccurs="0" name="stdRate" type="xsd:float" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="MemberLevelGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="errorMsg" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="memberLevel" nillable="true" type="ns3:ArrayOfMemberLevel" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfMemberLevel">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="MemberLevel" nillable="true" type="ns3:MemberLevel" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="MemberLevel">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="cname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="description" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ename" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="level" type="xsd:int" />
+          <xsd:element minOccurs="0" name="memberlevel" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="memberlevelID" type="xsd:long" />
+          <xsd:element minOccurs="0" name="membertype" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="membertypeID" type="xsd:long" />
+          <xsd:element minOccurs="0" name="status" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://webservice.storedvalue.business.ipegasus.armitage.com">
+      <xsd:complexType name="StoredValueAccountResult">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="errorMsg" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="result" type="xsd:long" />
+          <xsd:element minOccurs="0" name="storedValueAccount" nillable="true" type="ns4:StoredValueAccount" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="StoredValueAccount">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="balance" type="xsd:double" />
+          <xsd:element minOccurs="0" name="cardNo" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="custCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="custId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="custName" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="docNo" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="mobile" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="remarks" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="totalAmount" type="xsd:double" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="StoredValueTransResultWS">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="errorMsg" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="result" type="xsd:long" />
+          <xsd:element minOccurs="0" name="storedValueTrans" nillable="true" type="ns4:ArrayOfStoredValueTrans" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfStoredValueTrans">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="StoredValueTrans" nillable="true" type="ns4:StoredValueTrans" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="StoredValueTrans">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="accId" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="begDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cardNo" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="conflag" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="consumpid" type="xsd:long" />
+          <xsd:element minOccurs="0" name="custId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="descript" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="docNo" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="endDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="inAmount" type="xsd:double" />
+          <xsd:element minOccurs="0" name="itemCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="mobile" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="operCode" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="opoint" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="outAmount" type="xsd:double" />
+          <xsd:element minOccurs="0" name="passwd" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="refNo" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="storedValueTransId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="systype" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="transDate" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="transType" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://foreign.ipegasus.armitage.com">
+      <xsd:complexType name="CustomerInfoDTO">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="category" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="custId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="equipmentId" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="infoId" type="xsd:long" />
+          <xsd:element minOccurs="0" name="val1" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="val2" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="val3" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CustomerInfoDTOGet">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="customerInfoDTO" nillable="true" type="ns5:ArrayOfCustomerInfoDTO" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgEn" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorMsgZh" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="tax" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfCustomerInfoDTO">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="CustomerInfoDTO" nillable="true" type="ns5:CustomerInfoDTO" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://webservice.bonuspoint.business.ipegasus.armitage.com">
+      <xsd:complexType name="Pointitem">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="category" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="code" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="cost" type="xsd:double" />
+          <xsd:element minOccurs="0" name="cusid" type="xsd:long" />
+          <xsd:element minOccurs="0" name="ename" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="errorKey" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="gstname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelCname" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="hotelid" type="xsd:long" />
+          <xsd:element minOccurs="0" name="itemid" type="xsd:long" />
+          <xsd:element minOccurs="0" name="mobile" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="point" type="xsd:double" />
+          <xsd:element minOccurs="0" name="remarks" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="result" type="xsd:int" />
+          <xsd:element minOccurs="0" name="type" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="selectHotelRoomRateByChannelResponse">
+    <wsdl:part name="parameters" element="tns:selectHotelRoomRateByChannelResponse" />
+  </wsdl:message>
+  <wsdl:message name="getOrderByAccidEmailResponse">
+    <wsdl:part name="parameters" element="tns:getOrderByAccidEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="getGresAmendRequest">
+    <wsdl:part name="parameters" element="tns:getGresAmend" />
+  </wsdl:message>
+  <wsdl:message name="getRateDetailByHotelRatecodeDateResponse">
+    <wsdl:part name="parameters" element="tns:getRateDetailByHotelRatecodeDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="getOrderListByHotelidEqidRequest">
+    <wsdl:part name="parameters" element="tns:getOrderListByHotelidEqid" />
+  </wsdl:message>
+  <wsdl:message name="getRateCodeControlResponse">
+    <wsdl:part name="parameters" element="tns:getRateCodeControlResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRateCodeInforRequest">
+    <wsdl:part name="parameters" element="tns:getRateCodeInfor" />
+  </wsdl:message>
+  <wsdl:message name="sendMessageResponse">
+    <wsdl:part name="parameters" element="tns:sendMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="getHotelRoomQtyResponse">
+    <wsdl:part name="parameters" element="tns:getHotelRoomQtyResponse" />
+  </wsdl:message>
+  <wsdl:message name="getGresCancelByAccidRequest">
+    <wsdl:part name="parameters" element="tns:getGresCancelByAccid" />
+  </wsdl:message>
+  <wsdl:message name="addDayRmrateResponse">
+    <wsdl:part name="parameters" element="tns:addDayRmrateResponse" />
+  </wsdl:message>
+  <wsdl:message name="getOrderListByHotelidEqidResponse">
+    <wsdl:part name="parameters" element="tns:getOrderListByHotelidEqidResponse" />
+  </wsdl:message>
+  <wsdl:message name="getHotelListByDistanceRequest">
+    <wsdl:part name="parameters" element="tns:getHotelListByDistance" />
+  </wsdl:message>
+  <wsdl:message name="pointCardAccGetInterfaceResponse">
+    <wsdl:part name="parameters" element="tns:pointCardAccGetInterfaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllRateCodeResponse">
+    <wsdl:part name="parameters" element="tns:getAllRateCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getHotelListRequest">
+    <wsdl:part name="parameters" element="tns:getHotelList" />
+  </wsdl:message>
+  <wsdl:message name="getHotelPayAccountRequest">
+    <wsdl:part name="parameters" element="tns:getHotelPayAccount" />
+  </wsdl:message>
+  <wsdl:message name="addCustomerPoint1Request">
+    <wsdl:part name="parameters" element="tns:addCustomerPoint1" />
+  </wsdl:message>
+  <wsdl:message name="getSalesContractResponse">
+    <wsdl:part name="parameters" element="tns:getSalesContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="getGresAmendResponse">
+    <wsdl:part name="parameters" element="tns:getGresAmendResponse" />
+  </wsdl:message>
+  <wsdl:message name="addOrderInterfaceRequest">
+    <wsdl:part name="parameters" element="tns:addOrderInterface" />
+  </wsdl:message>
+  <wsdl:message name="cardTransAddInterfaceRequest">
+    <wsdl:part name="parameters" element="tns:cardTransAddInterface" />
+  </wsdl:message>
+  <wsdl:message name="getGresCancelRequest">
+    <wsdl:part name="parameters" element="tns:getGresCancel" />
+  </wsdl:message>
+  <wsdl:message name="getMemberLevelRequest">
+    <wsdl:part name="parameters" element="tns:getMemberLevel" />
+  </wsdl:message>
+  <wsdl:message name="modifyOrderInterfaceRequest">
+    <wsdl:part name="parameters" element="tns:modifyOrderInterface" />
+  </wsdl:message>
+  <wsdl:message name="getGroupCityRequest">
+    <wsdl:part name="parameters" element="tns:getGroupCity" />
+  </wsdl:message>
+  <wsdl:message name="getStoredValueTrancByCardNoRequest">
+    <wsdl:part name="parameters" element="tns:getStoredValueTrancByCardNo" />
+  </wsdl:message>
+  <wsdl:message name="cardTransGetInterfaceRequest">
+    <wsdl:part name="parameters" element="tns:cardTransGetInterface" />
+  </wsdl:message>
+  <wsdl:message name="selectHotelRoomRateComCodeResponse">
+    <wsdl:part name="parameters" element="tns:selectHotelRoomRateComCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getOrderByAccidMobileRequest">
+    <wsdl:part name="parameters" element="tns:getOrderByAccidMobile" />
+  </wsdl:message>
+  <wsdl:message name="addCustomerPoint1Response">
+    <wsdl:part name="parameters" element="tns:addCustomerPoint1Response" />
+  </wsdl:message>
+  <wsdl:message name="deductPointRedeemItemResponse">
+    <wsdl:part name="parameters" element="tns:deductPointRedeemItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="storedValueAccountQueryByCardNoRequest">
+    <wsdl:part name="parameters" element="tns:storedValueAccountQueryByCardNo" />
+  </wsdl:message>
+  <wsdl:message name="getOrderByAccidMobileResponse">
+    <wsdl:part name="parameters" element="tns:getOrderByAccidMobileResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPaymentRegResponse">
+    <wsdl:part name="parameters" element="tns:getPaymentRegResponse" />
+  </wsdl:message>
+  <wsdl:message name="selectHotelHotelLowComCodeRequest">
+    <wsdl:part name="parameters" element="tns:selectHotelHotelLowComCode" />
+  </wsdl:message>
+  <wsdl:message name="getOrderRequest">
+    <wsdl:part name="parameters" element="tns:getOrder" />
+  </wsdl:message>
+  <wsdl:message name="addCustomerPointRequest">
+    <wsdl:part name="parameters" element="tns:addCustomerPoint" />
+  </wsdl:message>
+  <wsdl:message name="getAllRateCodeRequest">
+    <wsdl:part name="parameters" element="tns:getAllRateCode" />
+  </wsdl:message>
+  <wsdl:message name="getGRESDetailResponse">
+    <wsdl:part name="parameters" element="tns:getGRESDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="redeemitemGetInterfaceResponse">
+    <wsdl:part name="parameters" element="tns:redeemitemGetInterfaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="selectHotelRoomRateComCodeByChannelResponse">
+    <wsdl:part name="parameters" element="tns:selectHotelRoomRateComCodeByChannelResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCompMemberOrderListResponse">
+    <wsdl:part name="parameters" element="tns:getCompMemberOrderListResponse" />
+  </wsdl:message>
+  <wsdl:message name="getHotelRoomQtyRequest">
+    <wsdl:part name="parameters" element="tns:getHotelRoomQty" />
+  </wsdl:message>
+  <wsdl:message name="storedValueAccountQueryByCustIdResponse">
+    <wsdl:part name="parameters" element="tns:storedValueAccountQueryByCustIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="getGresCancelByAccidResponse">
+    <wsdl:part name="parameters" element="tns:getGresCancelByAccidResponse" />
+  </wsdl:message>
+  <wsdl:message name="selectHotelRoomRateComCodeRequest">
+    <wsdl:part name="parameters" element="tns:selectHotelRoomRateComCode" />
+  </wsdl:message>
+  <wsdl:message name="getOrderListRequest">
+    <wsdl:part name="parameters" element="tns:getOrderList" />
+  </wsdl:message>
+  <wsdl:message name="selectHotelLowPriceRequest">
+    <wsdl:part name="parameters" element="tns:selectHotelLowPrice" />
+  </wsdl:message>
+  <wsdl:message name="getOrderListResponse">
+    <wsdl:part name="parameters" element="tns:getOrderListResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRedeemitemRequest">
+    <wsdl:part name="parameters" element="tns:getRedeemitem" />
+  </wsdl:message>
+  <wsdl:message name="getRateDetailByHotelRatecodeDateRequest">
+    <wsdl:part name="parameters" element="tns:getRateDetailByHotelRatecodeDate" />
+  </wsdl:message>
+  <wsdl:message name="getRateCodeDescriptResponse">
+    <wsdl:part name="parameters" element="tns:getRateCodeDescriptResponse" />
+  </wsdl:message>
+  <wsdl:message name="hotelGetInterfaceResponse">
+    <wsdl:part name="parameters" element="tns:hotelGetInterfaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="getGresCancelResponse">
+    <wsdl:part name="parameters" element="tns:getGresCancelResponse" />
+  </wsdl:message>
+  <wsdl:message name="cardTransAddInterfaceResponse">
+    <wsdl:part name="parameters" element="tns:cardTransAddInterfaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateGresRequest">
+    <wsdl:part name="parameters" element="tns:updateGres" />
+  </wsdl:message>
+  <wsdl:message name="insertPointitemResponse">
+    <wsdl:part name="parameters" element="tns:insertPointitemResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDcPublicResponse">
+    <wsdl:part name="parameters" element="tns:getDcPublicResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRateCodeInforResponse">
+    <wsdl:part name="parameters" element="tns:getRateCodeInforResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertPointitemRequest">
+    <wsdl:part name="parameters" element="tns:insertPointitem" />
+  </wsdl:message>
+  <wsdl:message name="getMemberOrderListResponse">
+    <wsdl:part name="parameters" element="tns:getMemberOrderListResponse" />
+  </wsdl:message>
+  <wsdl:message name="getHotelListByDTORequest">
+    <wsdl:part name="parameters" element="tns:getHotelListByDTO" />
+  </wsdl:message>
+  <wsdl:message name="addfavoriteResponse">
+    <wsdl:part name="parameters" element="tns:addfavoriteResponse" />
+  </wsdl:message>
+  <wsdl:message name="gresGetInterfaceResponse">
+    <wsdl:part name="parameters" element="tns:gresGetInterfaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="getHotelPayAccountResponse">
+    <wsdl:part name="parameters" element="tns:getHotelPayAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="addOrderInterfaceResponse">
+    <wsdl:part name="parameters" element="tns:addOrderInterfaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRmTypeDescriptRequest">
+    <wsdl:part name="parameters" element="tns:getRmTypeDescript" />
+  </wsdl:message>
+  <wsdl:message name="selectHotelLowPriceResponse">
+    <wsdl:part name="parameters" element="tns:selectHotelLowPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="cancelOrderInterfaceRequest">
+    <wsdl:part name="parameters" element="tns:cancelOrderInterface" />
+  </wsdl:message>
+  <wsdl:message name="addfavoriteRequest">
+    <wsdl:part name="parameters" element="tns:addfavorite" />
+  </wsdl:message>
+  <wsdl:message name="gresGetInterface1Response">
+    <wsdl:part name="parameters" element="tns:gresGetInterface1Response" />
+  </wsdl:message>
+  <wsdl:message name="getHotelHotListResponse">
+    <wsdl:part name="parameters" element="tns:getHotelHotListResponse" />
+  </wsdl:message>
+  <wsdl:message name="getGRESDetailRequest">
+    <wsdl:part name="parameters" element="tns:getGRESDetail" />
+  </wsdl:message>
+  <wsdl:message name="getOrderResponse">
+    <wsdl:part name="parameters" element="tns:getOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="getfavoriteRequest">
+    <wsdl:part name="parameters" element="tns:getfavorite" />
+  </wsdl:message>
+  <wsdl:message name="selectHotelRoomRateRequest">
+    <wsdl:part name="parameters" element="tns:selectHotelRoomRate" />
+  </wsdl:message>
+  <wsdl:message name="QuerypointitemResponse">
+    <wsdl:part name="parameters" element="tns:QuerypointitemResponse" />
+  </wsdl:message>
+  <wsdl:message name="removefavoriteResponse">
+    <wsdl:part name="parameters" element="tns:removefavoriteResponse" />
+  </wsdl:message>
+  <wsdl:message name="hotelGetInterfaceRequest">
+    <wsdl:part name="parameters" element="tns:hotelGetInterface" />
+  </wsdl:message>
+  <wsdl:message name="getStoredValueTrancByCardNoResponse">
+    <wsdl:part name="parameters" element="tns:getStoredValueTrancByCardNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCompMemberOrderListRequest">
+    <wsdl:part name="parameters" element="tns:getCompMemberOrderList" />
+  </wsdl:message>
+  <wsdl:message name="selectHotelRoomRateComCodeByChannelRequest">
+    <wsdl:part name="parameters" element="tns:selectHotelRoomRateComCodeByChannel" />
+  </wsdl:message>
+  <wsdl:message name="getHotelListByDTOResponse">
+    <wsdl:part name="parameters" element="tns:getHotelListByDTOResponse" />
+  </wsdl:message>
+  <wsdl:message name="gresGetInterfaceRequest">
+    <wsdl:part name="parameters" element="tns:gresGetInterface" />
+  </wsdl:message>
+  <wsdl:message name="pointCardAccGetInterfaceRequest">
+    <wsdl:part name="parameters" element="tns:pointCardAccGetInterface" />
+  </wsdl:message>
+  <wsdl:message name="modifyOrderInterfaceResponse">
+    <wsdl:part name="parameters" element="tns:modifyOrderInterfaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="rmTypeGetInterfaceResponse">
+    <wsdl:part name="parameters" element="tns:rmTypeGetInterfaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRateCodeControlRequest">
+    <wsdl:part name="parameters" element="tns:getRateCodeControl" />
+  </wsdl:message>
+  <wsdl:message name="selectHotelHotelLowComCodeResponse">
+    <wsdl:part name="parameters" element="tns:selectHotelHotelLowComCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRedeemitemResponse">
+    <wsdl:part name="parameters" element="tns:getRedeemitemResponse" />
+  </wsdl:message>
+  <wsdl:message name="dcPublicGetInterfaceRequest">
+    <wsdl:part name="parameters" element="tns:dcPublicGetInterface" />
+  </wsdl:message>
+  <wsdl:message name="storedValueAccountQueryByCardNoResponse">
+    <wsdl:part name="parameters" element="tns:storedValueAccountQueryByCardNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateGresResponse">
+    <wsdl:part name="parameters" element="tns:updateGresResponse" />
+  </wsdl:message>
+  <wsdl:message name="deductPointRedeemItemRequest">
+    <wsdl:part name="parameters" element="tns:deductPointRedeemItem" />
+  </wsdl:message>
+  <wsdl:message name="getHotelListResponse">
+    <wsdl:part name="parameters" element="tns:getHotelListResponse" />
+  </wsdl:message>
+  <wsdl:message name="addDayRmrateRequest">
+    <wsdl:part name="parameters" element="tns:addDayRmrate" />
+  </wsdl:message>
+  <wsdl:message name="getDcPublicRequest">
+    <wsdl:part name="parameters" element="tns:getDcPublic" />
+  </wsdl:message>
+  <wsdl:message name="storedValueAccountQueryByCustIdRequest">
+    <wsdl:part name="parameters" element="tns:storedValueAccountQueryByCustId" />
+  </wsdl:message>
+  <wsdl:message name="getRateCodeDescriptRequest">
+    <wsdl:part name="parameters" element="tns:getRateCodeDescript" />
+  </wsdl:message>
+  <wsdl:message name="getHotelListByDistanceResponse">
+    <wsdl:part name="parameters" element="tns:getHotelListByDistanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="getMemberOrderListRequest">
+    <wsdl:part name="parameters" element="tns:getMemberOrderList" />
+  </wsdl:message>
+  <wsdl:message name="getGroupCityResponse">
+    <wsdl:part name="parameters" element="tns:getGroupCityResponse" />
+  </wsdl:message>
+  <wsdl:message name="selectHotelRoomRateByChannelRequest">
+    <wsdl:part name="parameters" element="tns:selectHotelRoomRateByChannel" />
+  </wsdl:message>
+  <wsdl:message name="redeemitemGetInterfaceRequest">
+    <wsdl:part name="parameters" element="tns:redeemitemGetInterface" />
+  </wsdl:message>
+  <wsdl:message name="getPaymentRegRequest">
+    <wsdl:part name="parameters" element="tns:getPaymentReg" />
+  </wsdl:message>
+  <wsdl:message name="cancelOrderInterfaceResponse">
+    <wsdl:part name="parameters" element="tns:cancelOrderInterfaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="rmTypeGetInterfaceRequest">
+    <wsdl:part name="parameters" element="tns:rmTypeGetInterface" />
+  </wsdl:message>
+  <wsdl:message name="getRateCodeAndRmTypeByHotelIdRequest">
+    <wsdl:part name="parameters" element="tns:getRateCodeAndRmTypeByHotelId" />
+  </wsdl:message>
+  <wsdl:message name="getSalesContractRequest">
+    <wsdl:part name="parameters" element="tns:getSalesContract" />
+  </wsdl:message>
+  <wsdl:message name="getfavoriteResponse">
+    <wsdl:part name="parameters" element="tns:getfavoriteResponse" />
+  </wsdl:message>
+  <wsdl:message name="removefavoriteRequest">
+    <wsdl:part name="parameters" element="tns:removefavorite" />
+  </wsdl:message>
+  <wsdl:message name="checkOrderUpmpResponse">
+    <wsdl:part name="parameters" element="tns:checkOrderUpmpResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRmTypeDescriptResponse">
+    <wsdl:part name="parameters" element="tns:getRmTypeDescriptResponse" />
+  </wsdl:message>
+  <wsdl:message name="QuerypointitemRequest">
+    <wsdl:part name="parameters" element="tns:Querypointitem" />
+  </wsdl:message>
+  <wsdl:message name="getOrderByAccidEmailRequest">
+    <wsdl:part name="parameters" element="tns:getOrderByAccidEmail" />
+  </wsdl:message>
+  <wsdl:message name="checkOrderUpmpRequest">
+    <wsdl:part name="parameters" element="tns:checkOrderUpmp" />
+  </wsdl:message>
+  <wsdl:message name="selectHotelRoomRateResponse">
+    <wsdl:part name="parameters" element="tns:selectHotelRoomRateResponse" />
+  </wsdl:message>
+  <wsdl:message name="addCustomerPointResponse">
+    <wsdl:part name="parameters" element="tns:addCustomerPointResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRateCodeAndRmTypeByHotelIdResponse">
+    <wsdl:part name="parameters" element="tns:getRateCodeAndRmTypeByHotelIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="sendMessageRequest">
+    <wsdl:part name="parameters" element="tns:sendMessage" />
+  </wsdl:message>
+  <wsdl:message name="gresGetInterface1Request">
+    <wsdl:part name="parameters" element="tns:gresGetInterface1" />
+  </wsdl:message>
+  <wsdl:message name="getMemberLevelResponse">
+    <wsdl:part name="parameters" element="tns:getMemberLevelResponse" />
+  </wsdl:message>
+  <wsdl:message name="cardTransGetInterfaceResponse">
+    <wsdl:part name="parameters" element="tns:cardTransGetInterfaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="getHotelHotListRequest">
+    <wsdl:part name="parameters" element="tns:getHotelHotList" />
+  </wsdl:message>
+  <wsdl:message name="dcPublicGetInterfaceResponse">
+    <wsdl:part name="parameters" element="tns:dcPublicGetInterfaceResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CrsServicePortType">
+    <wsdl:operation name="deductPointRedeemItem">
+      <wsdl:input name="deductPointRedeemItemRequest" message="tns:deductPointRedeemItemRequest" />
+      <wsdl:output name="deductPointRedeemItemResponse" message="tns:deductPointRedeemItemResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getGroupCity">
+      <wsdl:input name="getGroupCityRequest" message="tns:getGroupCityRequest" />
+      <wsdl:output name="getGroupCityResponse" message="tns:getGroupCityResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getOrderByAccidEmail">
+      <wsdl:input name="getOrderByAccidEmailRequest" message="tns:getOrderByAccidEmailRequest" />
+      <wsdl:output name="getOrderByAccidEmailResponse" message="tns:getOrderByAccidEmailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCompMemberOrderList">
+      <wsdl:input name="getCompMemberOrderListRequest" message="tns:getCompMemberOrderListRequest" />
+      <wsdl:output name="getCompMemberOrderListResponse" message="tns:getCompMemberOrderListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="sendMessage">
+      <wsdl:input name="sendMessageRequest" message="tns:sendMessageRequest" />
+      <wsdl:output name="sendMessageResponse" message="tns:sendMessageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getHotelListByDTO">
+      <wsdl:input name="getHotelListByDTORequest" message="tns:getHotelListByDTORequest" />
+      <wsdl:output name="getHotelListByDTOResponse" message="tns:getHotelListByDTOResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getPaymentReg">
+      <wsdl:input name="getPaymentRegRequest" message="tns:getPaymentRegRequest" />
+      <wsdl:output name="getPaymentRegResponse" message="tns:getPaymentRegResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getGresCancel">
+      <wsdl:input name="getGresCancelRequest" message="tns:getGresCancelRequest" />
+      <wsdl:output name="getGresCancelResponse" message="tns:getGresCancelResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getHotelRoomQty">
+      <wsdl:input name="getHotelRoomQtyRequest" message="tns:getHotelRoomQtyRequest" />
+      <wsdl:output name="getHotelRoomQtyResponse" message="tns:getHotelRoomQtyResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getGresCancelByAccid">
+      <wsdl:input name="getGresCancelByAccidRequest" message="tns:getGresCancelByAccidRequest" />
+      <wsdl:output name="getGresCancelByAccidResponse" message="tns:getGresCancelByAccidResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="selectHotelRoomRateComCode">
+      <wsdl:input name="selectHotelRoomRateComCodeRequest" message="tns:selectHotelRoomRateComCodeRequest" />
+      <wsdl:output name="selectHotelRoomRateComCodeResponse" message="tns:selectHotelRoomRateComCodeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getGRESDetail">
+      <wsdl:input name="getGRESDetailRequest" message="tns:getGRESDetailRequest" />
+      <wsdl:output name="getGRESDetailResponse" message="tns:getGRESDetailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getHotelHotList">
+      <wsdl:input name="getHotelHotListRequest" message="tns:getHotelHotListRequest" />
+      <wsdl:output name="getHotelHotListResponse" message="tns:getHotelHotListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="modifyOrderInterface">
+      <wsdl:input name="modifyOrderInterfaceRequest" message="tns:modifyOrderInterfaceRequest" />
+      <wsdl:output name="modifyOrderInterfaceResponse" message="tns:modifyOrderInterfaceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllRateCode">
+      <wsdl:input name="getAllRateCodeRequest" message="tns:getAllRateCodeRequest" />
+      <wsdl:output name="getAllRateCodeResponse" message="tns:getAllRateCodeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getMemberOrderList">
+      <wsdl:input name="getMemberOrderListRequest" message="tns:getMemberOrderListRequest" />
+      <wsdl:output name="getMemberOrderListResponse" message="tns:getMemberOrderListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addCustomerPoint">
+      <wsdl:input name="addCustomerPointRequest" message="tns:addCustomerPointRequest" />
+      <wsdl:output name="addCustomerPointResponse" message="tns:addCustomerPointResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getHotelListByDistance">
+      <wsdl:input name="getHotelListByDistanceRequest" message="tns:getHotelListByDistanceRequest" />
+      <wsdl:output name="getHotelListByDistanceResponse" message="tns:getHotelListByDistanceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getSalesContract">
+      <wsdl:input name="getSalesContractRequest" message="tns:getSalesContractRequest" />
+      <wsdl:output name="getSalesContractResponse" message="tns:getSalesContractResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="storedValueAccountQueryByCardNo">
+      <wsdl:input name="storedValueAccountQueryByCardNoRequest" message="tns:storedValueAccountQueryByCardNoRequest" />
+      <wsdl:output name="storedValueAccountQueryByCardNoResponse" message="tns:storedValueAccountQueryByCardNoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="selectHotelHotelLowComCode">
+      <wsdl:input name="selectHotelHotelLowComCodeRequest" message="tns:selectHotelHotelLowComCodeRequest" />
+      <wsdl:output name="selectHotelHotelLowComCodeResponse" message="tns:selectHotelHotelLowComCodeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getOrder">
+      <wsdl:input name="getOrderRequest" message="tns:getOrderRequest" />
+      <wsdl:output name="getOrderResponse" message="tns:getOrderResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getOrderByAccidMobile">
+      <wsdl:input name="getOrderByAccidMobileRequest" message="tns:getOrderByAccidMobileRequest" />
+      <wsdl:output name="getOrderByAccidMobileResponse" message="tns:getOrderByAccidMobileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getStoredValueTrancByCardNo">
+      <wsdl:input name="getStoredValueTrancByCardNoRequest" message="tns:getStoredValueTrancByCardNoRequest" />
+      <wsdl:output name="getStoredValueTrancByCardNoResponse" message="tns:getStoredValueTrancByCardNoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cancelOrderInterface">
+      <wsdl:input name="cancelOrderInterfaceRequest" message="tns:cancelOrderInterfaceRequest" />
+      <wsdl:output name="cancelOrderInterfaceResponse" message="tns:cancelOrderInterfaceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="selectHotelRoomRate">
+      <wsdl:input name="selectHotelRoomRateRequest" message="tns:selectHotelRoomRateRequest" />
+      <wsdl:output name="selectHotelRoomRateResponse" message="tns:selectHotelRoomRateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="selectHotelLowPrice">
+      <wsdl:input name="selectHotelLowPriceRequest" message="tns:selectHotelLowPriceRequest" />
+      <wsdl:output name="selectHotelLowPriceResponse" message="tns:selectHotelLowPriceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getfavorite">
+      <wsdl:input name="getfavoriteRequest" message="tns:getfavoriteRequest" />
+      <wsdl:output name="getfavoriteResponse" message="tns:getfavoriteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateGres">
+      <wsdl:input name="updateGresRequest" message="tns:updateGresRequest" />
+      <wsdl:output name="updateGresResponse" message="tns:updateGresResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="selectHotelRoomRateComCodeByChannel">
+      <wsdl:input name="selectHotelRoomRateComCodeByChannelRequest" message="tns:selectHotelRoomRateComCodeByChannelRequest" />
+      <wsdl:output name="selectHotelRoomRateComCodeByChannelResponse" message="tns:selectHotelRoomRateComCodeByChannelResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getHotelPayAccount">
+      <wsdl:input name="getHotelPayAccountRequest" message="tns:getHotelPayAccountRequest" />
+      <wsdl:output name="getHotelPayAccountResponse" message="tns:getHotelPayAccountResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getHotelList">
+      <wsdl:input name="getHotelListRequest" message="tns:getHotelListRequest" />
+      <wsdl:output name="getHotelListResponse" message="tns:getHotelListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="rmTypeGetInterface">
+      <wsdl:input name="rmTypeGetInterfaceRequest" message="tns:rmTypeGetInterfaceRequest" />
+      <wsdl:output name="rmTypeGetInterfaceResponse" message="tns:rmTypeGetInterfaceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="selectHotelRoomRateByChannel">
+      <wsdl:input name="selectHotelRoomRateByChannelRequest" message="tns:selectHotelRoomRateByChannelRequest" />
+      <wsdl:output name="selectHotelRoomRateByChannelResponse" message="tns:selectHotelRoomRateByChannelResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getRateDetailByHotelRatecodeDate">
+      <wsdl:input name="getRateDetailByHotelRatecodeDateRequest" message="tns:getRateDetailByHotelRatecodeDateRequest" />
+      <wsdl:output name="getRateDetailByHotelRatecodeDateResponse" message="tns:getRateDetailByHotelRatecodeDateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="gresGetInterface">
+      <wsdl:input name="gresGetInterfaceRequest" message="tns:gresGetInterfaceRequest" />
+      <wsdl:output name="gresGetInterfaceResponse" message="tns:gresGetInterfaceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getOrderListByHotelidEqid">
+      <wsdl:input name="getOrderListByHotelidEqidRequest" message="tns:getOrderListByHotelidEqidRequest" />
+      <wsdl:output name="getOrderListByHotelidEqidResponse" message="tns:getOrderListByHotelidEqidResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cardTransAddInterface">
+      <wsdl:input name="cardTransAddInterfaceRequest" message="tns:cardTransAddInterfaceRequest" />
+      <wsdl:output name="cardTransAddInterfaceResponse" message="tns:cardTransAddInterfaceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="removefavorite">
+      <wsdl:input name="removefavoriteRequest" message="tns:removefavoriteRequest" />
+      <wsdl:output name="removefavoriteResponse" message="tns:removefavoriteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cardTransGetInterface">
+      <wsdl:input name="cardTransGetInterfaceRequest" message="tns:cardTransGetInterfaceRequest" />
+      <wsdl:output name="cardTransGetInterfaceResponse" message="tns:cardTransGetInterfaceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getRmTypeDescript">
+      <wsdl:input name="getRmTypeDescriptRequest" message="tns:getRmTypeDescriptRequest" />
+      <wsdl:output name="getRmTypeDescriptResponse" message="tns:getRmTypeDescriptResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="dcPublicGetInterface">
+      <wsdl:input name="dcPublicGetInterfaceRequest" message="tns:dcPublicGetInterfaceRequest" />
+      <wsdl:output name="dcPublicGetInterfaceResponse" message="tns:dcPublicGetInterfaceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getRateCodeAndRmTypeByHotelId">
+      <wsdl:input name="getRateCodeAndRmTypeByHotelIdRequest" message="tns:getRateCodeAndRmTypeByHotelIdRequest" />
+      <wsdl:output name="getRateCodeAndRmTypeByHotelIdResponse" message="tns:getRateCodeAndRmTypeByHotelIdResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getMemberLevel">
+      <wsdl:input name="getMemberLevelRequest" message="tns:getMemberLevelRequest" />
+      <wsdl:output name="getMemberLevelResponse" message="tns:getMemberLevelResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getRateCodeInfor">
+      <wsdl:input name="getRateCodeInforRequest" message="tns:getRateCodeInforRequest" />
+      <wsdl:output name="getRateCodeInforResponse" message="tns:getRateCodeInforResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="gresGetInterface1">
+      <wsdl:input name="gresGetInterface1Request" message="tns:gresGetInterface1Request" />
+      <wsdl:output name="gresGetInterface1Response" message="tns:gresGetInterface1Response" />
+    </wsdl:operation>
+    <wsdl:operation name="storedValueAccountQueryByCustId">
+      <wsdl:input name="storedValueAccountQueryByCustIdRequest" message="tns:storedValueAccountQueryByCustIdRequest" />
+      <wsdl:output name="storedValueAccountQueryByCustIdResponse" message="tns:storedValueAccountQueryByCustIdResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="redeemitemGetInterface">
+      <wsdl:input name="redeemitemGetInterfaceRequest" message="tns:redeemitemGetInterfaceRequest" />
+      <wsdl:output name="redeemitemGetInterfaceResponse" message="tns:redeemitemGetInterfaceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="Querypointitem">
+      <wsdl:input name="QuerypointitemRequest" message="tns:QuerypointitemRequest" />
+      <wsdl:output name="QuerypointitemResponse" message="tns:QuerypointitemResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getRedeemitem">
+      <wsdl:input name="getRedeemitemRequest" message="tns:getRedeemitemRequest" />
+      <wsdl:output name="getRedeemitemResponse" message="tns:getRedeemitemResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="checkOrderUpmp">
+      <wsdl:input name="checkOrderUpmpRequest" message="tns:checkOrderUpmpRequest" />
+      <wsdl:output name="checkOrderUpmpResponse" message="tns:checkOrderUpmpResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDcPublic">
+      <wsdl:input name="getDcPublicRequest" message="tns:getDcPublicRequest" />
+      <wsdl:output name="getDcPublicResponse" message="tns:getDcPublicResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="hotelGetInterface">
+      <wsdl:input name="hotelGetInterfaceRequest" message="tns:hotelGetInterfaceRequest" />
+      <wsdl:output name="hotelGetInterfaceResponse" message="tns:hotelGetInterfaceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addCustomerPoint1">
+      <wsdl:input name="addCustomerPoint1Request" message="tns:addCustomerPoint1Request" />
+      <wsdl:output name="addCustomerPoint1Response" message="tns:addCustomerPoint1Response" />
+    </wsdl:operation>
+    <wsdl:operation name="getRateCodeDescript">
+      <wsdl:input name="getRateCodeDescriptRequest" message="tns:getRateCodeDescriptRequest" />
+      <wsdl:output name="getRateCodeDescriptResponse" message="tns:getRateCodeDescriptResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addOrderInterface">
+      <wsdl:input name="addOrderInterfaceRequest" message="tns:addOrderInterfaceRequest" />
+      <wsdl:output name="addOrderInterfaceResponse" message="tns:addOrderInterfaceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addfavorite">
+      <wsdl:input name="addfavoriteRequest" message="tns:addfavoriteRequest" />
+      <wsdl:output name="addfavoriteResponse" message="tns:addfavoriteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="pointCardAccGetInterface">
+      <wsdl:input name="pointCardAccGetInterfaceRequest" message="tns:pointCardAccGetInterfaceRequest" />
+      <wsdl:output name="pointCardAccGetInterfaceResponse" message="tns:pointCardAccGetInterfaceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getOrderList">
+      <wsdl:input name="getOrderListRequest" message="tns:getOrderListRequest" />
+      <wsdl:output name="getOrderListResponse" message="tns:getOrderListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="insertPointitem">
+      <wsdl:input name="insertPointitemRequest" message="tns:insertPointitemRequest" />
+      <wsdl:output name="insertPointitemResponse" message="tns:insertPointitemResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getGresAmend">
+      <wsdl:input name="getGresAmendRequest" message="tns:getGresAmendRequest" />
+      <wsdl:output name="getGresAmendResponse" message="tns:getGresAmendResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getRateCodeControl">
+      <wsdl:input name="getRateCodeControlRequest" message="tns:getRateCodeControlRequest" />
+      <wsdl:output name="getRateCodeControlResponse" message="tns:getRateCodeControlResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addDayRmrate">
+      <wsdl:input name="addDayRmrateRequest" message="tns:addDayRmrateRequest" />
+      <wsdl:output name="addDayRmrateResponse" message="tns:addDayRmrateResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CrsServiceHttpBinding" type="tns:CrsServicePortType">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="deductPointRedeemItem">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="deductPointRedeemItemRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deductPointRedeemItemResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGroupCity">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getGroupCityRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getGroupCityResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrderByAccidEmail">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getOrderByAccidEmailRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getOrderByAccidEmailResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompMemberOrderList">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getCompMemberOrderListRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getCompMemberOrderListResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendMessage">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="sendMessageRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="sendMessageResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHotelListByDTO">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getHotelListByDTORequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getHotelListByDTOResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPaymentReg">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getPaymentRegRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getPaymentRegResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGresCancel">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getGresCancelRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getGresCancelResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHotelRoomQty">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getHotelRoomQtyRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getHotelRoomQtyResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGresCancelByAccid">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getGresCancelByAccidRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getGresCancelByAccidResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selectHotelRoomRateComCode">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="selectHotelRoomRateComCodeRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="selectHotelRoomRateComCodeResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGRESDetail">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getGRESDetailRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getGRESDetailResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHotelHotList">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getHotelHotListRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getHotelHotListResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyOrderInterface">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="modifyOrderInterfaceRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="modifyOrderInterfaceResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRateCode">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getAllRateCodeRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAllRateCodeResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMemberOrderList">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getMemberOrderListRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getMemberOrderListResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addCustomerPoint">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="addCustomerPointRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="addCustomerPointResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHotelListByDistance">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getHotelListByDistanceRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getHotelListByDistanceResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSalesContract">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getSalesContractRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getSalesContractResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="storedValueAccountQueryByCardNo">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="storedValueAccountQueryByCardNoRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="storedValueAccountQueryByCardNoResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selectHotelHotelLowComCode">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="selectHotelHotelLowComCodeRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="selectHotelHotelLowComCodeResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrder">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getOrderRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getOrderResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrderByAccidMobile">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getOrderByAccidMobileRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getOrderByAccidMobileResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStoredValueTrancByCardNo">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getStoredValueTrancByCardNoRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getStoredValueTrancByCardNoResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelOrderInterface">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="cancelOrderInterfaceRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="cancelOrderInterfaceResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selectHotelRoomRate">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="selectHotelRoomRateRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="selectHotelRoomRateResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selectHotelLowPrice">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="selectHotelLowPriceRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="selectHotelLowPriceResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getfavorite">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getfavoriteRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getfavoriteResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateGres">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="updateGresRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateGresResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selectHotelRoomRateComCodeByChannel">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="selectHotelRoomRateComCodeByChannelRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="selectHotelRoomRateComCodeByChannelResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHotelPayAccount">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getHotelPayAccountRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getHotelPayAccountResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHotelList">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getHotelListRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getHotelListResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rmTypeGetInterface">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="rmTypeGetInterfaceRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="rmTypeGetInterfaceResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="selectHotelRoomRateByChannel">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="selectHotelRoomRateByChannelRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="selectHotelRoomRateByChannelResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRateDetailByHotelRatecodeDate">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getRateDetailByHotelRatecodeDateRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getRateDetailByHotelRatecodeDateResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gresGetInterface">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="gresGetInterfaceRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="gresGetInterfaceResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrderListByHotelidEqid">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getOrderListByHotelidEqidRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getOrderListByHotelidEqidResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cardTransAddInterface">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="cardTransAddInterfaceRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="cardTransAddInterfaceResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removefavorite">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="removefavoriteRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="removefavoriteResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cardTransGetInterface">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="cardTransGetInterfaceRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="cardTransGetInterfaceResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRmTypeDescript">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getRmTypeDescriptRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getRmTypeDescriptResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dcPublicGetInterface">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="dcPublicGetInterfaceRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="dcPublicGetInterfaceResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRateCodeAndRmTypeByHotelId">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getRateCodeAndRmTypeByHotelIdRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getRateCodeAndRmTypeByHotelIdResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMemberLevel">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getMemberLevelRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getMemberLevelResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRateCodeInfor">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getRateCodeInforRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getRateCodeInforResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="gresGetInterface1">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="gresGetInterface1Request">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="gresGetInterface1Response">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="storedValueAccountQueryByCustId">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="storedValueAccountQueryByCustIdRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="storedValueAccountQueryByCustIdResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="redeemitemGetInterface">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="redeemitemGetInterfaceRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="redeemitemGetInterfaceResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Querypointitem">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="QuerypointitemRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="QuerypointitemResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRedeemitem">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getRedeemitemRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getRedeemitemResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkOrderUpmp">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="checkOrderUpmpRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="checkOrderUpmpResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDcPublic">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getDcPublicRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getDcPublicResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="hotelGetInterface">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="hotelGetInterfaceRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="hotelGetInterfaceResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addCustomerPoint1">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="addCustomerPoint1Request">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="addCustomerPoint1Response">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRateCodeDescript">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getRateCodeDescriptRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getRateCodeDescriptResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addOrderInterface">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="addOrderInterfaceRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="addOrderInterfaceResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addfavorite">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="addfavoriteRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="addfavoriteResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pointCardAccGetInterface">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="pointCardAccGetInterfaceRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="pointCardAccGetInterfaceResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrderList">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getOrderListRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getOrderListResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertPointitem">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="insertPointitemRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="insertPointitemResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGresAmend">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getGresAmendRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getGresAmendResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRateCodeControl">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getRateCodeControlRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getRateCodeControlResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addDayRmrate">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="addDayRmrateRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="addDayRmrateResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CrsService">
+    <wsdl:port name="CrsServiceHttpPort" binding="tns:CrsServiceHttpBinding">
+      <wsdlsoap:address location="http://202.96.137.106:8080/crs/services/CrsService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="51f2a2b8-4324-4187-a74d-c49465a98306" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:19374/MyMobileServer.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MyMobileServer.xsd" MetadataType="Schema" ID="a3e78f19-b247-4d1b-a4d8-2b6b8632327d" SourceId="1" SourceUrl="http://localhost:19374/MyMobileServer.svc?xsd=xsd11" />
+    <MetadataFile FileName="MyMobileServer1.xsd" MetadataType="Schema" ID="4c82135f-fd02-4177-bc26-e30c5c5c3ab6" SourceId="1" SourceUrl="http://localhost:19374/MyMobileServer.svc?xsd=xsd4" />
+    <MetadataFile FileName="MyMobileServer2.xsd" MetadataType="Schema" ID="4577245f-99ed-4302-94ec-016fb7e28248" SourceId="1" SourceUrl="http://localhost:19374/MyMobileServer.svc?xsd=xsd0" />
+    <MetadataFile FileName="MyMobileServer3.xsd" MetadataType="Schema" ID="3798e707-e6f9-44dd-aaf7-cda19eb7579b" SourceId="1" SourceUrl="http://localhost:19374/MyMobileServer.svc?xsd=xsd8" />
+    <MetadataFile FileName="MyMobileServer.wsdl" MetadataType="Wsdl" ID="3026d188-a3ae-4798-9ad4-ff9a410e6049" SourceId="1" SourceUrl="http://localhost:19374/MyMobileServer.svc?wsdl" />
+    <MetadataFile FileName="MyMobileServer4.xsd" MetadataType="Schema" ID="37b559f9-0c9c-4947-9f7b-42b09528c67b" SourceId="1" SourceUrl="http://localhost:19374/MyMobileServer.svc?xsd=xsd5" />
+    <MetadataFile FileName="MyMobileServer5.xsd" MetadataType="Schema" ID="7f3f9a51-0b43-42b3-a777-a65f70eac405" SourceId="1" SourceUrl="http://localhost:19374/MyMobileServer.svc?xsd=xsd1" />
+    <MetadataFile FileName="MyMobileServer6.xsd" MetadataType="Schema" ID="ce1d5c67-4182-496f-a6dc-a7db8db805db" SourceId="1" SourceUrl="http://localhost:19374/MyMobileServer.svc?xsd=xsd9" />
+    <MetadataFile FileName="MyMobileServer7.xsd" MetadataType="Schema" ID="bc94f935-ab6e-468e-9d54-01976fba04a0" SourceId="1" SourceUrl="http://localhost:19374/MyMobileServer.svc?xsd=xsd12" />
+    <MetadataFile FileName="MyMobileServer8.xsd" MetadataType="Schema" ID="d435a29d-a674-4763-a32f-37d33ce3c7ad" SourceId="1" SourceUrl="http://localhost:19374/MyMobileServer.svc?xsd=xsd6" />
+    <MetadataFile FileName="MyMobileServer9.xsd" MetadataType="Schema" ID="2c339e06-b040-456b-b802-dc36f6c20d58" SourceId="1" SourceUrl="http://localhost:19374/MyMobileServer.svc?xsd=xsd2" />
+    <MetadataFile FileName="MyMobileServer14.xsd" MetadataType="Schema" ID="2ddcec22-84c0-41ac-9fe0-fa973a149e12" SourceId="1" SourceUrl="http://localhost:19374/MyMobileServer.svc?xsd=xsd14" />
+    <MetadataFile FileName="MyMobileServer15.xsd" MetadataType="Schema" ID="a6d491dd-3f65-4450-8a03-5beb10080290" SourceId="1" SourceUrl="http://localhost:19374/MyMobileServer.svc?xsd=xsd15" />
+    <MetadataFile FileName="MyMobileServer13.xsd" MetadataType="Schema" ID="6e7ad740-c7db-43af-a22f-0f284bcaefad" SourceId="1" SourceUrl="http://localhost:19374/MyMobileServer.svc?xsd=xsd13" />
+    <MetadataFile FileName="MyMobileServer.disco" MetadataType="Disco" ID="2bedc6f1-09e6-42fb-ade2-983f0cec48cd" SourceId="1" SourceUrl="http://localhost:19374/MyMobileServer.svc?disco" />
+    <MetadataFile FileName="MyMobileServer11.xsd" MetadataType="Schema" ID="302a64e5-49e7-4580-8273-774f51f7978f" SourceId="1" SourceUrl="http://localhost:19374/MyMobileServer.svc?xsd=xsd7" />
+    <MetadataFile FileName="MyMobileServer12.xsd" MetadataType="Schema" ID="8ee801b5-d826-4491-90b3-92768a909454" SourceId="1" SourceUrl="http://localhost:19374/MyMobileServer.svc?xsd=xsd3" />
+    <MetadataFile FileName="MyMobileServer10.xsd" MetadataType="Schema" ID="a668e707-34c7-4bc4-8ea4-82c426d232bb" SourceId="1" SourceUrl="http://localhost:19374/MyMobileServer.svc?xsd=xsd10" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

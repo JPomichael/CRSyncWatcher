@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 25.625, 25.625" name="estay_ecs_1210">
+  <DataContextMoniker Name="/estay_ecsdbDataContext" />
+  <nestedChildShapes>
+    <classShape Id="337b6df1-c929-4eb3-bfd2-f4d042010e6e" absoluteBounds="13, 15.375, 2, 2.4612756347656251">
+      <DataClassMoniker Name="/estay_ecsdbDataContext/city_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2f167676-fafd-4c53-bc24-fbe90dfd2bab" absoluteBounds="13.015, 15.835, 1.9700000000000002, 1.901275634765625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="19c9f685-7e00-4796-b1cb-7822a0f163b1" absoluteBounds="18.125, 15.375, 2, 2.2764815266927085">
+      <DataClassMoniker Name="/estay_ecsdbDataContext/country_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2917a493-390c-4c65-8b04-8466e9b979be" absoluteBounds="18.14, 15.835, 1.9700000000000002, 1.7164815266927085" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1c299f62-446e-41a3-ae89-fe1725837e36" absoluteBounds="13, 18.625, 2, 1.5373050944010416">
+      <DataClassMoniker Name="/estay_ecsdbDataContext/district_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="41bff121-dbb6-4929-8133-a7c062ee43d8" absoluteBounds="13.015, 19.085, 1.9700000000000002, 0.97730509440104174" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7f6e66cf-5153-4f8f-98eb-b52113bf4220" absoluteBounds="20.75, 15.5, 2, 1.5373050944010416">
+      <DataClassMoniker Name="/estay_ecsdbDataContext/commerical_locations_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b8f59598-5ce9-471a-9b69-d9dabc381a57" absoluteBounds="20.765, 15.96, 1.9700000000000002, 0.97730509440104174" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c74d3e0b-5b5a-4c64-a897-f3f4135055a7" absoluteBounds="23.375, 15.5, 2, 2.2764815266927085">
+      <DataClassMoniker Name="/estay_ecsdbDataContext/province_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0c167a18-782a-47bf-ae9e-4dbbf9da6730" absoluteBounds="23.39, 15.96, 1.9700000000000002, 1.7164815266927085" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="70f4c662-26ab-47a6-a601-9959296382aa" absoluteBounds="0.875, 12.25, 2, 2.0916874186197916">
+      <DataClassMoniker Name="/estay_ecsdbDataContext/hotel_star_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="26839b3d-06f5-4a84-958a-3cc36b3ee77a" absoluteBounds="0.89000000000000012, 12.71, 1.9700000000000002, 1.5316874186197915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6f0acedc-dbc9-4f8a-983b-8454b5eb1d2c" absoluteBounds="0.875, 10.25, 2, 1.3525109863281251">
+      <DataClassMoniker Name="/estay_ecsdbDataContext/hotel_theme_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a5a7a0dc-ab5d-488c-b827-fc6ac20de32b" absoluteBounds="0.89000000000000012, 10.71, 1.9700000000000002, 0.792510986328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2fb8d105-cb26-4cf1-88de-c8ada5969c93" absoluteBounds="0.875, 15.125, 2, 1.5373050944010416">
+      <DataClassMoniker Name="/estay_ecsdbDataContext/hotel_theme_type_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="68e00566-37a6-4f96-8797-b64c04b322d5" absoluteBounds="0.88999999999999968, 15.585, 1.9700000000000002, 0.97730509440104174" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="550fea4f-f9b0-40f9-9ebf-d7d6cac6b95d" absoluteBounds="0.875, 5, 2, 1.3525109863281251">
+      <DataClassMoniker Name="/estay_ecsdbDataContext/source_type_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1a635e40-8ef5-4d12-8512-eac22d2b732c" absoluteBounds="0.89000000000000012, 5.4600000000000009, 1.9700000000000002, 0.792510986328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d0a4104d-686d-4430-a098-a57a967fd732" absoluteBounds="0.875, 7.125, 2, 2.6460697428385416">
+      <DataClassMoniker Name="/estay_ecsdbDataContext/hotel_picture_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1aeecf1b-b101-4c7e-8535-72d7dba1a677" absoluteBounds="0.89000000000000012, 7.5850000000000009, 1.9700000000000002, 2.0860697428385415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fc58d22a-3659-4d0f-9016-98c1d54e7c6b" absoluteBounds="9.5, 4.75, 2, 3.0156579589843751">
+      <DataClassMoniker Name="/estay_ecsdbDataContext/hotel_room_picture_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ce1fc9c4-6a86-4ed7-9b81-a807ca827bbb" absoluteBounds="9.515, 5.21, 1.9700000000000002, 2.455657958984375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6c33aa10-9f77-4f58-a2fa-92dfdddaf314" absoluteBounds="8.625, 17, 2, 8.3746870930989576">
+      <DataClassMoniker Name="/estay_ecsdbDataContext/hotel_room_RP_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7b01ae6b-47e3-43e8-99aa-a6540fd7edf4" absoluteBounds="8.64, 17.46, 1.9700000000000002, 7.814687093098958" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d411674b-52ff-4af0-9b10-2f4452407b3f" absoluteBounds="4.75, 21.25, 2, 4.1244226074218746">
+      <DataClassMoniker Name="/estay_ecsdbDataContext/hotel_room_RP_price" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8aafa697-19b7-4d05-be50-9071e2e4fa75" absoluteBounds="4.7650000000000006, 21.71, 1.9700000000000002, 3.564422607421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="189fdc39-ab5a-4d00-b619-7461036fad2a" isExpanded="false" absoluteBounds="4.5, 17.5, 2, 0.45">
+      <DataClassMoniker Name="/estay_ecsdbDataContext/RoomStatus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bddee1ee-8c2e-496d-950d-d8694f1c4e3a" absoluteBounds="4.515, 17.96, 1.9700000000000002, 2.825246175130208" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="54feef54-3b51-484b-99d9-9d8febc7cfd6" absoluteBounds="3.5, 3, 2, 13.548922119140626">
+      <DataClassMoniker Name="/estay_ecsdbDataContext/hotel_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cd34ee0e-d1cd-4931-bc96-e457434cf2d4" absoluteBounds="3.515, 3.46, 1.9700000000000002, 12.988922119140625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.96875 : 16.5489221191406); (3.96875 : 19.6); (8.625 : 19.6)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/estay_ecsdbDataContext/hotel_info/hotel_info_hotel_room_RP_info" />
+      <nodes>
+        <classShapeMoniker Id="54feef54-3b51-484b-99d9-9d8febc7cfd6" />
+        <classShapeMoniker Id="6c33aa10-9f77-4f58-a2fa-92dfdddaf314" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.875 : 15.8369610595703); (3.5 : 15.8369610595703)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/estay_ecsdbDataContext/hotel_theme_type_info/hotel_theme_type_info_hotel_info" />
+      <nodes>
+        <classShapeMoniker Id="2fb8d105-cb26-4cf1-88de-c8ada5969c93" />
+        <classShapeMoniker Id="54feef54-3b51-484b-99d9-9d8febc7cfd6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.875 : 5.67625549316406); (3.5 : 5.67625549316406)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/estay_ecsdbDataContext/source_type_info/source_type_info_hotel_info" />
+      <nodes>
+        <classShapeMoniker Id="550fea4f-f9b0-40f9-9ebf-d7d6cac6b95d" />
+        <classShapeMoniker Id="54feef54-3b51-484b-99d9-9d8febc7cfd6" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="0abecffa-048c-495e-a89f-9abc6c409097" absoluteBounds="8.125, 9.875, 2, 7.4507165527343773">
+      <DataClassMoniker Name="/estay_ecsdbDataContext/hotel_room_info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7b9e0f1a-5f3e-4f01-bf01-188d15034027" absoluteBounds="8.14, 10.335, 1.9700000000000002, 6.890716552734375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 13.2119610595703); (8.125 : 13.2119610595703)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/estay_ecsdbDataContext/hotel_info/hotel_info_hotel_room_info" />
+      <nodes>
+        <classShapeMoniker Id="54feef54-3b51-484b-99d9-9d8febc7cfd6" />
+        <classShapeMoniker Id="0abecffa-048c-495e-a89f-9abc6c409097" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

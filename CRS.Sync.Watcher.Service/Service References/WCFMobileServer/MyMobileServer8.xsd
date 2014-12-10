@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://webservice.system.business.ipegasus.armitage.com" elementFormDefault="qualified" targetNamespace="http://webservice.system.business.ipegasus.armitage.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="RmTypeGet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="errorKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="errorMsg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="errorMsgEn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="errorMsgZh" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="result" type="xs:int" />
+      <xs:element minOccurs="0" name="rmTypes" nillable="true" type="tns:ArrayOfRmTypeWS" />
+      <xs:element minOccurs="0" name="tax" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RmTypeGet" nillable="true" type="tns:RmTypeGet" />
+  <xs:complexType name="ArrayOfRmTypeWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RmTypeWS" nillable="true" type="tns:RmTypeWS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRmTypeWS" nillable="true" type="tns:ArrayOfRmTypeWS" />
+  <xs:complexType name="RmTypeWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="aliasCn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="aliasEn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="descript" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="eName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="edescript" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="features" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="hotelId" type="xs:long" />
+      <xs:element minOccurs="0" name="photo1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="photo2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="qty" type="xs:long" />
+      <xs:element minOccurs="0" name="remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rmTypeDescripts" nillable="true" type="tns:ArrayOfRmTypeDescriptWS" />
+      <xs:element minOccurs="0" name="seqId" type="xs:long" />
+      <xs:element minOccurs="0" name="status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="stdPax" type="xs:long" />
+      <xs:element minOccurs="0" name="stdRate" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RmTypeWS" nillable="true" type="tns:RmTypeWS" />
+  <xs:complexType name="ArrayOfRmTypeDescriptWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RmTypeDescriptWS" nillable="true" type="tns:RmTypeDescriptWS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRmTypeDescriptWS" nillable="true" type="tns:ArrayOfRmTypeDescriptWS" />
+  <xs:complexType name="RmTypeDescriptWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="descript" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="edescript" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="hotelId" type="xs:long" />
+      <xs:element minOccurs="0" name="rmType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RmTypeDescriptWS" nillable="true" type="tns:RmTypeDescriptWS" />
+</xs:schema>

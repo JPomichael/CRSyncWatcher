@@ -1,0 +1,440 @@
+﻿<#@ template language="C#" debug="false" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#><#@
+ output extension=".cs"#><#
+ //setting
+string inputFile =  @"../../../infrastructure/iPow.Infrastructure.Data.DataSys/iPowSysModel.edmx";
+//prefix + entityname + suffix
+//AdminUser+Dto
+//����һ�㲻Ҫ��ǰ׺
+var prefix = "I";  //前缀
+//Dto��֤���Dto��֤���ļ��ĺ�׺
+var suffix = "Service";  //后缀
+
+var namepase = "iPow.Infrastructure.Data.DataSys."; //
+//Dto��ĺ�׺
+var dtoEntitySuffix = "Service";
+var repository = "Repository";
+var dtoEitityNameSpace = "iPow.Domain.Dto";
+
+//不需要的表名在以下列出
+var notInList = new List<string>();
+notInList.Add("VideoClass");
+notInList.Add("VideoInfoClass");
+notInList.Add("VideoComm");
+notInList.Add("VideoTag");
+notInList.Add("VideoInfo");
+notInList.Add("VideoPic");
+
+notInList.Add("LinkInfo");
+notInList.Add("LinkPic");
+notInList.Add("LinkClass");
+
+notInList.Add("Activity");
+notInList.Add("ActivityClass");
+notInList.Add("ActivityPic");
+
+notInList.Add("Discount");
+notInList.Add("DiscountPic");
+notInList.Add("DiscountClass");
+
+notInList.Add("HolidayPic");
+notInList.Add("HolidayClass");
+notInList.Add("Holiday");
+
+//end setting
+var name ="";
+CodeGenerationTools code = new CodeGenerationTools(this);
+MetadataLoader loader = new MetadataLoader(this);
+CodeRegion region = new CodeRegion(this, 1);
+MetadataTools ef = new MetadataTools(this);
+EdmItemCollection ItemCollection = loader.CreateEdmItemCollection(inputFile);
+string namespaceName = code.VsNamespaceSuggestion();
+EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileManager.Create(this);
+// Write out support code to primary template output file
+WriteHeader(fileManager);
+BeginNamespace(namespaceName, code);
+WriteCustomObservableCollection();
+EndNamespace(namespaceName);
+// Emit Entity Types
+foreach (EntityType entity in ItemCollection.GetItems<EntityType>().OrderBy(e => e.Name))
+{
+	if(notInList.Contains(entity.Name))
+	{
+		continue;
+	}
+    var cutname = code.Escape(entity).Substring(0, 4);
+    if ( cutname.ToLower() == "bbs_" || cutname.ToLower() == "sys_")
+    {
+	    name = code.Escape(entity).Substring(4);
+}
+    else if (cutname.ToLower() == "surv")
+    {
+	   name = code.Escape(entity).Substring(7);
+  }
+    else
+    {
+	    name = code.Escape(entity);
+    }
+    var state="State";
+    var initial = (name.Substring(0,1)).ToLower();
+    var rest = name.Substring(1);                   
+    fileManager.StartNewFile( name + suffix + ".cs"); //文件名
+    BeginNamespace(namespaceName, code);
+    bool entityHasNullableFKs = entity.NavigationProperties.Any(np => np.GetDependentProperties().Any(p=>ef.IsNullable(p)));
+ //   var nameRepositoryPrefix =name.Substring(0,5);                                                                                                                                                        
+#>
+<#=Accessibility.ForType(entity)#> class <#=  name+  suffix#><#=code.StringBefore(" : ", "" +prefix + name + dtoEntitySuffix + "")#>
+{
+	    iPow.Domain.Repository.<#=  prefix + name + repository#>   <#=  initial+rest + repository#>  ;
+
+        public <#=  name+  suffix#>( iPow.Domain.Repository.<#=  prefix + name + repository#> <#=  initial+rest #>)
+        {
+            if (<#=  initial+rest #> == null)
+            {
+                throw new ArgumentNullException(" <#=  initial+rest + repository#>   is null");
+            }
+            <#=  initial+rest + repository#> = <#=  initial+rest #>;
+        }
+
+        public bool Add(<#=  namepase + code.Escape(entity)#> enitty, iPow.Infrastructure.Data.DataSys.Sys_AdminUser operUser)
+        {
+            var res = false;
+            if (enitty != null)
+            {
+                try
+                {
+                    <#=  initial+rest + repository#>.Add(enitty);
+                    <#=  initial+rest + repository#>.Uow.Commit();
+                    res = true;
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            return res;
+        }
+
+        public bool Add(IList<<#=  namepase + code.Escape(entity)#>> entity, iPow.Infrastructure.Data.DataSys.Sys_AdminUser operUser)
+        {
+            var res = false;
+            if (entity != null && entity.Count > 0)
+            {
+                try
+                {
+                    foreach (var item in entity)
+                    {
+                        if (item != null)
+                        {
+                            <#=  initial+rest + repository#>.Add(item);
+                        }
+                    }
+                    <#=  initial+rest + repository#>.Uow.Commit();
+                    res = true;
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            return res;
+        }
+
+<# 
+	if (entity.Members.Where(e => e.Name == state).Any())
+    {
+#>
+ public bool Delete(<#=  namepase + code.Escape(entity)#> entity, iPow.Infrastructure.Data.DataSys.Sys_AdminUser operUser)
+        {
+            var res = false;
+            if (entity != null )
+            {
+                try
+                {
+				    entity.State = false;
+                    <#=  initial+rest + repository#>.Modify(entity);
+                    res = true;
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            return res;
+        }
+
+
+        public bool Delete(IList<<#=  namepase + code.Escape(entity)#>> entity, iPow.Infrastructure.Data.DataSys.Sys_AdminUser operUser)
+        {
+            var res = false;
+            if (entity != null && entity.Count > 0)
+            {
+                try
+                {
+                    foreach (var item in entity)
+                    {
+                        if (item != null)
+                        {
+                            item.State = false;
+                            <#=  initial+rest + repository#>.Modify(item);
+                        }
+                    }
+                    res = true;
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            return res;
+        }
+
+        public bool Delete(IList<int> idList, iPow.Infrastructure.Data.DataSys.Sys_AdminUser operUser)
+        {
+                var res = false;
+                if (idList != null && idList.Count > 0)
+                {
+                    var delete = <#=  initial+rest + repository#>.GetList(e => idList.Contains(e.<#= entity.KeyMembers[0] #>)).ToList();
+                    if (delete != null && delete.Count > 0)
+                    {
+                        res = Delete(delete, operUser);
+                    }
+                }
+                return res;
+        }
+<#
+   }
+   else
+   {
+   #>
+      public bool Delete(IList<<#=  namepase + code.Escape(entity)#>> entity, iPow.Infrastructure.Data.DataSys.Sys_AdminUser operUser)
+	  {
+	    throw new NotImplementedException();
+	  }
+      
+	  public bool Delete(IList<int> idList, iPow.Infrastructure.Data.DataSys.Sys_AdminUser operUser)
+      {
+	    throw new NotImplementedException();
+	  }
+
+	   public bool Delete(<#=  namepase + code.Escape(entity)#> entity, iPow.Infrastructure.Data.DataSys.Sys_AdminUser operUser)
+	  {
+	    throw new NotImplementedException();
+	  }
+<#
+	}
+    #>    
+        public bool DeleteTrue(<#=  namepase + code.Escape(entity)#> entity, iPow.Infrastructure.Data.DataSys.Sys_AdminUser operUser)
+        {
+            var res = false;
+            if (entity != null)
+            {
+                try
+                {
+                    <#=  initial+rest + repository#>.Delete(entity);
+                    <#=  initial+rest + repository#>.Uow.Commit();
+                    res = true;
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            return res;
+        }
+
+        public bool DeleteTrue(IList<<#=  namepase + code.Escape(entity)#>> entity, iPow.Infrastructure.Data.DataSys.Sys_AdminUser operUser)
+        {
+            var res = false;
+            if (entity != null && entity.Count > 0)
+            {
+                try
+                {
+                    foreach (var item in entity)
+                    {
+                        if (item != null)
+                        {
+                            <#=  initial+rest + repository#>.Delete(item);
+                        }
+                    }
+                    <#=  initial+rest + repository#>.Uow.Commit();
+                    res = true;
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            return res;
+        }
+
+        public bool DeleteTrue(IList<int> idList, iPow.Infrastructure.Data.DataSys.Sys_AdminUser operUser)
+        {
+            var res = false;
+            if (idList != null && idList.Count > 0)
+            {
+                var delete = <#=  initial+rest + repository#>.GetList(e => idList.Contains(e.<#= entity.KeyMembers[0] #>)).ToList();
+                if(delete != null &&delete.Count >  0)
+                {
+                    res = DeleteTrue(delete, operUser);
+                }
+            }
+            return res;
+        }
+
+        public bool Modify(<#=  namepase + code.Escape(entity)#> entity, iPow.Infrastructure.Data.DataSys.Sys_AdminUser operUser)
+        {
+            var res = false;
+            if (entity != null && entity.<#= entity.KeyMembers[0] #> > 0)
+            {
+                try
+                {
+                    <#=  initial+rest + repository#>.Modify(entity);
+                    res = true;
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            return res;
+        }
+
+        public bool Modify(IList<<#=  namepase + code.Escape(entity)#>> entity, iPow.Infrastructure.Data.DataSys.Sys_AdminUser operUser)
+        {
+            var res = false;
+            if (entity != null && entity.Count > 0)
+            {
+                try
+                {
+                    foreach (var item in entity)
+                    {
+                        if (item != null)
+                        {
+                            <#=  initial+rest + repository#>.Modify(item);
+                        }
+                    }
+                    res = true;
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            return res;
+        }
+
+		<#
+	var type = "";
+	var obj = entity.KeyMembers[0].TypeUsage;
+    if (Convert.ToString(obj) == "Edm.Int32")
+    {
+	   type = "int";
+  }
+    else
+    { type = "string"; }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+
+#>
+    public <#=  namepase + code.Escape(entity)#> Get(<#= type #> id)
+        {
+            var data = <#=  initial+rest + repository#>.GetList(e => e.<#= entity.KeyMembers[0] #> == id).FirstOrDefault();
+            return data;
+        }
+
+        public IQueryable<<#=  namepase + code.Escape(entity)#>> GetList()
+        {
+            var res = <#=  initial+rest + repository#>.GetList().AsQueryable();
+            return res;
+        }
+
+        public int GetMaxId()
+        {
+             var res = <#=  initial+rest + repository#>.GetList().Max(e => e.<#= entity.KeyMembers[0] #>);
+            return res;
+        }
+	
+}
+<#
+    EndNamespace(namespaceName);
+}
+
+if (!VerifyTypesAreCaseInsensitiveUnique(ItemCollection))
+{
+    return "";
+}
+
+fileManager.Process();
+
+#>
+<#+
+void WriteHeader(EntityFrameworkTemplateFileManager fileManager, params string[] extraUsings)
+{
+    fileManager.StartHeader();
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+<#=String.Join(String.Empty, extraUsings.Select(u => "using " + u + ";" + Environment.NewLine).ToArray())#>
+<#+
+    fileManager.EndBlock();
+}
+
+void BeginNamespace(string namespaceName, CodeGenerationTools code)
+{
+    CodeRegion region = new CodeRegion(this);
+    if (!String.IsNullOrEmpty(namespaceName))
+    {
+#>
+namespace <#=code.EscapeNamespace(namespaceName)#>
+{
+<#+
+        PushIndent(CodeRegion.GetIndent(1));
+    }
+}
+
+void EndNamespace(string namespaceName)
+{
+    if (!String.IsNullOrEmpty(namespaceName))
+    {
+        PopIndent();
+#>
+}
+<#+
+    }
+}
+
+bool IsReadWriteAccessibleProperty(EdmMember member)
+{
+    string setter = Accessibility.ForWriteOnlyProperty(member);
+    string getter = Accessibility.ForReadOnlyProperty(member);
+
+    return getter != "private" && getter != "protected" && setter != "private" && setter != "protected";
+}
+
+string PropertyVirtualModifier(string accessibility)
+{
+    return accessibility + (accessibility != "private" ? " virtual" : "");
+}
+
+void WriteCustomObservableCollection()
+{
+#>
+
+<#+
+}
+
+bool VerifyTypesAreCaseInsensitiveUnique(EdmItemCollection itemCollection)
+{
+    Dictionary<string, bool> alreadySeen = new Dictionary<string, bool>(StringComparer.OrdinalIgnoreCase);
+    foreach(StructuralType type in itemCollection.GetItems<StructuralType>())
+    {
+        if (!(type is EntityType || type is ComplexType))
+        {
+            continue;
+        }
+        if (alreadySeen.ContainsKey(type.FullName))
+        {
+            Error(String.Format(CultureInfo.CurrentCulture, "This template does not support types that differ only by case, the types {0} are not supported", type.FullName));
+            return false;
+        }
+        else
+        {
+            alreadySeen.Add(type.FullName, true);
+        }
+    }
+    return true;
+}
+#>

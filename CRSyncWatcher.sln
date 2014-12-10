@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRS.Sync.Watcher.DLL", "CRS.Sync.Watcher.DLL\CRS.Sync.Watcher.DLL.csproj", "{92B1C535-386F-4A4F-9BD6-9BF95C619091}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRS.Sync.Watcher.Linq", "CRS.Sync.Watcher.Linq\CRS.Sync.Watcher.Linq.csproj", "{47B9EE45-1C33-41FD-87B3-A4ACA536B737}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E8BF5342-1965-4B5C-9EFC-F19349014C04}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRS.Sync.Watcher.WindowsService", "CRS.Sync.Watcher.WindowsService\CRS.Sync.Watcher.WindowsService.csproj", "{53E774AC-A763-4C96-B387-1122B4A9E1DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRS.Sync.Watcher.Domain", "CRS.Sync.Watcher.Domain\CRS.Sync.Watcher.Domain.csproj", "{B6632F62-FF9D-4A99-B643-84E672C9D2D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRS.Sync.Watcher.Service", "CRS.Sync.Watcher.Service\CRS.Sync.Watcher.Service.csproj", "{AD3FE0D3-9E6E-46BE-97B3-8132A39867B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRS.Sync.Watcher.ConsoleApplication.Demo", "CRS.Sync.Watcher.ConsoleApplication.Demo\CRS.Sync.Watcher.ConsoleApplication.Demo.csproj", "{D5A161A1-899F-4CC0-936F-DACE2272C694}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92B1C535-386F-4A4F-9BD6-9BF95C619091}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92B1C535-386F-4A4F-9BD6-9BF95C619091}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92B1C535-386F-4A4F-9BD6-9BF95C619091}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92B1C535-386F-4A4F-9BD6-9BF95C619091}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47B9EE45-1C33-41FD-87B3-A4ACA536B737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47B9EE45-1C33-41FD-87B3-A4ACA536B737}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47B9EE45-1C33-41FD-87B3-A4ACA536B737}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47B9EE45-1C33-41FD-87B3-A4ACA536B737}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53E774AC-A763-4C96-B387-1122B4A9E1DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53E774AC-A763-4C96-B387-1122B4A9E1DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53E774AC-A763-4C96-B387-1122B4A9E1DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53E774AC-A763-4C96-B387-1122B4A9E1DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6632F62-FF9D-4A99-B643-84E672C9D2D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6632F62-FF9D-4A99-B643-84E672C9D2D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6632F62-FF9D-4A99-B643-84E672C9D2D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6632F62-FF9D-4A99-B643-84E672C9D2D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD3FE0D3-9E6E-46BE-97B3-8132A39867B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD3FE0D3-9E6E-46BE-97B3-8132A39867B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD3FE0D3-9E6E-46BE-97B3-8132A39867B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD3FE0D3-9E6E-46BE-97B3-8132A39867B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5A161A1-899F-4CC0-936F-DACE2272C694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5A161A1-899F-4CC0-936F-DACE2272C694}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5A161A1-899F-4CC0-936F-DACE2272C694}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5A161A1-899F-4CC0-936F-DACE2272C694}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

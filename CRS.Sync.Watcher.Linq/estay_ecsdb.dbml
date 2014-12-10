@@ -1,0 +1,682 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="estay_ecs_1210" Class="estay_ecsdbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=202.104.149.179\MSSQL2012QY,1455;Initial Catalog=estay_ecs_1210;User ID=webApplication" SettingsObjectName="CRS.Sync.Watcher.Linq.Properties.Settings" SettingsPropertyName="estay_ecs_1210ConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.city_info" Member="city_info">
+    <Type Name="city_info">
+      <Column Name="city_id" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="city_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="province_id" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="city_name_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="code" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="remarks" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ExtensionData" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="seqid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.country_info" Member="country_info">
+    <Type Name="country_info">
+      <Column Name="id" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cname" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ename" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="code" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="remarks" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ExtensionData" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="seqid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.district_info" Member="district_info">
+    <Type Name="district_info">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="district_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="city_id" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="district_id" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.commerical_locations_info" Member="commerical_locations_info">
+    <Type Name="commerical_locations_info">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Locations_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="city_id" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Locations_id" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.province_info" Member="province_info">
+    <Type Name="province_info">
+      <Column Name="province_Id" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="province_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ename" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="code" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="remarks" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ExtensionData" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="seqid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.hotel_star_info" Member="hotel_star_info">
+    <Type Name="hotel_star_info">
+      <Column Name="id" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cname" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ename" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="remarks" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ExtensionData" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="seqid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.hotel_theme_info" Member="hotel_theme_info">
+    <Type Name="hotel_theme_info">
+      <Column Name="hotel_theme_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="hotel_theme_title" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="hotel_theme_stated" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.hotel_theme_type_info" Member="hotel_theme_type_info">
+    <Type Name="hotel_theme_type_info">
+      <Column Name="t_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="t_name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="t_ctime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="t_stated" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="hotel_theme_type_info_hotel_info" Member="hotel_info" ThisKey="t_id" OtherKey="h_t_id" Type="hotel_info" />
+    </Type>
+  </Table>
+  <Table Name="dbo.source_type_info" Member="source_type_info">
+    <Type Name="source_type_info">
+      <Column Name="source_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="source_title" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="source_time" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="source_type_info_hotel_info" Member="hotel_info" ThisKey="source_id" OtherKey="source_id" Type="hotel_info" />
+    </Type>
+  </Table>
+  <Table Name="dbo.hotel_picture_info" Member="hotel_picture_info">
+    <Type Name="hotel_picture_info">
+      <Column Name="h_p_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="hotel_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="h_p_title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="h_p_pic_original_url" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="h_p_pic_thumb_url" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="h_p_sort" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="h_p_time" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="h_p_tag" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="h_p_type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="h_p_size" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.hotel_room_picture_info" Member="hotel_room_picture_info">
+    <Type Name="hotel_room_picture_info">
+      <Column Name="h_r_p_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="room_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="h_r_p_title" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="h_r_p_pic_original_url" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="h_r_p_pic_thumb_url" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="h_r_p_sort" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="h_r_p_tag" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="h_r_p_time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="h_r_p_type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="h_r_p_size" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="souce_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="state" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.hotel_room_RP_info" Member="hotel_room_RP_info">
+    <Type Name="hotel_room_RP_info">
+      <Column Name="h_room_rp_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RatePlanId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="hotel_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HotelCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="h_room_rp_state" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="room_id_Str" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="h_room_rp_name_cn" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="h_room_rp_name_en" Type="System.String" DbType="NVarChar(400)" CanBeNull="true" />
+      <Column Name="h_room_rp_is_pay_online" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="h_room_rp_is_to_store_pay" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="h_room_rp_check_in" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="h_room_rp_check_out" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="h_room_rp_least_day" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="h_room_rp_longest_day" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="h_room_rp_invoice" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="h_room_rp_isbreakfast" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="h_room_rp_breakfast_count" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="h_room_rp_breakfast_title" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="h_room_rp_is_plus_breakfast" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="h_room_rp_is_plus_bed" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="h_room_rp_ctime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="h_room_rp_utime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="h_room_rp_isGuarantee" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SuffixName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CustomerType" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CurrentAlloment" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InstantConfirmation" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PaymentType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BookingRuleIds" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="GuaranteeRuleIds" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PrepayRuleIds" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DrrRuleIds" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ValueAddIds" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ProductTypes" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="IsLastMinuteSale" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="StartTime" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EndTime" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MinAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MinAdvHours" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaxAdvHours" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CurrencyCode" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="hotel_info_hotel_room_RP_info" Member="hotel_info" ThisKey="hotel_id" OtherKey="hotel_id" Type="hotel_info" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.hotel_room_RP_price" Member="hotel_room_RP_price">
+    <Type Name="hotel_room_RP_price">
+      <Column Name="Rp_price_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Room_rp_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Hotel_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Room_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoomTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PriceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Room_rp_price" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Weekend" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="MemberCost" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="WeekendCost" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Addbed" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Effectdate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Ebeds" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Aviebeds" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cost" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Commission" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="LastUpTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RoomStatus" Member="RoomStatus">
+    <Type Name="RoomStatus">
+      <Column Name="r_s_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="room_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoomTypeId" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="r_s_time" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="r_s_number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OverBooking" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="r_s_utime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="r_s_ctime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="r_s_status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="hotel_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HotelCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="avieBeds" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="eBeds" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.hotel_info" Member="hotel_info">
+    <Type Name="hotel_info">
+      <Column Name="hotel_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="h_id" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="u_id" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="h_t_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="h_name_cn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="h_name_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="h_location_cn" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="h_location_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="h_description_cn" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="h_description_en" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="h_star" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="h_organization" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="h_tel" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="h_mobile_phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="h_fax" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="h_email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="h_contact" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="h_price_range" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="h_traffic_position" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="h_longitude" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="h_latitude" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="h_check_in" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="h_check_out" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="h_opening_time" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="decorateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="h_room_count" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="h_province" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="h_city" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="h_administrative_region" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="h_business_zone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="district" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="h_postcode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="h_outer_network_display" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="h_state" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="h_state_reason" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="h_hotel_website" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="h_ctime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="h_utime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="h_sort" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="source_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GeneralAmenities" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="RoomAmenities" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="diningAmenities" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="recreationAmenities" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="availPolicy" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="commentTotal" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="commentGood" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="commentBad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreditCards" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="score" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="IntroEditor" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Facilities" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="BaiduLat" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="BaiduLon" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="BrandId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Surroundings" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="Features" Type="System.String" DbType="NVarChar(3000)" CanBeNull="true" />
+      <Column Name="HelpfulTips" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="hotel_theme_id" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="floor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CheckState" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="bounsItem" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="fbcoef" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="etcoef" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="otcoef" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="ttcoef" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="hotelCard" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="rmcoef" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="hotel_info_hotel_room_RP_info" Member="hotel_room_RP_info" ThisKey="hotel_id" OtherKey="hotel_id" Type="hotel_room_RP_info" />
+      <Association Name="hotel_info_hotel_room_info" Member="hotel_room_info" ThisKey="hotel_id" OtherKey="hotel_id" Type="hotel_room_info" />
+      <Association Name="hotel_theme_type_info_hotel_info" Member="hotel_theme_type_info" ThisKey="h_t_id" OtherKey="t_id" Type="hotel_theme_type_info" IsForeignKey="true" />
+      <Association Name="source_type_info_hotel_info" Member="source_type_info" ThisKey="source_id" OtherKey="source_id" Type="source_type_info" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.hotel_room_info" Member="hotel_room_info">
+    <Type Name="hotel_room_info">
+      <Column Name="room_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="h_r_id" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="hotel_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="h_r_name_cn" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="h_r_name_en" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="h_r_description_cn" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="h_r_description_en" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="h_r_acreage" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="h_r_people_number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sitting_room_number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="h_r_bedroom_number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="KitchenNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="h_r_bathroom_number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="h_r_house_number" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="h_r_reserve" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="h_r_bed_number" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="h_r_bed_type" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="h_r_floor" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="h_r_least_day" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="h_r_longest_day" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="h_r_ctime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="h_r_utime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="h_r_state" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="h_r_sort" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BroadnetAccess" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BroadnetFee" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Capacity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="house_service" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="study" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Kitchen" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sitting_room" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Balcony" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DefaultPrice" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Member="category" Type="System.String" CanBeNull="false" />
+      <Association Name="hotel_info_hotel_room_info" Member="hotel_info" ThisKey="hotel_id" OtherKey="hotel_id" Type="hotel_info" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.Activity_Add" Method="Activity_Add">
+    <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CategoryName" Parameter="categoryName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="RunDate" Parameter="runDate" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Introduction" Parameter="introduction" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="InnerImg" Parameter="innerImg" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="IndexImg" Parameter="indexImg" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="ActivityUrl" Parameter="activityUrl" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="CreateDate" Parameter="createDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CreateIp" Parameter="createIp" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="AccountID" Parameter="accountID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AccountName" Parameter="accountName" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="State" Parameter="state" Type="System.Int32" DbType="Int" />
+    <Parameter Name="OrderIndex" Parameter="orderIndex" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Clicks" Parameter="clicks" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Activity_AddResult">
+      <Column Name="ID" Type="System.Decimal" DbType="Decimal(38,0)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Activity_ChangeOrderByID" Method="Activity_ChangeOrderByID">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UpOrDown" Parameter="upOrDown" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Activity_DeleteByID" Method="Activity_DeleteByID">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Activity_DeleteByIDResult">
+      <Column Name="DeleteState" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Activity_UpdateByID" Method="Activity_UpdateByID">
+    <Parameter Name="CategoryID" Parameter="categoryID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CategoryName" Parameter="categoryName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="RunDate" Parameter="runDate" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Introduction" Parameter="introduction" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="InnerImg" Parameter="innerImg" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="IndexImg" Parameter="indexImg" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="ActivityUrl" Parameter="activityUrl" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="OrderIndex" Parameter="orderIndex" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Activity_UpdateByIDResult">
+      <Column Name="UpdateState" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Links_AddLinksInfo" Method="Links_AddLinksInfo" IsComposable="true">
+    <Parameter Name="LinksID" Parameter="linksID" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="ClassID" Parameter="classID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="Title" Parameter="title" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="WebUrl" Parameter="webUrl" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="Remark" Parameter="remark" Type="System.String" DbType="VarChar(4000)" />
+    <Parameter Name="LinksPath" Parameter="linksPath" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="LinksName" Parameter="linksName" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="CommFlag" Parameter="commFlag" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Aud" Parameter="aud" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ContactEmail" Parameter="contactEmail" Type="System.String" DbType="VarChar(100)" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.Links_CreateLinksClass" Method="Links_CreateLinksClass" IsComposable="true">
+    <Parameter Name="ParentID" Parameter="parentID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ClassName" Parameter="className" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ClassIntro" Parameter="classIntro" Type="System.String" DbType="NVarChar(1000)" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.Links_DeleteLinksClass" Method="Links_DeleteLinksClass" IsComposable="true">
+    <Parameter Name="ClassID" Parameter="classID" Type="System.Int32" DbType="Int" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.Links_DeleteLinksInfo" Method="Links_DeleteLinksInfo" IsComposable="true">
+    <Parameter Name="LinksID" Parameter="linksID" Type="System.Int32" DbType="Int" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.Links_GetLinksClassList" Method="Links_GetLinksClassList" IsComposable="true">
+    <Parameter Name="strWhere" Type="System.String" DbType="VarChar(1000)" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.Links_GetLinksClassModel" Method="Links_GetLinksClassModel" IsComposable="true">
+    <Parameter Name="ClassID" Parameter="classID" Type="System.Int32" DbType="Int" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.Links_GetLinksIDList" Method="Links_GetLinksIDList" IsComposable="true">
+    <Parameter Name="strWhere" Type="System.String" DbType="VarChar(1000)" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.Links_GetLinksInfoModel" Method="Links_GetLinksInfoModel" IsComposable="true">
+    <Parameter Name="LinksID" Parameter="linksID" Type="System.Int32" DbType="Int" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.Links_GetLinksList" Method="Links_GetLinksList">
+    <Parameter Name="strClassID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="strTop" Type="System.Int32" DbType="Int" />
+    <Parameter Name="strOrder" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="strWhere" Type="System.String" DbType="VarChar(500)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Links_GetPicLinksList" Method="Links_GetPicLinksList" IsComposable="true">
+    <Parameter Name="Type" Parameter="type" Type="System.Int32" DbType="Int" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.Links_UpdateLinksClass" Method="Links_UpdateLinksClass" IsComposable="true">
+    <Parameter Name="ClassID" Parameter="classID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ParentID" Parameter="parentID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ClassName" Parameter="className" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ClassIntro" Parameter="classIntro" Type="System.String" DbType="NVarChar(1000)" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.Links_UpdateLinksInfo" Method="Links_UpdateLinksInfo" IsComposable="true">
+    <Parameter Name="LinksID" Parameter="linksID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ClassID" Parameter="classID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="Title" Parameter="title" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="WebUrl" Parameter="webUrl" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="Remark" Parameter="remark" Type="System.String" DbType="VarChar(4000)" />
+    <Parameter Name="LinksPath" Parameter="linksPath" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="LinksName" Parameter="linksName" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="CommFlag" Parameter="commFlag" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IsTop" Parameter="isTop" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IsVouch" Parameter="isVouch" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IsDelete" Parameter="isDelete" Type="System.Int32" DbType="Int" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.Preferential_Add" Method="Preferential_Add">
+    <Parameter Name="Title" Parameter="title" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="RunDate" Parameter="runDate" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Content" Parameter="content" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="CreateDate" Parameter="createDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CreateIp" Parameter="createIp" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="ImgUrl" Parameter="imgUrl" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="State" Parameter="state" Type="System.Int32" DbType="Int" />
+    <Parameter Name="OrderIndex" Parameter="orderIndex" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Clicks" Parameter="clicks" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IsDel" Parameter="isDel" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DelDate" Parameter="delDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="Preferential_AddResult">
+      <Column Name="ID" Type="System.Decimal" DbType="Decimal(38,0)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Preferential_ChangeOrderByID" Method="Preferential_ChangeOrderByID">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UpOrDown" Parameter="upOrDown" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Preferential_DeleteByID" Method="Preferential_DeleteByID">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Preferential_DeleteByIDResult">
+      <Column Name="DeleteState" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Preferential_UpdateByID" Method="Preferential_UpdateByID">
+    <Parameter Name="Title" Parameter="title" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="RunDate" Parameter="runDate" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Content" Parameter="content" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ImgUrl" Parameter="imgUrl" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="OrderIndex" Parameter="orderIndex" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Preferential_UpdateByIDResult">
+      <Column Name="UpdateState" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ResumeInfoAdd" Method="ResumeInfoAdd">
+    <Parameter Name="JobsID" Parameter="jobsID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="JobsName" Parameter="jobsName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Sex" Parameter="sex" Type="System.String" DbType="NVarChar(4)" />
+    <Parameter Name="Native" Parameter="native" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Race" Parameter="race" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Birthday" Parameter="birthday" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Height" Parameter="height" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="IdentityNumber" Parameter="identityNumber" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Marry" Parameter="marry" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="EnglishGrade" Parameter="englishGrade" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="ChineseGrade" Parameter="chineseGrade" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Education" Parameter="education" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Politics" Parameter="politics" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Computer" Parameter="computer" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="Pay" Parameter="pay" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="TakesTime" Parameter="takesTime" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Mobile" Parameter="mobile" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="IsRead" Parameter="isRead" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IsDelete" Parameter="isDelete" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AddTime" Parameter="addTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="AddIp" Parameter="addIp" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="EducationInformation" Parameter="educationInformation" Type="System.String" DbType="NVarChar(1000)" />
+    <Parameter Name="WorkExperience" Parameter="workExperience" Type="System.String" DbType="NVarChar(1000)" />
+    <Parameter Name="Evaluation" Parameter="evaluation" Type="System.String" DbType="NVarChar(1000)" />
+    <ElementType Name="ResumeInfoAddResult">
+      <Column Name="" Member="Column1" Type="System.Decimal" DbType="Decimal(38,0)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ResumeInfoCompletelyDelByID" Method="ResumeInfoCompletelyDelByID">
+    <Parameter Name="ResumeID" Parameter="resumeID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ResumeInfoDelByID" Method="ResumeInfoDelByID">
+    <Parameter Name="ResumeID" Parameter="resumeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IsDelete" Parameter="isDelete" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ResumeInfoCompletelyDelByIDs" Method="ResumeInfoCompletelyDelByIDs">
+    <Parameter Name="ResumeIDs" Parameter="resumeIDs" Type="System.String" DbType="VarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ResumeInfoRecycleSelCount" Method="ResumeInfoRecycleSelCount">
+    <ElementType Name="ResumeInfoRecycleSelCountResult">
+      <Column Name="" Member="Column1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ResumeInfoSelCount" Method="ResumeInfoSelCount">
+    <Parameter Name="IsRead" Parameter="isRead" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IsDelete" Parameter="isDelete" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ResumeInfoSelCountResult">
+      <Column Name="" Member="Column1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ResumeInfoUpdateByID" Method="ResumeInfoUpdateByID">
+    <Parameter Name="ResumeID" Parameter="resumeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IsRead" Parameter="isRead" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ResumeListSel" Method="ResumeListSel">
+    <Parameter Name="IsDelete" Parameter="isDelete" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IsRead" Parameter="isRead" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PageSize" Parameter="pageSize" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CurrentPage" Parameter="currentPage" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ResumeListSelResult">
+      <Column Name="ResumeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JobsName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Sex" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="Birthday" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Computer" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Education" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="IsRead" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AddTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ResumeRecycleListSel" Method="ResumeRecycleListSel">
+    <Parameter Name="IsDelete" Parameter="isDelete" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CurrentPage" Parameter="currentPage" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PageSize" Parameter="pageSize" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ResumeRecycleListSelResult">
+      <Column Name="ResumeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JobsName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Sex" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="Birthday" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Computer" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="IsRead" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AddTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ResumeSelByID" Method="ResumeSelByID">
+    <Parameter Name="ResumeID" Parameter="resumeID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ResumeSelByIDResult">
+      <Column Name="JobsName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Sex" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="Native" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Race" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Birthday" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Height" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="IdentityNumber" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Marry" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EnglishGrade" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ChineseGrade" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Education" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Politics" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Computer" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Pay" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="TakesTime" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Mobile" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="IsRead" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsDelete" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AddTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AddIp" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="EducationInformation" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="WorkExperience" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="Evaluation" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.VisitorMessageAdd" Method="VisitorMessageAdd">
+    <Parameter Name="MessageTitle" Parameter="messageTitle" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="MessageContent" Parameter="messageContent" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="VisitorName" Parameter="visitorName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="VisitorEmail" Parameter="visitorEmail" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="VisitorAddress" Parameter="visitorAddress" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="VisitorPhone" Parameter="visitorPhone" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="VisitorIP" Parameter="visitorIP" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="VisitorData" Parameter="visitorData" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="IsReply" Parameter="isReply" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.VisitorMessageDelByID" Method="VisitorMessageDelByID">
+    <Parameter Name="MessageID" Parameter="messageID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.VisitorMessageDelByIDs" Method="VisitorMessageDelByIDs">
+    <Parameter Name="MessageIDs" Parameter="messageIDs" Type="System.String" DbType="VarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.VisitorMessageReply" Method="VisitorMessageReply">
+    <Parameter Name="MessageID" Parameter="messageID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IsReply" Parameter="isReply" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ReplyContent" Parameter="replyContent" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="ReplyID" Parameter="replyID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ReplyName" Parameter="replyName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ReplyIP" Parameter="replyIP" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ReplyData" Parameter="replyData" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.VisitorMessageSelByID" Method="VisitorMessageSelByID">
+    <Parameter Name="MessageID" Parameter="messageID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="VisitorMessageSelByIDResult">
+      <Column Name="MessageContent" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="VisitorName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="VisitorEmail" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="VisitorPhone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="VisitorAddress" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="VisitorData" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ReplyContent" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.VisitorMessageSelCount" Method="VisitorMessageSelCount">
+    <ElementType Name="VisitorMessageSelCountResult">
+      <Column Name="" Member="Column1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.VisitorMessageSelect" Method="VisitorMessageSelect">
+    <Parameter Name="PageSize" Parameter="pageSize" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CurrentPage" Parameter="currentPage" Type="System.Int32" DbType="Int" />
+    <ElementType Name="VisitorMessageSelectResult">
+      <Column Name="MessageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MessageContent" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="VisitorData" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsReply" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.VisitorMessageSelectByIsReply" Method="VisitorMessageSelectByIsReply">
+    <Parameter Name="CurrentPage" Parameter="currentPage" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PageSize" Parameter="pageSize" Type="System.Int32" DbType="Int" />
+    <ElementType Name="VisitorMessageSelectByIsReplyResult">
+      <Column Name="MessageID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MessageTitle" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MessageContent" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="VisitorName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IsReply" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VisitorData" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ReplyContent" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ReplyData" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

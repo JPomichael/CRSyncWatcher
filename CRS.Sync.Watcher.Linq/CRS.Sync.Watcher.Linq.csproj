@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{47B9EE45-1C33-41FD-87B3-A4ACA536B737}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CRS.Sync.Watcher.Linq</RootNamespace>
+    <AssemblyName>CRS.Sync.Watcher.Linq</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="estay_ecsdb.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>estay_ecsdb.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="estay_ecsdb.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>estay_ecsdb.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\DataSources\Account.datasource" />
+    <None Include="Properties\DataSources\AccountRole.datasource" />
+    <None Include="Properties\DataSources\Activity.datasource" />
+    <None Include="Properties\DataSources\ActivityCategory.datasource" />
+    <None Include="Properties\DataSources\ActivityComm.datasource" />
+    <None Include="Properties\DataSources\ActivityVisitor.datasource" />
+    <None Include="Properties\DataSources\Activity_AddResult.datasource" />
+    <None Include="Properties\DataSources\Activity_DeleteByIDResult.datasource" />
+    <None Include="Properties\DataSources\Activity_UpdateByIDResult.datasource" />
+    <None Include="Properties\DataSources\Article.datasource" />
+    <None Include="Properties\DataSources\ArticleCategory.datasource" />
+    <None Include="Properties\DataSources\Department.datasource" />
+    <None Include="Properties\DataSources\ErrorCode.datasource" />
+    <None Include="Properties\DataSources\ImageCategory.datasource" />
+    <None Include="Properties\DataSources\Images.datasource" />
+    <None Include="Properties\DataSources\ipowdb_chuanlooDataContext.datasource" />
+    <None Include="Properties\DataSources\ipowdb_chuanlooEntities.datasource" />
+    <None Include="Properties\DataSources\Jobs.datasource" />
+    <None Include="Properties\DataSources\JobsCategory.datasource" />
+    <None Include="Properties\DataSources\Links.datasource" />
+    <None Include="Properties\DataSources\Log.datasource" />
+    <None Include="Properties\DataSources\Menu.datasource" />
+    <None Include="Properties\DataSources\Performances.datasource" />
+    <None Include="Properties\DataSources\PerformancesCategory.datasource" />
+    <None Include="Properties\DataSources\Permission.datasource" />
+    <None Include="Properties\DataSources\PlayItem.datasource" />
+    <None Include="Properties\DataSources\PlayItemComm.datasource" />
+    <None Include="Properties\DataSources\Preferential.datasource" />
+    <None Include="Properties\DataSources\Preferential_AddResult.datasource" />
+    <None Include="Properties\DataSources\Preferential_DeleteByIDResult.datasource" />
+    <None Include="Properties\DataSources\Preferential_UpdateByIDResult.datasource" />
+    <None Include="Properties\DataSources\Questionnaire.datasource" />
+    <None Include="Properties\DataSources\Questions.datasource" />
+    <None Include="Properties\DataSources\ResumeInfo.datasource" />
+    <None Include="Properties\DataSources\ResumeInfoAddResult.datasource" />
+    <None Include="Properties\DataSources\ResumeInfoRecycleSelCountResult.datasource" />
+    <None Include="Properties\DataSources\ResumeInfoSelCountResult.datasource" />
+    <None Include="Properties\DataSources\ResumeListSelResult.datasource" />
+    <None Include="Properties\DataSources\ResumeRecycleListSelResult.datasource" />
+    <None Include="Properties\DataSources\ResumeSelByIDResult.datasource" />
+    <None Include="Properties\DataSources\Role.datasource" />
+    <None Include="Properties\DataSources\Template.datasource" />
+    <None Include="Properties\DataSources\ThemeCategory.datasource" />
+    <None Include="Properties\DataSources\ThemePark.datasource" />
+    <None Include="Properties\DataSources\ThemeParkCategory.datasource" />
+    <None Include="Properties\DataSources\Video.datasource" />
+    <None Include="Properties\DataSources\VideoCategory.datasource" />
+    <None Include="Properties\DataSources\VideoScore.datasource" />
+    <None Include="Properties\DataSources\VideoVisitor.datasource" />
+    <None Include="Properties\DataSources\VisitorMessage.datasource" />
+    <None Include="Properties\DataSources\VisitorMessageSelByIDResult.datasource" />
+    <None Include="Properties\DataSources\VisitorMessageSelCountResult.datasource" />
+    <None Include="Properties\DataSources\VisitorMessageSelectByIsReplyResult.datasource" />
+    <None Include="Properties\DataSources\VisitorMessageSelectResult.datasource" />
+    <None Include="Properties\DataSources\VisitorShare.datasource" />
+    <None Include="Properties\DataSources\We7.CMS.Linq.Properties.Settings.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="estay_ecsdb.dbml.layout">
+      <DependentUpon>estay_ecsdb.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
