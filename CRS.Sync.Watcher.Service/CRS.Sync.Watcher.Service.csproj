@@ -247,13 +247,22 @@
     <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.OrderStateResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeDescriptGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.ResultBase.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.ReviewableResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeDescriptGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.RoomRateWsGet.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.SearchCntResult.datasource">

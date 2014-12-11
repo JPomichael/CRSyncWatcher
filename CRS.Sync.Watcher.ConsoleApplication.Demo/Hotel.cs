@@ -33,43 +33,49 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
 
             //! 请求通用代码
             CRS.Sync.Watcher.Service.WCFMobileServer.HotelGet hotelGetList = _hotelService.GetCRSHotelInterface(_CRSHotelParamsDTO);
-            if (hotelGetList.result == 0 && hotelGetList.hotelDTOs != null)
+            if (hotelGetList != null)
             {
-                //! 格式化酒店描述
-                foreach (var _hotelDTO in hotelGetList.hotelDTOs)
+                if (hotelGetList.result == 0)
                 {
-                    _hotelDTO.descript = StringHelper.ParseHtml(_hotelDTO.descript);
-                    _hotelDTO.EDescript = StringHelper.ParseHtml(_hotelDTO.EDescript);
-                }
-
-                //! 保存/更新本机
-                XmlUtil.SerializeToXml(hotelGetList, hotelGetList.GetType(), _fileSavePath, null);
-
-                //! 加载XML 到 HotelDTO
-                List<CRS.Sync.Watcher.Service.WCFMobileServer.HotelDTO> _hotelDtoList = _hotelService.GetReadXMLToObject(_fileSavePath);
-
-                //!  模型转换
-                IEnumerable<hotel_info> hoteList = _hotelService.HotelDTOToModel(_hotelDtoList);
-
-                //! 检测/更新本机
-                foreach (var _hoteList in hoteList)
-                {
-                    if (!_hotelService.CheckIsAny(_hoteList))
+                    if (hotelGetList.hotelDTOs != null)
                     {
-                        //!  录入公寓
-                        _hotelService.Add(_hoteList);
-                        messages = HotelUpperService(messages, _fileSavePath, _hoteList);
-                    }
-                    else
-                    {
-                        //!  更新
-                        _hotelService.Update(_hoteList);
-                        messages = HotelUpperService(messages, _fileSavePath, _hoteList);
+                        //! 格式化酒店描述
+                        foreach (var _hotelDTO in hotelGetList.hotelDTOs)
+                        {
+                            _hotelDTO.descript = StringHelper.ParseHtml(_hotelDTO.descript);
+                            _hotelDTO.EDescript = StringHelper.ParseHtml(_hotelDTO.EDescript);
+                        }
+
+                        //! 保存/更新本机
+                        XmlUtil.SerializeToXml(hotelGetList, hotelGetList.GetType(), _fileSavePath, null);
+
+                        //! 加载XML 到 HotelDTO
+                        List<CRS.Sync.Watcher.Service.WCFMobileServer.HotelDTO> _hotelDtoList = _hotelService.GetReadXMLToObject(_fileSavePath);
+
+                        //!  模型转换
+                        IEnumerable<hotel_info> hoteList = _hotelService.HotelDTOToModel(_hotelDtoList);
+
+                        //! 检测/更新本机
+                        foreach (var _hoteList in hoteList)
+                        {
+                            if (!_hotelService.CheckIsAny(_hoteList))
+                            {
+                                //!  录入公寓
+                                _hotelService.Add(_hoteList);
+                                messages = HotelUpperService(messages, _fileSavePath, _hoteList);
+                            }
+                            else
+                            {
+                                //!  更新
+                                _hotelService.Update(_hoteList);
+                                messages = HotelUpperService(messages, _fileSavePath, _hoteList);
+                            }
+                        }
                     }
                 }
+                else
+                    messages += "GetCRSHotelInterface 接口返回出错！！！\r\n";
             }
-            else
-                messages += "GetCRSHotelInterface  接口返回问题!";
             return messages;
         }
 
@@ -101,25 +107,31 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
         {
             string messages = "";
             CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeGet _RmTypeGet = _houseService.GetCRSRmTypeInterface(int.Parse(_hoteList.h_id), "", "", "");
-            if (_RmTypeGet.result == 0 && _RmTypeGet != null && _RmTypeGet.rmTypes != null)
+            if (_RmTypeGet != null)
             {
-                List<CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeWS> rmTypes = _RmTypeGet.rmTypes.ToList();
-                IEnumerable<hotel_room_info> roomList = _houseService.DTOToModel(rmTypes, hotel_id);
-                foreach (var _roomList in roomList)
+                if (_RmTypeGet.result == 0)
                 {
-                    //! 检验是否存在当前房型
-                    if (!_houseService.CheckIsAny(_roomList))
-                        _houseService.Add(_roomList);
-                    else
-                        //! 已存在 则更新
-                        _houseService.Update(_roomList);
-                    //TODO: 房型图片
-                    RoomPhotoUpdate(rmTypes, _roomList);
+                    if (_RmTypeGet.rmTypes != null)
+                    {
+                        List<CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeWS> rmTypes = _RmTypeGet.rmTypes.ToList();
+                        IEnumerable<hotel_room_info> roomList = _houseService.DTOToModel(rmTypes, hotel_id);
+                        foreach (var _roomList in roomList)
+                        {
+                            //! 检验是否存在当前房型
+                            if (!_houseService.CheckIsAny(_roomList))
+                                _houseService.Add(_roomList);
+                            else
+                                //! 已存在 则更新
+                                _houseService.Update(_roomList);
+                            //TODO: 房型图片
+                            RoomPhotoUpdate(rmTypes, _roomList);
+                        }
+                    }
                 }
-                //x _houseService.AddList(roomList);
+                else
+                    messages = "GetCRSRmTypeInterface 接口返回出错！！！\r\n";
             }
-            else
-                messages = "GetCRSRmTypeInterface 接口返回问题!";
+
             return messages;
         }
 
@@ -131,18 +143,18 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
         public void RoomPhotoUpdate(List<CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeWS> rmTypes, hotel_room_info _roomList)
         {
             //! 1 获取当前房类信息
-            CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeWS rmType = _houseService.GetRmTypeInfo(rmTypes, _roomList.code, _roomList.hotel_id);
+            CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeWS rmType = _houseService.GetRmTypeInfo(rmTypes, _roomList.code);
             hotel_room_info room = _houseService.GetRoomInfo(_roomList.code, _roomList.hotel_id);
             if (room != null)
             {
                 List<hotel_room_picture_info> roomPicInfo = _photoService.GetRoomPicsDTOToModel(rmType, room.room_id);
                 if (roomPicInfo != null && roomPicInfo.Count > 0)
                 {
-                    foreach (var _roomPicInfo in roomPicInfo)
+                    for (int i = 0; i < roomPicInfo.Count; i++)
                     {
-                        if (_photoService.CheckIsAny(_roomPicInfo, room.room_id))
+                        if (_photoService.CheckIsAny(roomPicInfo[i], room.room_id))
                             //!  存在 则从LIST中移除
-                            roomPicInfo.Remove(_roomPicInfo);
+                            roomPicInfo.Remove(roomPicInfo[i]);
                     }
                     _photoService.AddList(roomPicInfo.AsEnumerable());
                 }
@@ -160,14 +172,14 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
             CRS.Sync.Watcher.Service.WCFMobileServer.HotelDTO _hotelPics = _photoService.GetReadXMLPicsToObject(_hoteList.h_id, _fileSavePath);
 
             List<hotel_picture_info> hotelPicInfo = _photoService.GetHotelPicsDTOToModel(_hotelPics, hotel_id);
-            if (hotelPicInfo != null)
+            if (hotelPicInfo != null && hotelPicInfo.Count > 0)
             {
-                foreach (var _hotelPicInfo in hotelPicInfo)
+                for (int i = 0; i < hotelPicInfo.Count; i++)
                 {
                     //!  校验该图是否存在
-                    if (_photoService.CheckIsAny(_hotelPicInfo, hotel_id))
+                    if (_photoService.CheckIsAny(hotelPicInfo[i], hotel_id))
                         //!  存在 则从LIST中移除
-                        hotelPicInfo.Remove(_hotelPicInfo);
+                        hotelPicInfo.Remove(hotelPicInfo[i]);
                 }
                 //! ！null  录入
                 _photoService.AddList(hotelPicInfo.AsEnumerable());

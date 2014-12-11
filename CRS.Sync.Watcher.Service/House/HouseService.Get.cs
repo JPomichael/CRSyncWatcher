@@ -80,9 +80,9 @@ namespace CRS.Sync.Watcher.Service.House
         ///  <param name="code"></param>
         ///   <param name="hotel_id"></param>
         /// <returns></returns>
-        public CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeWS GetRmTypeInfo(List<CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeWS> RmTypeWSList, string code, int hotel_id)
+        public CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeWS GetRmTypeInfo(List<CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeWS> RmTypeWSList, string code)
         {
-            return RmTypeWSList.Where(o => o.code == code && o.hotelId == hotel_id).FirstOrDefault();
+            return RmTypeWSList.Where(o => o.code == code).FirstOrDefault();
         }
 
         /// <summary>

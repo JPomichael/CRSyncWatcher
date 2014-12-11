@@ -23,7 +23,7 @@ namespace CRS.Sync.Watcher.Service.House
 
         List<hotel_room_info> DTOToModel(List<CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeWS> _rmTypeList, int hotel_id);
         bool CheckIsAny(hotel_room_info room);
-        CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeWS GetRmTypeInfo(List<CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeWS> RmTypeWSList, string code, int hotel_id);
+        CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeWS GetRmTypeInfo(List<CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeWS> RmTypeWSList, string code);
         hotel_room_info GetRoomInfo(string code, int hotel_id);
 
 

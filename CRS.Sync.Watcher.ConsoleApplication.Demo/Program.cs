@@ -32,12 +32,17 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
 
         //!  通用代码保存目录
         public static string staticFolderSavePath = StringHelper.appSettings("staticFolderSavePath");
+        //创建日志记录组件实例  
+        public static ILog log = log4net.LogManager.GetLogger(typeof(Program));
 
         public static void Main(string[] args)
         {
+            string messages = "";
             Console.Title = ("CRS SYNC WATHER");
             Stopwatch t = new Stopwatch();
             t.Start();
+            Tip("同步于：" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "", ConsoleColor.Green);
+            log.Info("\r\n====================系统运行信息将会记录====================\r\n");
 
             #region 文件保存目录
             if (!Directory.Exists(staticFolderSavePath))
@@ -52,18 +57,29 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
 
             //!  基础信息
             //Base _base = new Base();
-            //Tip(_base.SyncService(staticFolderSavePath), null);
+            //messages += _base.SyncService(staticFolderSavePath);
+            //LogErrorMessages(messages);
 
             //!  公寓信息
             Hotel _hotel = new Hotel();
             CRS.Sync.Watcher.Service.WCFMobileServer.CRSHotelParamsDTO _CRSHotelParamsDTO = new Service.WCFMobileServer.CRSHotelParamsDTO();
-            Tip(_hotel.SyncService(_CRSHotelParamsDTO, staticFolderSavePath), null);
+            messages += _hotel.SyncService(_CRSHotelParamsDTO, staticFolderSavePath);
+            LogErrorMessages(messages);
 
             #endregion
 
             t.Stop();
-            Tip("程序总耗时：" + t.Elapsed.Seconds + "", null);
-            System.Console.ReadLine();
+            Tip("程序总耗时：" + t.Elapsed.Seconds + "", ConsoleColor.Green);
+            Console.ReadKey();
+        }
+
+        public static void LogErrorMessages(string messages)
+        {
+            Tip(messages, ConsoleColor.Yellow);
+            if (!string.IsNullOrEmpty(messages))
+            {
+                log.Warn(messages);
+            }
         }
 
 
@@ -82,18 +98,16 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
         #endregion
 
         #region log4net
-        //创建日志记录组件实例  
-        //x ILog log = log4net.LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         //x ILog log = log4net.LogManager.GetLogger(typeof(Program));
         //记录错误日志  
-        //log.Error("error", new Exception("在这里发生了一个异常,Error Number:"+random.Next()));  
+        //x log.Error("error", new Exception("在这里发生了一个异常,Error Number:"+random.Next()));  
         //记录严重错误  
-        //log.Fatal("fatal", new Exception("在发生了一个致命错误，Exception Id："+random.Next()));  
+        //x log.Fatal("fatal", new Exception("在发生了一个致命错误，Exception Id："+random.Next()));  
         //记录一般信息  
-        //log.Info("提示：系统正在运行");  
+        //x log.Info("提示：系统正在运行");  
         //记录调试信息  
-        //log.Debug("调试信息：debug");  
+
         //记录警告信息  
         //log.Warn("警告：warn");   
         #endregion
