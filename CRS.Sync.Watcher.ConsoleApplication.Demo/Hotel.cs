@@ -72,6 +72,8 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                             }
                         }
                     }
+                    else
+                        messages += "GetCRSHotelInterface 接口返回 NULL!\r\n";
                 }
                 else
                     messages += "GetCRSHotelInterface 接口返回出错！！！\r\n";

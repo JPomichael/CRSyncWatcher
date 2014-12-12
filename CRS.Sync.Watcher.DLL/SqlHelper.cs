@@ -17,7 +17,7 @@ namespace CRS.Sync.Watcher.DLL
     public abstract class SqlHelper
     {
         //获取数据库连接字符串，其属于静态变量且只读，项目中所有文档可以直接使用，但不能修改
-        public static readonly string ConnectionStringLocalTransaction = ConfigurationManager.ConnectionStrings["ipowdb_AdventureWaterWorldConnectionString"].ConnectionString;
+        public static readonly string ConnectionStringLocalTransaction = ConfigurationManager.ConnectionStrings["estay_ecsdbConnectionString"].ConnectionString;
 
         // 哈希表用来存储缓存的参数信息，哈希表可以存储任意类型的参数。
         private static Hashtable parmCache = Hashtable.Synchronized(new Hashtable());

@@ -91,6 +91,8 @@
     <Compile Include="Public\PublicService.Get.cs" />
     <Compile Include="Province\ProvinceService.Modify.cs" />
     <Compile Include="Public\PublicService.Add.cs" />
+    <Compile Include="RatePlan\IRatePlanService.cs" />
+    <Compile Include="RatePlan\RatePlanService.cs" />
     <Compile Include="Service References\CRSCrsServiceRef\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -111,6 +113,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <Compile Include="RatePlan\RatePlanService.Get.cs" />
     <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.CardTransGet.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -232,6 +235,9 @@
     <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.LoginResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.LowPriceGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.OrderGuaranteeRuleResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -247,7 +253,13 @@
     <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.OrderStateResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeControlGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeDescriptGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeInforGet.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.ResultBase.datasource">

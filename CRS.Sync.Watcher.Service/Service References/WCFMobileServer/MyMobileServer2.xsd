@@ -2831,8 +2831,8 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="hotelId" type="xs:int" />
         <xs:element minOccurs="0" name="rateCode" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="start" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="end" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="start" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="end" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="Channel" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>

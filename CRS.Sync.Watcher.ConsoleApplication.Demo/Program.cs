@@ -32,12 +32,14 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
 
         //!  通用代码保存目录
         public static string staticFolderSavePath = StringHelper.appSettings("staticFolderSavePath");
-        //创建日志记录组件实例  
+        //! 创建日志记录组件实例  
         public static ILog log = log4net.LogManager.GetLogger(typeof(Program));
 
         public static void Main(string[] args)
         {
+            //! 定义返回的消息
             string messages = "";
+            //!  Title
             Console.Title = ("CRS SYNC WATHER");
             Stopwatch t = new Stopwatch();
             t.Start();
@@ -61,9 +63,14 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
             //LogErrorMessages(messages);
 
             //!  公寓信息
-            Hotel _hotel = new Hotel();
-            CRS.Sync.Watcher.Service.WCFMobileServer.CRSHotelParamsDTO _CRSHotelParamsDTO = new Service.WCFMobileServer.CRSHotelParamsDTO();
-            messages += _hotel.SyncService(_CRSHotelParamsDTO, staticFolderSavePath);
+            //Hotel _hotel = new Hotel();
+            //CRS.Sync.Watcher.Service.WCFMobileServer.CRSHotelParamsDTO _CRSHotelParamsDTO = new Service.WCFMobileServer.CRSHotelParamsDTO();
+            //messages += _hotel.SyncService(_CRSHotelParamsDTO, staticFolderSavePath);
+            //LogErrorMessages(messages);
+
+            //! 收费计划
+            RatePlan _ratePlan = new RatePlan();
+            messages += _ratePlan.SyncService();
             LogErrorMessages(messages);
 
             #endregion
@@ -73,14 +80,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
             Console.ReadKey();
         }
 
-        public static void LogErrorMessages(string messages)
-        {
-            Tip(messages, ConsoleColor.Yellow);
-            if (!string.IsNullOrEmpty(messages))
-            {
-                log.Warn(messages);
-            }
-        }
+
 
 
         #region 控制台设置
@@ -96,6 +96,19 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
             Console.BackgroundColor = ConsoleColor.Black;
         }
         #endregion
+
+        /// <summary>
+        /// 封装窗体文字提示和log的记录
+        /// </summary>
+        /// <param name="messages"></param>
+        public static void LogErrorMessages(string messages)
+        {
+            Tip(messages, ConsoleColor.Yellow);
+            if (!string.IsNullOrEmpty(messages))
+            {
+                log.Warn(messages);
+            }
+        }
 
         #region log4net
 

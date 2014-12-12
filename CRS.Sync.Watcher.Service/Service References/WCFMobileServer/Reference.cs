@@ -18278,10 +18278,10 @@ namespace CRS.Sync.Watcher.Service.WCFMobileServer {
         CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeDescriptGet EndGetCRSRateCodeDescript(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetCRSHotelRoomRateByChannel", ReplyAction="http://tempuri.org/MobileContract/GetCRSHotelRoomRateByChannelResponse")]
-        CRS.Sync.Watcher.Service.WCFMobileServer.RoomRateWsGet GetCRSHotelRoomRateByChannel(int hotelId, string rateCode, System.DateTime start, System.DateTime end, string Channel);
+        CRS.Sync.Watcher.Service.WCFMobileServer.RoomRateWsGet GetCRSHotelRoomRateByChannel(int hotelId, string rateCode, string start, string end, string Channel);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/MobileContract/GetCRSHotelRoomRateByChannel", ReplyAction="http://tempuri.org/MobileContract/GetCRSHotelRoomRateByChannelResponse")]
-        System.IAsyncResult BeginGetCRSHotelRoomRateByChannel(int hotelId, string rateCode, System.DateTime start, System.DateTime end, string Channel, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginGetCRSHotelRoomRateByChannel(int hotelId, string rateCode, string start, string end, string Channel, System.AsyncCallback callback, object asyncState);
         
         CRS.Sync.Watcher.Service.WCFMobileServer.RoomRateWsGet EndGetCRSHotelRoomRateByChannel(System.IAsyncResult result);
         
@@ -37424,12 +37424,12 @@ namespace CRS.Sync.Watcher.Service.WCFMobileServer {
                         rateCode}, this.onEndGetCRSRateCodeDescriptDelegate, this.onGetCRSRateCodeDescriptCompletedDelegate, userState);
         }
         
-        public CRS.Sync.Watcher.Service.WCFMobileServer.RoomRateWsGet GetCRSHotelRoomRateByChannel(int hotelId, string rateCode, System.DateTime start, System.DateTime end, string Channel) {
+        public CRS.Sync.Watcher.Service.WCFMobileServer.RoomRateWsGet GetCRSHotelRoomRateByChannel(int hotelId, string rateCode, string start, string end, string Channel) {
             return base.Channel.GetCRSHotelRoomRateByChannel(hotelId, rateCode, start, end, Channel);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetCRSHotelRoomRateByChannel(int hotelId, string rateCode, System.DateTime start, System.DateTime end, string Channel, System.AsyncCallback callback, object asyncState) {
+        public System.IAsyncResult BeginGetCRSHotelRoomRateByChannel(int hotelId, string rateCode, string start, string end, string Channel, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginGetCRSHotelRoomRateByChannel(hotelId, rateCode, start, end, Channel, callback, asyncState);
         }
         
@@ -37441,8 +37441,8 @@ namespace CRS.Sync.Watcher.Service.WCFMobileServer {
         private System.IAsyncResult OnBeginGetCRSHotelRoomRateByChannel(object[] inValues, System.AsyncCallback callback, object asyncState) {
             int hotelId = ((int)(inValues[0]));
             string rateCode = ((string)(inValues[1]));
-            System.DateTime start = ((System.DateTime)(inValues[2]));
-            System.DateTime end = ((System.DateTime)(inValues[3]));
+            string start = ((string)(inValues[2]));
+            string end = ((string)(inValues[3]));
             string Channel = ((string)(inValues[4]));
             return this.BeginGetCRSHotelRoomRateByChannel(hotelId, rateCode, start, end, Channel, callback, asyncState);
         }
@@ -37460,11 +37460,11 @@ namespace CRS.Sync.Watcher.Service.WCFMobileServer {
             }
         }
         
-        public void GetCRSHotelRoomRateByChannelAsync(int hotelId, string rateCode, System.DateTime start, System.DateTime end, string Channel) {
+        public void GetCRSHotelRoomRateByChannelAsync(int hotelId, string rateCode, string start, string end, string Channel) {
             this.GetCRSHotelRoomRateByChannelAsync(hotelId, rateCode, start, end, Channel, null);
         }
         
-        public void GetCRSHotelRoomRateByChannelAsync(int hotelId, string rateCode, System.DateTime start, System.DateTime end, string Channel, object userState) {
+        public void GetCRSHotelRoomRateByChannelAsync(int hotelId, string rateCode, string start, string end, string Channel, object userState) {
             if ((this.onBeginGetCRSHotelRoomRateByChannelDelegate == null)) {
                 this.onBeginGetCRSHotelRoomRateByChannelDelegate = new BeginOperationDelegate(this.OnBeginGetCRSHotelRoomRateByChannel);
             }
