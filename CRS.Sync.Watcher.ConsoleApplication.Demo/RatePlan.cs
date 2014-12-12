@@ -33,9 +33,8 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                     {
                         List<CRS.Sync.Watcher.Service.WCFMobileServer.RoomRateWS> roomRateWSList = _roomRateWsGet.roomRateWS.ToList();
 
-
+                        #region SQLite SQL 稍后会调整为LINQ TO SQLite
                         conn.Open();//打开连接  
-
                         //实例化一个事务  
                         using (tran = conn.BeginTransaction())
                         {
@@ -68,8 +67,11 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                             }
                             tran.Commit();//提交  
                         }
-                        
+                        #endregion
+
+
                         CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeInforGet _rateCodeInforGet = _ratePlanService.GetCRSRateCodeInfor(17, roomRateWSList[0].rateCode);
+
                     }
                     else
                         messages += "GetCRSHotelRoomRateByChannel 接口返回 NULL!\r\n";
