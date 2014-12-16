@@ -45,7 +45,6 @@ namespace CRS.Sync.Watcher.Service.Photo
             List<hotel_picture_info> hotelpic = new List<hotel_picture_info>();
             hotel_picture_info p = null;
 
-            //TODO: photo1
             if (!string.IsNullOrEmpty(_hotelPics.photo1))
             {
                 p = new hotel_picture_info();
@@ -56,7 +55,6 @@ namespace CRS.Sync.Watcher.Service.Photo
                 p.h_p_pic_thumb_url = _hotelPics.photo1;
                 hotelpic.Add(p);
             }
-            //TODO: photo2
             if (!string.IsNullOrEmpty(_hotelPics.photo2))
             {
                 p = new hotel_picture_info();
@@ -67,7 +65,6 @@ namespace CRS.Sync.Watcher.Service.Photo
                 p.h_p_pic_thumb_url = _hotelPics.photo2;
                 hotelpic.Add(p);
             }
-            //TODO: photo3
             if (!string.IsNullOrEmpty(_hotelPics.photo3))
             {
                 p = new hotel_picture_info();
@@ -108,7 +105,6 @@ namespace CRS.Sync.Watcher.Service.Photo
             List<hotel_room_picture_info> pics = new List<hotel_room_picture_info>();
             hotel_room_picture_info p = null;
 
-            //TODO: photo1
             if (!string.IsNullOrEmpty(rmType.photo1))
             {
                 p = new hotel_room_picture_info();
@@ -119,7 +115,7 @@ namespace CRS.Sync.Watcher.Service.Photo
                 p.h_r_p_pic_thumb_url = rmType.photo1;
                 pics.Add(p);
             }
-            //TODO: photo2
+    
             if (!string.IsNullOrEmpty(rmType.photo2))
             {
                 p = new hotel_room_picture_info();

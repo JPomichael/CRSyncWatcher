@@ -56,12 +56,12 @@ namespace CRS.Sync.Watcher.Service.RatePlan
             return result;
         }
 
-        public CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeControlGet GetCRSRateCodeControl(int hotelId, string rateCode, string rmType, string rateDate)
+        public CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeControlGet GetCRSRateCodeControl(int hotelId, string rateCode, string rmType, string start, string end)
         {
             CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeControlGet result = null;
             try
             {
-                result = _WCFClient.GetCRSRateCodeControl(hotelId, rateCode, rmType, rateDate);
+                result = _WCFClient.GetCRSRateCodeControl(hotelId, rateCode, rmType, start, end);
             }
             catch (Exception)
             {

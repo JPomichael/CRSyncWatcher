@@ -18294,10 +18294,10 @@ namespace CRS.Sync.Watcher.Service.WCFMobileServer {
         CRS.Sync.Watcher.Service.WCFMobileServer.RoomRateWsGet EndGetCRSHotelRoomRateComCodeByChannel(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/MobileContract/GetCRSRateCodeControl", ReplyAction="http://tempuri.org/MobileContract/GetCRSRateCodeControlResponse")]
-        CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeControlGet GetCRSRateCodeControl(int hotelId, string rateCode, string rmType, string rateDate);
+        CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeControlGet GetCRSRateCodeControl(int hotelId, string rateCode, string rmType, string start, string end);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/MobileContract/GetCRSRateCodeControl", ReplyAction="http://tempuri.org/MobileContract/GetCRSRateCodeControlResponse")]
-        System.IAsyncResult BeginGetCRSRateCodeControl(int hotelId, string rateCode, string rmType, string rateDate, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginGetCRSRateCodeControl(int hotelId, string rateCode, string rmType, string start, string end, System.AsyncCallback callback, object asyncState);
         
         CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeControlGet EndGetCRSRateCodeControl(System.IAsyncResult result);
         
@@ -37542,13 +37542,13 @@ namespace CRS.Sync.Watcher.Service.WCFMobileServer {
                         Channel}, this.onEndGetCRSHotelRoomRateComCodeByChannelDelegate, this.onGetCRSHotelRoomRateComCodeByChannelCompletedDelegate, userState);
         }
         
-        public CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeControlGet GetCRSRateCodeControl(int hotelId, string rateCode, string rmType, string rateDate) {
-            return base.Channel.GetCRSRateCodeControl(hotelId, rateCode, rmType, rateDate);
+        public CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeControlGet GetCRSRateCodeControl(int hotelId, string rateCode, string rmType, string start, string end) {
+            return base.Channel.GetCRSRateCodeControl(hotelId, rateCode, rmType, start, end);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetCRSRateCodeControl(int hotelId, string rateCode, string rmType, string rateDate, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetCRSRateCodeControl(hotelId, rateCode, rmType, rateDate, callback, asyncState);
+        public System.IAsyncResult BeginGetCRSRateCodeControl(int hotelId, string rateCode, string rmType, string start, string end, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetCRSRateCodeControl(hotelId, rateCode, rmType, start, end, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -37560,8 +37560,9 @@ namespace CRS.Sync.Watcher.Service.WCFMobileServer {
             int hotelId = ((int)(inValues[0]));
             string rateCode = ((string)(inValues[1]));
             string rmType = ((string)(inValues[2]));
-            string rateDate = ((string)(inValues[3]));
-            return this.BeginGetCRSRateCodeControl(hotelId, rateCode, rmType, rateDate, callback, asyncState);
+            string start = ((string)(inValues[3]));
+            string end = ((string)(inValues[4]));
+            return this.BeginGetCRSRateCodeControl(hotelId, rateCode, rmType, start, end, callback, asyncState);
         }
         
         private object[] OnEndGetCRSRateCodeControl(System.IAsyncResult result) {
@@ -37577,11 +37578,11 @@ namespace CRS.Sync.Watcher.Service.WCFMobileServer {
             }
         }
         
-        public void GetCRSRateCodeControlAsync(int hotelId, string rateCode, string rmType, string rateDate) {
-            this.GetCRSRateCodeControlAsync(hotelId, rateCode, rmType, rateDate, null);
+        public void GetCRSRateCodeControlAsync(int hotelId, string rateCode, string rmType, string start, string end) {
+            this.GetCRSRateCodeControlAsync(hotelId, rateCode, rmType, start, end, null);
         }
         
-        public void GetCRSRateCodeControlAsync(int hotelId, string rateCode, string rmType, string rateDate, object userState) {
+        public void GetCRSRateCodeControlAsync(int hotelId, string rateCode, string rmType, string start, string end, object userState) {
             if ((this.onBeginGetCRSRateCodeControlDelegate == null)) {
                 this.onBeginGetCRSRateCodeControlDelegate = new BeginOperationDelegate(this.OnBeginGetCRSRateCodeControl);
             }
@@ -37595,7 +37596,8 @@ namespace CRS.Sync.Watcher.Service.WCFMobileServer {
                         hotelId,
                         rateCode,
                         rmType,
-                        rateDate}, this.onEndGetCRSRateCodeControlDelegate, this.onGetCRSRateCodeControlCompletedDelegate, userState);
+                        start,
+                        end}, this.onEndGetCRSRateCodeControlDelegate, this.onGetCRSRateCodeControlCompletedDelegate, userState);
         }
         
         public CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeInforGet GetCRSRateCodeInfor(int hotelId, string rateCode) {

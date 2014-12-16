@@ -53,24 +53,22 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
             }
             #endregion
 
-            //! -============================================================分隔符============================================================
-
             #region Start Sync...
 
             //!  基础信息
             //Base _base = new Base();
             //messages += _base.SyncService(staticFolderSavePath);
-            //LogErrorMessages(messages);
 
             //!  公寓信息
             //Hotel _hotel = new Hotel();
             //CRS.Sync.Watcher.Service.WCFMobileServer.CRSHotelParamsDTO _CRSHotelParamsDTO = new Service.WCFMobileServer.CRSHotelParamsDTO();
             //messages += _hotel.SyncService(_CRSHotelParamsDTO, staticFolderSavePath);
-            //LogErrorMessages(messages);
 
             //! 收费计划
             RatePlan _ratePlan = new RatePlan();
             messages += _ratePlan.SyncService();
+
+
             LogErrorMessages(messages);
 
             #endregion
@@ -97,6 +95,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
         }
         #endregion
 
+        #region 封装窗体文字提示和log的记录
         /// <summary>
         /// 封装窗体文字提示和log的记录
         /// </summary>
@@ -108,7 +107,8 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
             {
                 log.Warn(messages);
             }
-        }
+        } 
+        #endregion
 
         #region log4net
 
