@@ -23,7 +23,8 @@ namespace CRS.Sync.Watcher.DLL
             int result = 0;
             using (conn = new SQLiteConnection("Data Source=e:\\CRSInterFaceResult.db"))
             {
-                conn.Open();
+                if (conn.State == ConnectionState.Closed)
+                    conn.Open();
                 using (SQLiteTransaction transaction = conn.BeginTransaction())
                 {
                     using (SQLiteCommand command = new SQLiteCommand(conn))
@@ -56,7 +57,8 @@ namespace CRS.Sync.Watcher.DLL
             {
                 command.Parameters.AddRange(parameters);
             }
-            conn.Open();
+            if (conn.State == ConnectionState.Closed)
+                conn.Open();
             return command.ExecuteReader(CommandBehavior.CloseConnection);
         }
 
