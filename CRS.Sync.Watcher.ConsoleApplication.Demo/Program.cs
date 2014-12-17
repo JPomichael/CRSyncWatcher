@@ -1,5 +1,4 @@
 ﻿using CRS.Sync.Watcher.DLL;
-using CRS.Sync.Watcher.Domain.Dto;
 using CRS.Sync.Watcher.Linq;
 using CRS.Sync.Watcher.Service;
 using log4net;
@@ -44,7 +43,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
             Stopwatch t = new Stopwatch();
             t.Start();
             Tip("同步于：" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "", ConsoleColor.Green);
-            log.Info("\r\n====================系统运行信息将会记录====================\r\n");
+            log.Info("\r\n");
 
             #region 文件保存目录
             if (!Directory.Exists(staticFolderSavePath))
@@ -102,12 +101,12 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
         /// <param name="messages"></param>
         public static void LogErrorMessages(string messages)
         {
-            Tip(messages, ConsoleColor.Yellow);
             if (!string.IsNullOrEmpty(messages))
             {
+                Tip(messages, ConsoleColor.Yellow);
                 log.Warn(messages);
             }
-        } 
+        }
         #endregion
 
         #region log4net

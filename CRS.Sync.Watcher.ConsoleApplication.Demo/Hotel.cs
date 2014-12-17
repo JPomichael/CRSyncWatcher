@@ -95,7 +95,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
             {
                 //!  公寓图片操作
                 HotelPhotoUpdate(_fileSavePath, _hoteList, hotel.hotel_id);
-                //TODO:  房型操作
+                //! 房型操作
                 messages += HouseService(_hoteList, hotel.hotel_id);
             }
             return messages;
@@ -125,7 +125,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                             else
                                 //! 已存在 则更新
                                 _houseService.Update(_roomList);
-                            //TODO: 房型图片
+                            //! 房型图片
                             RoomPhotoUpdate(rmTypes, _roomList);
                         }
                     }
@@ -170,7 +170,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
         /// <param name="_hoteList"></param>
         public void HotelPhotoUpdate(string _fileSavePath, hotel_info _hoteList, int hotel_id)
         {
-            //TODO: 录入公寓图片
+            //! 录入公寓图片
             CRS.Sync.Watcher.Service.WCFMobileServer.HotelDTO _hotelPics = _photoService.GetReadXMLPicsToObject(_hoteList.h_id, _fileSavePath);
 
             List<hotel_picture_info> hotelPicInfo = _photoService.GetHotelPicsDTOToModel(_hotelPics, hotel_id);

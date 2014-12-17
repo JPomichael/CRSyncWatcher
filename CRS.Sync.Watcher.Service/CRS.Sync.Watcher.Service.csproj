@@ -398,10 +398,6 @@
       <Project>{92b1c535-386f-4a4f-9bd6-9bf95c619091}</Project>
       <Name>CRS.Sync.Watcher.DLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CRS.Sync.Watcher.Domain\CRS.Sync.Watcher.Domain.csproj">
-      <Project>{b6632f62-ff9d-4a99-b643-84e672c9d2d5}</Project>
-      <Name>CRS.Sync.Watcher.Domain</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CRS.Sync.Watcher.Linq\CRS.Sync.Watcher.Linq.csproj">
       <Project>{47b9ee45-1c33-41fd-87b3-a4aca536b737}</Project>
       <Name>CRS.Sync.Watcher.Linq</Name>

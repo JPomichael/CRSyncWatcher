@@ -10,7 +10,7 @@ namespace CRS.Sync.Watcher.DLL
 {
     public static class SQLiteHelper
     {
-        public static SQLiteConnection conn = new SQLiteConnection("Data Source=e:\\CRSInterFaceResult.db");
+        public static SQLiteConnection conn;
 
         /// <summary> 
         /// 对SQLite数据库执行增删改操作，返回受影响的行数。 
@@ -21,7 +21,7 @@ namespace CRS.Sync.Watcher.DLL
         public static int ExecuteNonQuery(string sql, SQLiteParameter[] parameters)
         {
             int result = 0;
-            using (conn)
+            using (conn = new SQLiteConnection("Data Source=e:\\CRSInterFaceResult.db"))
             {
                 conn.Open();
                 using (SQLiteTransaction transaction = conn.BeginTransaction())
@@ -37,7 +37,9 @@ namespace CRS.Sync.Watcher.DLL
                     }
                     transaction.Commit();
                 }
+                conn.Close();
             }
+
             return result;
         }
 
@@ -49,7 +51,7 @@ namespace CRS.Sync.Watcher.DLL
         /// <returns></returns> 
         public static SQLiteDataReader ExecuteReader(string sql, SQLiteParameter[] parameters)
         {
-            SQLiteCommand command = new SQLiteCommand(sql, conn);
+            SQLiteCommand command = new SQLiteCommand(sql, conn = new SQLiteConnection("Data Source=e:\\CRSInterFaceResult.db"));
             if (parameters != null)
             {
                 command.Parameters.AddRange(parameters);
@@ -64,7 +66,7 @@ namespace CRS.Sync.Watcher.DLL
         /// <returns></returns> 
         public static DataTable GetSchema()
         {
-            using (conn)
+            using (conn = new SQLiteConnection("Data Source=e:\\CRSInterFaceResult.db"))
             {
                 conn.Open();
                 DataTable data = conn.GetSchema("TABLES");
