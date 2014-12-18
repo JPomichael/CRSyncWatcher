@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
-using System.Data.SQLite;
 using CRS.Sync.Watcher.DLL;
-using System.Data.SQLite.Linq;
 using CRS.Sync.Watcher.Linq;
 using System.Linq.Expressions;
 using System.Collections;
-using System.Data;
 using log4net;
+using MainContext;
+using Devart.Data.SQLite;
+using Devart.Data.Linq;
+using CRS.Sync.Watcher.Domain.Dto;
+using System.Threading;
 
 namespace CRS.Sync.Watcher.ConsoleApplication.Demo
 {
@@ -21,17 +24,18 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
 
         //! 创建日志记录组件实例  
         public static ILog log = log4net.LogManager.GetLogger(typeof(RatePlan));
+        public static MainDataContext SQLifeDC = new MainDataContext();
 
         /// <summary>
-        /// 同步服务应用
+        /// 价格
         /// </summary>
         /// <returns></returns>
-        public string SyncService()
+        public string PriceService()
         {
             string messages = "";
+
             //! 1. 获取source_id=6的供应商数据
             List<hotel_info> hoteList = GetCRSHotelList().ToList();
-            string sql = "insert into RoomRateWS values(@hotelId, @rmTypeEName, @breakfastEDesc,@minVacRooms,@rateCodeCName,@rateCodeEName,@rmTypeEDesc,@ratePrice,@rateCode,@rateDate,@rmType,@rmTypeCDesc,@rmTypeCName,@vacRooms,@breakfastDesc,@needPay,@needGuarant)";
             foreach (hotel_info _hoteList in hoteList)
             {
                 //! CRS开发人员官方解释如下：
@@ -49,45 +53,37 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                     {
                         if (_roomRateWsGet.roomRateWS != null)
                         {
-                            #region T-SQL
-                            List<CRS.Sync.Watcher.Service.WCFMobileServer.RoomRateWS> roomRateWSList = _roomRateWsGet.roomRateWS.ToList();
-
-                            //TODO: 这里减少循环 =》 减少事物的提交
-                            foreach (CRS.Sync.Watcher.Service.WCFMobileServer.RoomRateWS _roomRateWSList in roomRateWSList)
+                            IEnumerable<RoomRateW> roomRateWSList = _roomRateWsGet.roomRateWS
+                                .Select(o => new RoomRateW
+                                {
+                                    HotelId = int.Parse(_hoteList.h_id),
+                                    RmTypeEName = o.rmTypeEName,
+                                    BreakfastEDesc = o.breakfastEDesc,
+                                    MinVacRooms = o.minVacRooms,
+                                    RateCodeCName = o.rateCodeCName,
+                                    RateCodeEName = o.rateCodeEName,
+                                    RmTypeEDesc = o.rmTypeEDesc,
+                                    RatePrice = o.ratePrice.ToString(),
+                                    RateCode = o.rateCode,
+                                    RateDate = o.rateDate,
+                                    RmType = o.rmType,
+                                    RmTypeCDesc = o.rmTypeCDesc,
+                                    RmTypeCName = o.rmTypeCName,
+                                    VacRooms = o.vacRooms,
+                                    BreakfastDesc = o.breakfastDesc,
+                                    NeedPay = o.needPay,
+                                    NeedGuarant = o.needGuarant
+                                }).AsEnumerable();
+                            try
                             {
-                                SQLiteParameter[] parameters = new SQLiteParameter[] { 
-                                         //添加参数  
-                                         new SQLiteParameter("@hotelId",_hoteList.h_id),  
-                                         new SQLiteParameter("@rmTypeEName", _roomRateWSList.rmTypeEName),
-                                         new SQLiteParameter("@breakfastEDesc", _roomRateWSList.breakfastEDesc), 
-                                         new SQLiteParameter("@minVacRooms", _roomRateWSList.minVacRooms), 
-                                         new SQLiteParameter("@rateCodeCName", _roomRateWSList.rateCodeCName),  
-                                         new SQLiteParameter("@rateCodeEName", _roomRateWSList.rateCodeEName),  
-                                         new SQLiteParameter("@rmTypeEDesc", _roomRateWSList.rmTypeEDesc),  
-                                         new SQLiteParameter("@ratePrice", _roomRateWSList.ratePrice),  
-                                         new SQLiteParameter("@rateCode", _roomRateWSList.rateCode),  
-                                         new SQLiteParameter("@rateDate", _roomRateWSList.rateDate),  
-                                         new SQLiteParameter("@rmType", _roomRateWSList.rmType),  
-                                         new SQLiteParameter("@rmTypeCDesc", _roomRateWSList.rmTypeCDesc),  
-                                         new SQLiteParameter("@rmTypeCName", _roomRateWSList.rmTypeCName),  
-                                         new SQLiteParameter("@vacRooms", _roomRateWSList.vacRooms),  
-                                         new SQLiteParameter("@breakfastDesc", _roomRateWSList.breakfastDesc),  
-                                         new SQLiteParameter("@needPay", _roomRateWSList.needPay),  
-                                         new SQLiteParameter("@needGuarant", _roomRateWSList.needGuarant)
-                            };
-                                try
-                                {
-                                    SQLiteHelper.ExecuteNonQuery(sql, parameters);
-                                }
-                                catch (Exception e)
-                                {
-                                    log.Error(e);
-                                    throw new Exception("insert into RoomRateWS unsuccessfully!!! : " + e.Message + "");
-                                }
-
+                                SQLifeDC.RoomRateWs.InsertAllOnSubmit(roomRateWSList);
+                                SQLifeDC.SubmitChanges();
                             }
-                            #endregion
-
+                            catch (Exception e)
+                            {
+                                log.Error(e);
+                                log.Debug("友好消息：" + e.Message + " \r\n Develoer：" + e.StackTrace + " ");
+                            }
                         }
                     }
                     else
@@ -95,146 +91,149 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                 }
                 #endregion
             }
+            return messages;
 
-            //! 获取并过滤得 hotelId ,  rateCode ,  rmType
-            //SQLiteDataReader reader = SQLiteHelper.ExecuteReader("select hotelId,rateCode,rmType from RoomRateWS  where hotelId=" + int.Parse(_hoteList.h_id) + " group by rmType,rateCode", null);
-            //List<CRS.Sync.Watcher.Domain.Dto.RoomRateWSDTO> RoomRateWSDTOList = new List<Domain.Dto.RoomRateWSDTO>();
-            //if (reader.HasRows)
-            //{
-            //    #region 1. 根据酒店日期区间获取当前酒店下所有符合的房类代码和价格代码
-            //    // Call Read before accessing data.
-            //    while (reader.Read())
-            //    {
-            //        CRS.Sync.Watcher.Domain.Dto.RoomRateWSDTO roomRateWSDTO = new Domain.Dto.RoomRateWSDTO();
-            //        roomRateWSDTO.hotelId = Convert.ToInt32(reader.GetValue(0));
-            //        roomRateWSDTO.rateCode = reader.GetValue(1).ToString();
-            //        roomRateWSDTO.rmType = reader.GetValue(2).ToString();
-            //        RoomRateWSDTOList.Add(roomRateWSDTO);
+        }
 
-            //    }
-            //    // Call Close when done reading.
-            //    reader.Close();
-            //    #endregion
+        /// <summary>
+        /// 价格描述
+        /// </summary>
+        /// <returns></returns>
+        public string PriceDescriptService()
+        {
+            string messages = "";
+            IEnumerable<RoomRateWSDTO> RoomRateWSDTO = SQLifeDC.RoomRateWs
+                .GroupBy(o => new { o.HotelId, o.RateCode, o.RmType })
+                .Select(o => new CRS.Sync.Watcher.Domain.Dto.RoomRateWSDTO
+                {
+                    hotelId = o.Key.HotelId,
+                    rmType = o.Key.RmType,
+                    rateCode = o.Key.RateCode
+                });
+            if (RoomRateWSDTO != null)
+            {
+                foreach (var _RoomRateWSDTO in RoomRateWSDTO)
+                {
+                    ThreadPool.QueueUserWorkItem(PriceDescriptThreadPoolService, _RoomRateWSDTO);
+                }
 
-            //}
-
-            //if (RoomRateWSDTOList != null && RoomRateWSDTOList.Count() >= 0)
-            //{
-            //    #region  2. 根据房类代码和房价代码获取具体的房类信息和房价代码信息
-            //    foreach (CRS.Sync.Watcher.Domain.Dto.RoomRateWSDTO _RoomRateWSDTOList in RoomRateWSDTOList)
-            //    {
-            //        #region GetRateControl
-            //        //获取Rate规则信息
-            //        CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeControlGet _rateCodeControlGet = _ratePlanService.GetCRSRateCodeControl(int.Parse(_hoteList.h_id), _RoomRateWSDTOList.rateCode, _RoomRateWSDTOList.rmType, System.DateTime.Now.ToString("yyyy-MM-dd"), System.DateTime.Now.Date.AddMonths(3).ToString("yyyy-MM-dd"));
-            //        if (_rateCodeControlGet != null)
-            //        {
-            //            if (_rateCodeControlGet.result == 0)
-            //            {
-            //                if (_rateCodeControlGet.rateCodeControl != null && !string.IsNullOrEmpty(_rateCodeControlGet.rateCodeControl.amendStatus))
-            //                {
-            //                    //! 存储接口返回数据
-            //                    CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeControl _rateCodeControl = _rateCodeControlGet.rateCodeControl;
-            //                    SQLiteParameter[] parameters = new SQLiteParameter[] { 
-            //                                 //添加参数  
-            //                                 new SQLiteParameter("@hotelId", int.Parse(_hoteList.h_id)),  
-            //                                 new SQLiteParameter("@rateCode", _rateCodeControl.rateCode),
-            //                                 new SQLiteParameter("@amendStatus", _rateCodeControl.amendStatus), 
-            //                                 new SQLiteParameter("@amendDays", _rateCodeControl.amendDays), 
-            //                                 new SQLiteParameter("@cancelStatus", _rateCodeControl.cancelStatus),  
-            //                                 new SQLiteParameter("@cancelDays", _rateCodeControl.cancelDays),  
-            //                                 new SQLiteParameter("@needPay", _rateCodeControl.needPay),  
-            //                                 new SQLiteParameter("@minStay", _rateCodeControl.minStay),  
-            //                                 new SQLiteParameter("@maxStay", _rateCodeControl.maxStay),  
-            //                                 new SQLiteParameter("@booking", _rateCodeControl.booking),  
-            //                                 new SQLiteParameter("@rmLimit", _rateCodeControl.rmLimit) 
-            //                    };
-            //                    try
-            //                    {
-            //                        SQLiteHelper.ExecuteNonQuery("insert into RateCodeControl values(@hotelId, @rateCode, @amendStatus,@amendDays,@cancelStatus,@cancelDays,@needPay,@minStay,@maxStay,@booking,@rmLimit)", parameters);
-            //                    }
-            //                    catch (Exception e)
-            //                    {
-            //                        log.Error(e);
-            //                        throw new Exception("insert into RateCodeControl unsuccessfully!!! : " + e.Message + "");
-            //                    }
-            //                }
-            //            }
-            //            else
-            //                messages += "GetCRSRateCodeControl 接口返回出错！！！\r\n";
-            //        }
-            //        #endregion
-
-            //        #region GetPriceInfor
-            //        //! 获取价格属性信息
-            //        CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeInforGet _RateCodeInforGet = _ratePlanService.GetCRSRateCodeInfor(int.Parse(_hoteList.h_id), _RoomRateWSDTOList.rateCode);
-            //        if (_RateCodeInforGet != null)
-            //        {
-            //            if (_RateCodeInforGet.result == 0)
-            //            {
-            //                if (_RateCodeInforGet.rateCodeInfor != null)
-            //                {
-            //                    CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeInfor _rateCodeInfor = _RateCodeInforGet.rateCodeInfor;
-            //                    SQLiteParameter[] parameters = new SQLiteParameter[] { 
-            //                                             //添加参数  
-            //                                             new SQLiteParameter("@hotelId", int.Parse(_hoteList.h_id)),  
-            //                                             new SQLiteParameter("@rateCode", _rateCodeInfor.rateCode),
-            //                                             new SQLiteParameter("@cName", _rateCodeInfor.cName), 
-            //                                             new SQLiteParameter("@eName", _rateCodeInfor.eName), 
-            //                                             new SQLiteParameter("@memberType", _rateCodeInfor.memberType),  
-            //                                             new SQLiteParameter("@cardType", _rateCodeInfor.cardType),  
-            //                                             new SQLiteParameter("@isContract", _rateCodeInfor.isContract),  
-            //                                             new SQLiteParameter("@currency", _rateCodeInfor.currency),  
-            //                                             new SQLiteParameter("@rateCat", _rateCodeInfor.rateCat),  
-            //                                             new SQLiteParameter("@begDate", _rateCodeInfor.begDate),  
-            //                                             new SQLiteParameter("@endDate", _rateCodeInfor.endDate), 
-            //                                             new SQLiteParameter("@isdiscount", _rateCodeInfor.isdiscount), 
-            //                                             new SQLiteParameter("@market", _rateCodeInfor.market), 
-            //                                             new SQLiteParameter("@source", _rateCodeInfor.source), 
-            //                                             new SQLiteParameter("@weekenddays", _rateCodeInfor.weekenddays), 
-            //                                             new SQLiteParameter("@ptCoef", _rateCodeInfor.ptCoef), 
-            //                                             new SQLiteParameter("@discountOf", _rateCodeInfor.discountOf) ,
-            //                                             new SQLiteParameter("@discountType", _rateCodeInfor.discountType), 
-            //                                             new SQLiteParameter("@discountValue", _rateCodeInfor.discountValue),
-            //                                             new SQLiteParameter("@roundType", _rateCodeInfor.roundType),
-            //                                             new SQLiteParameter("@targetRound", _rateCodeInfor.targetround),
-            //                                             new SQLiteParameter("@status", _rateCodeInfor.status),
-            //                                             new SQLiteParameter("@defaultShow", _rateCodeInfor.defaultShow),
-            //                                             new SQLiteParameter("@sellBegDate", _rateCodeInfor.sellBegDate),
-            //                                             new SQLiteParameter("@sellEndDate", _rateCodeInfor.sellEndDate),
-            //                                             new SQLiteParameter("@bookingThrough", _rateCodeInfor.bookingThrough),
-            //                                             new SQLiteParameter("@aliasCn", _rateCodeInfor.aliasCn),
-            //                                             new SQLiteParameter("@aliasEn", _rateCodeInfor.aliasEn),
-            //                                             new SQLiteParameter("@contractId", _rateCodeInfor.contractId),
-            //                                             new SQLiteParameter("@dailyinvallocation", _rateCodeInfor.dailyinvallocation),
-            //                                             new SQLiteParameter("@descript", _rateCodeInfor.descript),
-            //                                             new SQLiteParameter("@edescript", _rateCodeInfor.edescript),
-            //                                             new SQLiteParameter("@frtMarket", _rateCodeInfor.frtMarket),
-            //                                             new SQLiteParameter("@frtSource", _rateCodeInfor.frtSource),
-            //                                             new SQLiteParameter("@isUpward", _rateCodeInfor.isUpward),
-            //                                             new SQLiteParameter("@remarks", _rateCodeInfor.remarks),
-            //                                             new SQLiteParameter("@syncstatus", _rateCodeInfor.syncstatus)
-            //                                };
-            //                    try
-            //                    {
-            //                        SQLiteHelper.ExecuteNonQuery("insert into RateCodeInfor values(@hotelId, @rateCode, @cName,@eName,@memberType,@cardType,@isContract,@currency,@rateCat,@begDate,@endDate,@isdiscount,@market,@source,@weekenddays,@ptCoef,@discountOf,@discountType,@discountValue,@roundType,@targetRound,@status,@defaultShow,@sellBegDate,@sellEndDate,@bookingThrough,@aliasCn,@aliasEn,@contractId,@dailyinvallocation,@descript,@edescript,@frtMarket,@frtSource,@isUpward,@remarks,@syncstatus)", parameters);
-            //                    }
-            //                    catch (Exception e)
-            //                    {
-            //                        log.Error(e);
-            //                        throw new Exception("insert into RateCodeInfor unsuccessfully!!! : " + e.Message + "");
-            //                    }
-            //                }
-            //            }
-            //            else
-            //                messages += "GetCRSRateCodeInfor 接口返回出错！！！\r\n";
-            //        }
-            //        #endregion
-            //    }
-            //    #endregion
-            //}
-
+            }
             return messages;
         }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_RoomRateWSDTO"></param>
+        public void PriceDescriptThreadPoolService(object _RoomRateWSDTO)
+        {
+            var CodeDTO = _RoomRateWSDTO as RoomRateWSDTO;
+
+            #region GetRateControl
+            CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeControlGet _rateCodeControlGet = _ratePlanService.GetCRSRateCodeControl(CodeDTO.hotelId, CodeDTO.rateCode, CodeDTO.rmType, System.DateTime.Now.ToString("yyyy-MM-dd"), System.DateTime.Now.Date.AddMonths(3).ToString("yyyy-MM-dd"));
+            if (_rateCodeControlGet != null)
+            {
+                if (_rateCodeControlGet.result == 0)
+                {
+                    if (_rateCodeControlGet.rateCodeControl != null && !string.IsNullOrEmpty(_rateCodeControlGet.rateCodeControl.amendStatus))
+                    {
+                        RateCodeControl RateCodeControlModel = new RateCodeControl();
+                        RateCodeControlModel.HotelId = CodeDTO.hotelId;
+                        RateCodeControlModel.RateCode = CodeDTO.rateCode;
+                        RateCodeControlModel.RmType = CodeDTO.rmType;
+                        RateCodeControlModel.AmendStatus = _rateCodeControlGet.rateCodeControl.amendStatus;
+                        RateCodeControlModel.AmendDays = _rateCodeControlGet.rateCodeControl.amendDays;
+                        RateCodeControlModel.CancelStatus = _rateCodeControlGet.rateCodeControl.cancelStatus;
+                        RateCodeControlModel.CancelDays = _rateCodeControlGet.rateCodeControl.cancelDays;
+                        RateCodeControlModel.NeedPay = _rateCodeControlGet.rateCodeControl.needPay;
+                        RateCodeControlModel.MinStay = _rateCodeControlGet.rateCodeControl.minStay;
+                        RateCodeControlModel.MaxStay = _rateCodeControlGet.rateCodeControl.maxStay;
+                        RateCodeControlModel.Booking = _rateCodeControlGet.rateCodeControl.booking;
+                        RateCodeControlModel.RmLimit = _rateCodeControlGet.rateCodeControl.rmLimit;
+                        try
+                        {
+                            SQLifeDC.RateCodeControls.InsertOnSubmit(RateCodeControlModel);
+                            SQLifeDC.SubmitChanges();
+                        }
+                        catch (Exception e)
+                        {
+                            log.Error(e);
+                            log.Debug("友好消息：" + e.Message + " \r\n Develoer：" + e.StackTrace + " ");
+                        }
+
+                    }
+                }
+                //else
+                //    messages += "GetCRSRateCodeControl 接口返回出错！！！\r\n";
+            }
+            #endregion
+
+            #region GetPriceInfor
+            CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeInforGet _rateCodeInforGet = _ratePlanService.GetCRSRateCodeInfor(CodeDTO.hotelId, CodeDTO.rateCode);
+            if (_rateCodeInforGet != null)
+            {
+                if (_rateCodeInforGet.result == 0)
+                {
+                    if (_rateCodeInforGet.rateCodeInfor != null)
+                    {
+                        RateCodeInfor RateCodeInforModel = new RateCodeInfor();
+                        RateCodeInforModel.HotelId = CodeDTO.hotelId;
+                        RateCodeInforModel.RateCode = CodeDTO.rateCode;
+                        RateCodeInforModel.CName = _rateCodeInforGet.rateCodeInfor.cName;
+                        RateCodeInforModel.EName = _rateCodeInforGet.rateCodeInfor.eName;
+                        RateCodeInforModel.MemberType = _rateCodeInforGet.rateCodeInfor.memberType;
+                        RateCodeInforModel.CardType = _rateCodeInforGet.rateCodeInfor.cardType;
+                        RateCodeInforModel.IsContract = _rateCodeInforGet.rateCodeInfor.isContract;
+                        RateCodeInforModel.Currency = _rateCodeInforGet.rateCodeInfor.currency;
+                        RateCodeInforModel.RateCat = _rateCodeInforGet.rateCodeInfor.rateCat;
+                        RateCodeInforModel.BegDate = _rateCodeInforGet.rateCodeInfor.begDate;
+                        RateCodeInforModel.EndDate = _rateCodeInforGet.rateCodeInfor.endDate;
+                        RateCodeInforModel.Isdiscount = _rateCodeInforGet.rateCodeInfor.isdiscount;
+                        RateCodeInforModel.Market = _rateCodeInforGet.rateCodeInfor.market;
+                        RateCodeInforModel.Source = _rateCodeInforGet.rateCodeInfor.source;
+                        RateCodeInforModel.Weekenddays = _rateCodeInforGet.rateCodeInfor.weekenddays;
+                        RateCodeInforModel.PtCoef = Convert.ToInt32(_rateCodeInforGet.rateCodeInfor.ptCoef);
+                        RateCodeInforModel.DiscountOf = _rateCodeInforGet.rateCodeInfor.discountOf;
+                        RateCodeInforModel.DiscountType = _rateCodeInforGet.rateCodeInfor.discountType;
+                        RateCodeInforModel.DiscountValue = Convert.ToInt32(_rateCodeInforGet.rateCodeInfor.discountValue);
+                        RateCodeInforModel.RoundType = _rateCodeInforGet.rateCodeInfor.roundType;
+                        RateCodeInforModel.TargetRound = _rateCodeInforGet.rateCodeInfor.targetround;
+                        RateCodeInforModel.Status = _rateCodeInforGet.rateCodeInfor.status;
+                        RateCodeInforModel.DefaultShow = _rateCodeInforGet.rateCodeInfor.defaultShow;
+                        RateCodeInforModel.SellBegDate = _rateCodeInforGet.rateCodeInfor.sellBegDate;
+                        RateCodeInforModel.SellEndDate = _rateCodeInforGet.rateCodeInfor.sellEndDate;
+                        RateCodeInforModel.BookingThrough = _rateCodeInforGet.rateCodeInfor.bookingThrough;
+                        RateCodeInforModel.AliasCn = _rateCodeInforGet.rateCodeInfor.aliasCn;
+                        RateCodeInforModel.AliasEn = _rateCodeInforGet.rateCodeInfor.aliasEn;
+                        RateCodeInforModel.ContractId = Convert.ToInt32(_rateCodeInforGet.rateCodeInfor.contractId);
+                        RateCodeInforModel.Dailyinvallocation = Convert.ToInt32(_rateCodeInforGet.rateCodeInfor.dailyinvallocation);
+                        RateCodeInforModel.Descript = _rateCodeInforGet.rateCodeInfor.descript;
+                        RateCodeInforModel.Edescript = _rateCodeInforGet.rateCodeInfor.edescript;
+                        RateCodeInforModel.FrtMarket = _rateCodeInforGet.rateCodeInfor.frtMarket;
+                        RateCodeInforModel.FrtSource = _rateCodeInforGet.rateCodeInfor.frtSource;
+                        RateCodeInforModel.IsUpward = _rateCodeInforGet.rateCodeInfor.isUpward;
+                        RateCodeInforModel.Remarks = _rateCodeInforGet.rateCodeInfor.remarks;
+                        RateCodeInforModel.Syncstatus = _rateCodeInforGet.rateCodeInfor.syncstatus;
+                        try
+                        {
+                            SQLifeDC.RateCodeInfors.InsertOnSubmit(RateCodeInforModel);
+                            SQLifeDC.SubmitChanges();
+                        }
+                        catch (Exception e)
+                        {
+                            log.Error(e);
+                            log.Debug("友好消息：" + e.Message + " \r\n Develoer：" + e.StackTrace + " ");
+                        }
+
+                    }
+                }
+
+            }
+            #endregion
+        }
+
 
         /// <summary>
         /// 获取公寓信息-构建动态
@@ -252,7 +251,6 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
             else
                 return null;
         }
-
 
     }
 }

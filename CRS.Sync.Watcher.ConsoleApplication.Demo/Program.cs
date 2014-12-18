@@ -10,6 +10,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
+using System.Timers;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -36,14 +38,9 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
 
         public static void Main(string[] args)
         {
-            //! 定义返回的消息
-            string messages = "";
             //!  Title
             Console.Title = ("CRS SYNC WATHER");
-            Stopwatch t = new Stopwatch();
-            t.Start();
-            Tip("同步于：" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "", ConsoleColor.Green);
-            log.Info("\r\n");
+
 
             #region 文件保存目录
             if (!Directory.Exists(staticFolderSavePath))
@@ -53,6 +50,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
             #endregion
 
             #region Start Sync...
+            System.Timers.Timer t = new System.Timers.Timer();
 
             //!  基础信息
             //Base _base = new Base();
@@ -63,18 +61,21 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
             //CRS.Sync.Watcher.Service.WCFMobileServer.CRSHotelParamsDTO _CRSHotelParamsDTO = new Service.WCFMobileServer.CRSHotelParamsDTO();
             //messages += _hotel.SyncService(_CRSHotelParamsDTO, staticFolderSavePath);
 
-            //! 收费计划
-            RatePlan _ratePlan = new RatePlan();
-            messages += _ratePlan.SyncService();
 
 
-            LogErrorMessages(messages);
+
+            t = new System.Timers.Timer(300000);//实例化Timer类，设置时间间隔 5分钟
+            t.Start();
+            t.Elapsed += new System.Timers.ElapsedEventHandler(OnTimedEvent);//到达时间的时候执行事件
+            t.AutoReset = true;//设置是执行一次（false）还是一直执行(true)
+            t.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件
+            while (true)
+            {
+                //Tip("定时启动于： " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " 线程：" + Thread.CurrentThread.ManagedThreadId.ToString() + "", null);
+                Thread.Sleep(100);
+            }
 
             #endregion
-
-            t.Stop();
-            Tip("程序总耗时：" + t.Elapsed.Seconds + "", ConsoleColor.Green);
-            Console.ReadKey();
         }
 
 
@@ -123,6 +124,25 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
         //记录警告信息  
         //log.Warn("警告：warn");   
         #endregion
+
+
+        public static void OnTimedEvent(object source, ElapsedEventArgs e)
+        {
+            string messages = "";
+
+            Stopwatch s = new Stopwatch();
+            s.Start();
+            Tip("同步于：" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "", ConsoleColor.Green);
+
+            //! 收费计划
+            RatePlan _ratePlan = new RatePlan();
+            messages += _ratePlan.PriceService();
+            messages += _ratePlan.PriceDescriptService();
+            LogErrorMessages(messages);
+
+            s.Stop();
+            Tip("程序总耗时：" + s.Elapsed.Seconds + "", ConsoleColor.Green);
+        }
 
     }
 }
