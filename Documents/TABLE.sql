@@ -1,11 +1,11 @@
---1. RoomRateWS
-select * from RoomRateWS --4368   select * from RoomRateWS  where hotelId=11 group by rmType,rateCode
+--1. RoomRateWS  8372
+select * from RoomRateWS
 --delete from RoomRateWS
 
 --2. RateCodeControl
-select * from RateCodeControl --19
+select * from RateCodeControl
 --delete from RateCodeControl
 
 --3. RateCodeInfor
-select * from RateCodeInfor --108
+select * from RateCodeInfor
 --delete from RateCodeInfor

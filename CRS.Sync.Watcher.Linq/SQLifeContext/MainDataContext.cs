@@ -32,15 +32,15 @@ namespace MainContext
     
         partial void OnCreated();
         partial void OnSubmitError(Devart.Data.Linq.SubmitErrorEventArgs args);
-        partial void InsertRateCodeInfor(RateCodeInfor instance);
-        partial void UpdateRateCodeInfor(RateCodeInfor instance);
-        partial void DeleteRateCodeInfor(RateCodeInfor instance);
         partial void InsertRoomRateW(RoomRateW instance);
         partial void UpdateRoomRateW(RoomRateW instance);
         partial void DeleteRoomRateW(RoomRateW instance);
         partial void InsertRateCodeControl(RateCodeControl instance);
         partial void UpdateRateCodeControl(RateCodeControl instance);
         partial void DeleteRateCodeControl(RateCodeControl instance);
+        partial void InsertRateCodeInfor(RateCodeInfor instance);
+        partial void UpdateRateCodeInfor(RateCodeInfor instance);
+        partial void DeleteRateCodeInfor(RateCodeInfor instance);
 
         #endregion
 
@@ -88,14 +88,6 @@ namespace MainContext
           OnCreated();
         }
 
-        public Devart.Data.Linq.Table<RateCodeInfor> RateCodeInfors
-        {
-            get
-            {
-                return this.GetTable<RateCodeInfor>();
-            }
-        }
-
         public Devart.Data.Linq.Table<RoomRateW> RoomRateWs
         {
             get
@@ -109,6 +101,14 @@ namespace MainContext
             get
             {
                 return this.GetTable<RateCodeControl>();
+            }
+        }
+
+        public Devart.Data.Linq.Table<RateCodeInfor> RateCodeInfors
+        {
+            get
+            {
+                return this.GetTable<RateCodeInfor>();
             }
         }
     }

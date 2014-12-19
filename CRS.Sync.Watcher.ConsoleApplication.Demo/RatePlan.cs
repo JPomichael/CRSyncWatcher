@@ -30,10 +30,8 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
         /// 价格
         /// </summary>
         /// <returns></returns>
-        public string PriceService()
+        public void PriceService()
         {
-            string messages = "";
-
             //! 1. 获取source_id=6的供应商数据
             List<hotel_info> hoteList = GetCRSHotelList().ToList();
             foreach (hotel_info _hoteList in hoteList)
@@ -73,35 +71,47 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                                     BreakfastDesc = o.breakfastDesc,
                                     NeedPay = o.needPay,
                                     NeedGuarant = o.needGuarant
-                                }).AsEnumerable();
-                            try
+                                });
+                            if (roomRateWSList != null && roomRateWSList.Count() > 0)
                             {
-                                SQLifeDC.RoomRateWs.InsertAllOnSubmit(roomRateWSList);
-                                SQLifeDC.SubmitChanges();
-                            }
-                            catch (Exception e)
-                            {
-                                log.Error(e);
-                                log.Debug("友好消息：" + e.Message + " \r\n Develoer：" + e.StackTrace + " ");
+                                try
+                                {
+                                    IEnumerable<RoomRateW> deList = SQLifeDC.RoomRateWs.Where(o => o.HotelId == Convert.ToInt32(_hoteList.h_id) && o.RateDate.Value.Date >= System.DateTime.Now.Date && o.RateDate.Value.Date <= System.DateTime.Now.Date.AddMonths(3));
+                                    if (deList != null && deList.Count() > 0)
+                                    {
+                                        SQLifeDC.RoomRateWs.DeleteAllOnSubmit(deList);
+                                        SQLifeDC.SubmitChanges();
+                                    }
+                                    SQLifeDC.RoomRateWs.InsertAllOnSubmit(roomRateWSList);
+                                    SQLifeDC.SubmitChanges();
+                                    Console.WriteLine("更新 h_id=" + _hoteList.h_id + "价格" + roomRateWSList.Count() + " 条");
+                                }
+                                catch (Exception e)
+                                {
+                                    log.Error(e);
+                                    log.Debug("友好消息：" + e.Message + " \r\n Develoer：" + e.StackTrace + " ");
+
+                                }
                             }
                         }
                     }
                     else
-                        messages += "GetCRSHotelRoomRateByChannel 接口返回出错！！！\r\n";
+                    {
+                        string messages = "GetCRSHotelRoomRateByChannel 接口返回出错！！！ 请求参数 h_id=" + _hoteList.h_id + " check_in=" + System.DateTime.Now.ToString("yyyy-MM-dd") + " check_out=" + System.DateTime.Now.ToString("yyyy-MM-dd") + "";
+                        log.Warn(messages);
+                        Console.WriteLine(messages);
+                    }
                 }
                 #endregion
             }
-            return messages;
-
         }
 
         /// <summary>
         /// 价格描述
         /// </summary>
         /// <returns></returns>
-        public string PriceDescriptService()
+        public void PriceDescriptService()
         {
-            string messages = "";
             IEnumerable<RoomRateWSDTO> RoomRateWSDTO = SQLifeDC.RoomRateWs
                 .GroupBy(o => new { o.HotelId, o.RateCode, o.RmType })
                 .Select(o => new CRS.Sync.Watcher.Domain.Dto.RoomRateWSDTO
@@ -114,11 +124,10 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
             {
                 foreach (var _RoomRateWSDTO in RoomRateWSDTO)
                 {
-                    ThreadPool.QueueUserWorkItem(PriceDescriptThreadPoolService, _RoomRateWSDTO);
+                    PriceDescriptThreadPoolService(_RoomRateWSDTO);
                 }
 
             }
-            return messages;
         }
 
 
@@ -127,9 +136,9 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
         /// 
         /// </summary>
         /// <param name="_RoomRateWSDTO"></param>
-        public void PriceDescriptThreadPoolService(object _RoomRateWSDTO)
+        public void PriceDescriptThreadPoolService(CRS.Sync.Watcher.Domain.Dto.RoomRateWSDTO CodeDTO)
         {
-            var CodeDTO = _RoomRateWSDTO as RoomRateWSDTO;
+            //x  var CodeDTO = _RoomRateWSDTO as RoomRateWSDTO;
 
             #region GetRateControl
             CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeControlGet _rateCodeControlGet = _ratePlanService.GetCRSRateCodeControl(CodeDTO.hotelId, CodeDTO.rateCode, CodeDTO.rmType, System.DateTime.Now.ToString("yyyy-MM-dd"), System.DateTime.Now.Date.AddMonths(3).ToString("yyyy-MM-dd"));
@@ -152,10 +161,18 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                         RateCodeControlModel.MaxStay = _rateCodeControlGet.rateCodeControl.maxStay;
                         RateCodeControlModel.Booking = _rateCodeControlGet.rateCodeControl.booking;
                         RateCodeControlModel.RmLimit = _rateCodeControlGet.rateCodeControl.rmLimit;
+
+                        if (_ratePlanService.CheckIsAnyRateCodeControl(RateCodeControlModel))
+                        {
+                            //! 存在则删除!!!
+                            _ratePlanService.DeleteRateCodeControl(RateCodeControlModel);
+                        }
+
                         try
                         {
                             SQLifeDC.RateCodeControls.InsertOnSubmit(RateCodeControlModel);
                             SQLifeDC.SubmitChanges();
+                            Console.WriteLine("更新 h_id=" + CodeDTO.hotelId + " RateCodeControl数据");
                         }
                         catch (Exception e)
                         {
@@ -165,8 +182,12 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
 
                     }
                 }
-                //else
-                //    messages += "GetCRSRateCodeControl 接口返回出错！！！\r\n";
+                else
+                {
+                    string messages = "GetCRSRateCodeControl 接口返回出错！！！ 请求参数 h_id=" + CodeDTO.hotelId + " rateCode=" + CodeDTO.rateCode + " rmType=" + CodeDTO.rmType + " check_in=" + System.DateTime.Now.ToString("yyyy-MM-dd") + " check_out=" + System.DateTime.Now.ToString("yyyy-MM-dd") + "";
+                    log.Warn(messages);
+                    Console.WriteLine(messages);
+                }
             }
             #endregion
 
@@ -216,10 +237,17 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                         RateCodeInforModel.IsUpward = _rateCodeInforGet.rateCodeInfor.isUpward;
                         RateCodeInforModel.Remarks = _rateCodeInforGet.rateCodeInfor.remarks;
                         RateCodeInforModel.Syncstatus = _rateCodeInforGet.rateCodeInfor.syncstatus;
+
+                        if (_ratePlanService.CheckIsAnyRateCodeInfor(RateCodeInforModel))
+                        {
+                            _ratePlanService.DeleteRateCodeInfor(RateCodeInforModel);
+                        }
+
                         try
                         {
                             SQLifeDC.RateCodeInfors.InsertOnSubmit(RateCodeInforModel);
                             SQLifeDC.SubmitChanges();
+                            Console.WriteLine("更新 h_id=" + CodeDTO.hotelId + " RateCodeInfor数据");
                         }
                         catch (Exception e)
                         {
@@ -228,6 +256,12 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                         }
 
                     }
+                }
+                else
+                {
+                    string messages = "GetCRSRateCodeInfor 接口返回出错！！！ 请求参数 h_id=" + CodeDTO.hotelId + " rateCode=" + CodeDTO.rateCode + "";
+                    log.Warn(messages);
+                    Console.WriteLine(messages);
                 }
 
             }

@@ -578,7 +578,7 @@ namespace CRS.Sync.Watcher.DLL
             if (i < 0xD4D1) return "y";
             if (i < 0xD7FA) return "z";
             return "*";
-        } 
+        }
         #endregion
 
 

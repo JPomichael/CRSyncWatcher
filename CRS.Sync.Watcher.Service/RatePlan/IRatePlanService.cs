@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MainContext;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,11 @@ namespace CRS.Sync.Watcher.Service.RatePlan
         CRS.Sync.Watcher.Service.WCFMobileServer.LowPriceGet GetCRSHotelLowPrice(int hotelId, string rateCode, DateTime start, DateTime end, string channel);
         CRS.Sync.Watcher.Service.WCFMobileServer.LowPriceGet GetCRSHotelHotelLowComCode(int hotelId, string rateCode, DateTime start, DateTime end, string comCode, string channel);
         #endregion
+
+        bool CheckIsAnyRateCodeControl(MainContext.RateCodeControl rateCodeControl);
+        bool CheckIsAnyRateCodeInfor(RateCodeInfor rateCodeInfor);
+        void DeleteRoomRateW(RoomRateW roomRate);
+        void DeleteRateCodeControl(RateCodeControl rateCodeControl);
+        void DeleteRateCodeInfor(RateCodeInfor rateCodeInfor);
     }
 }

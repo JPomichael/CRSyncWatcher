@@ -64,7 +64,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
 
 
 
-            t = new System.Timers.Timer(300000);//实例化Timer类，设置时间间隔 5分钟
+            t = new System.Timers.Timer(60000);//实例化Timer类，设置时间间隔 1分钟
             t.Start();
             t.Elapsed += new System.Timers.ElapsedEventHandler(OnTimedEvent);//到达时间的时候执行事件
             t.AutoReset = true;//设置是执行一次（false）还是一直执行(true)
@@ -128,21 +128,15 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
 
         public static void OnTimedEvent(object source, ElapsedEventArgs e)
         {
-            string messages = "";
-
             Stopwatch s = new Stopwatch();
             s.Start();
-            Tip("同步于：" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "", ConsoleColor.Green);
-
+            Tip("\r\n 同步于：" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "", ConsoleColor.Green);
+            Tip("", ConsoleColor.Gray);
             //! 收费计划
             RatePlan _ratePlan = new RatePlan();
-            messages += _ratePlan.PriceService();
-            messages += _ratePlan.PriceDescriptService();
-            LogErrorMessages(messages);
-
+            //x _ratePlan.PriceService();
+            _ratePlan.PriceDescriptService();
             s.Stop();
-            Tip("程序总耗时：" + s.Elapsed.Seconds + "", ConsoleColor.Green);
         }
-
     }
 }

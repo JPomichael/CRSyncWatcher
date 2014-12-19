@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MainContext;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -112,5 +113,26 @@ namespace CRS.Sync.Watcher.Service.RatePlan
             return result;
         }
         #endregion
+
+        /// <summary>
+        /// 获取 RateCodeControl 是否已存在本地
+        /// </summary>
+        /// <param name="roomRate"></param>
+        /// <returns></returns>
+        public bool CheckIsAnyRateCodeControl(RateCodeControl rateCodeControl)
+        {
+            return SQLifeDC.RateCodeControls.Where(o => o.HotelId == rateCodeControl.HotelId && o.RateCode == rateCodeControl.RateCode && o.RmType == rateCodeControl.RmType).Any();
+        }
+
+        /// <summary>
+        ///  获取 RateCodeInfor 是否已存在本地
+        /// </summary>
+        /// <param name="rateCodeInfor"></param>
+        /// <returns></returns>
+        public bool CheckIsAnyRateCodeInfor(RateCodeInfor rateCodeInfor)
+        {
+            return SQLifeDC.RateCodeInfors.Where(o => o.HotelId == rateCodeInfor.HotelId && o.RateCode == rateCodeInfor.RateCode).Any();
+        }
+
     }
 }
