@@ -106,5 +106,8 @@ namespace CRS.Sync.Watcher.Service.Hotel
         /// <param name="status"></param>
         /// <returns></returns>
         int ConvertStatus(string status);
+
+
+        hotel_info GetHotelInfoByHid(string h_id);
     }
 }

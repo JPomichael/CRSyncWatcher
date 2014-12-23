@@ -1,8 +1,10 @@
-﻿using MainContext;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
+using CRS.Sync.Watcher.Linq;
+using System.Linq.Expressions;
 
 namespace CRS.Sync.Watcher.Service.RatePlan
 {
@@ -114,25 +116,48 @@ namespace CRS.Sync.Watcher.Service.RatePlan
         }
         #endregion
 
+        #region Check
         /// <summary>
-        /// 获取 RateCodeControl 是否已存在本地
+        /// 获取 RateCodeControl 是否已存在
         /// </summary>
         /// <param name="roomRate"></param>
         /// <returns></returns>
         public bool CheckIsAnyRateCodeControl(RateCodeControl rateCodeControl)
         {
-            return SQLifeDC.RateCodeControls.Where(o => o.HotelId == rateCodeControl.HotelId && o.RateCode == rateCodeControl.RateCode && o.RmType == rateCodeControl.RmType).Any();
+            return dc.RateCodeControl.Where(o => o.hotelId == rateCodeControl.hotelId && o.rateCode == rateCodeControl.rateCode && o.rmType == rateCodeControl.rmType).Any();
         }
 
         /// <summary>
-        ///  获取 RateCodeInfor 是否已存在本地
+        ///  获取 RateCodeInfor 是否已存在
         /// </summary>
         /// <param name="rateCodeInfor"></param>
         /// <returns></returns>
         public bool CheckIsAnyRateCodeInfor(RateCodeInfor rateCodeInfor)
         {
-            return SQLifeDC.RateCodeInfors.Where(o => o.HotelId == rateCodeInfor.HotelId && o.RateCode == rateCodeInfor.RateCode).Any();
+            return dc.RateCodeInfor.Where(o => o.hotelId == rateCodeInfor.hotelId && o.rateCode == rateCodeInfor.rateCode).Any();
         }
+
+        /// <summary>
+        /// 获取 roomRateWS 是否已存在
+        /// </summary>
+        /// <param name="roomRateWS"></param>
+        /// <returns></returns>
+        public bool CheckIsAnyRoomRateWS(RoomRateWS roomRateWS)
+        {
+            return dc.RoomRateWS.Where(o => o.hotelId == roomRateWS.hotelId && o.rateCode == roomRateWS.rateCode && o.rmType == roomRateWS.rmType && o.rateDate == roomRateWS.rateDate).Any();
+        }
+        #endregion
+
+        public IEnumerable<RoomRateWS> GetRoomRateWSList(Expression<Func<RoomRateWS, bool>> expression)
+        {
+            var roomRateWSList = dc.RoomRateWS.Where<RoomRateWS>(expression).OrderBy(o => o.id);
+            if (roomRateWSList != null)
+            {
+                return roomRateWSList;
+            }
+            return null;
+        }
+
 
     }
 }

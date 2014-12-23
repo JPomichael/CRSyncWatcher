@@ -101,6 +101,11 @@ namespace CRS.Sync.Watcher.Service.Hotel
             return dc.hotel_info.Where(o => o.hotel_id == hotel_id).FirstOrDefault();
         }
 
+        public hotel_info GetHotelInfoByHid(string h_id)
+        {
+            return dc.hotel_info.Where(o => o.h_id == h_id).FirstOrDefault();
+        }
+
         /// <summary>
         /// 获取多个hotel_info - 动态
         /// </summary>

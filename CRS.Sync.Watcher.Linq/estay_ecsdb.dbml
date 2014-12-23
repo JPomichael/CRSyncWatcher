@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="estay_ecs_1210" Class="estay_ecsdbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=202.104.149.179\MSSQL2012QY,1455;Initial Catalog=estay_ecs_1210;User ID=webApplication" SettingsObjectName="CRS.Sync.Watcher.Linq.Properties.Settings" SettingsPropertyName="estay_ecs_1210ConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=202.104.149.179\MSSQL2012QY,1455;Initial Catalog=estay_ecs_1210;Persist Security Info=True;User ID=webApplication" SettingsObjectName="CRS.Sync.Watcher.Linq.Properties.Settings" SettingsPropertyName="estay_ecs_1210ConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.city_info" Member="city_info">
     <Type Name="city_info">
       <Column Name="city_id" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -318,8 +318,92 @@
       <Column Name="Balcony" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="DefaultPrice" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
       <Column Name="code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Member="category" Type="System.String" CanBeNull="false" />
+      <Column Name="category" Type="System.String" CanBeNull="false" />
       <Association Name="hotel_info_hotel_room_info" Member="hotel_info" ThisKey="hotel_id" OtherKey="hotel_id" Type="hotel_info" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RateCodeControl" Member="RateCodeControl">
+    <Type Name="RateCodeControl">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="guid" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="hotelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="rmType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="rateCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="amendStatus" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="amendDays" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="cancelStatus" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="cancelDays" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="needPay" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="minStay" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="maxStay" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="booking" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="rmLimit" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RateCodeInfor" Member="RateCodeInfor">
+    <Type Name="RateCodeInfor">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="guid" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="hotelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="rateCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="eName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="memberType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="cardType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="isContract" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="currency" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="rateCat" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="begDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="endDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="isdiscount" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="market" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="source" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="weekenddays" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ptCoef" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="discountOf" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="discountType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="discountValue" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="roundType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="targetRound" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="defaultShow" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="sellBegDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="sellEndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="bookingThrough" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="aliasCn" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="aliasEn" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="contractId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dailyinvallocation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="descript" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="edescript" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="frtMarket" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="frtSource" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="isUpward" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="remarks" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="syncstatus" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RoomRateWS" Member="RoomRateWS">
+    <Type Name="RoomRateWS">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="guid" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="hotelId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="rmTypeEName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="breakfastEDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="minVacRooms" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="rateCodeCName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="rateCodeEName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="rmTypeEDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ratePrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="rateCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="rateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="rmType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="rmTypeCDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="rmTypeCName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="vacRooms" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="breakfastDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="needPay" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="needGuarant" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.Activity_Add" Method="Activity_Add">

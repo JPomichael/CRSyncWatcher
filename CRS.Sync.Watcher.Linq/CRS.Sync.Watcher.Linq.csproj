@@ -33,15 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Devart.Data, Version=5.0.1095.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\dotConnect.Express.for.SQLite.5.2.303\lib\Devart.Data.dll</HintPath>
-    </Reference>
     <Reference Include="Devart.Data.Linq, Version=4.4.529.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
-    <Reference Include="Devart.Data.SQLite, Version=5.2.303.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\dotConnect.Express.for.SQLite.5.2.303\lib\Devart.Data.SQLite.dll</HintPath>
-    </Reference>
     <Reference Include="Devart.Data.SQLite.Linq, Version=4.4.529.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -68,30 +60,14 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="SQLifeContext\MainDataContext.cs" />
-    <Compile Include="SQLifeEntities\RateCodeControl.cs" />
-    <Compile Include="SQLifeEntities\RateCodeInfor.cs" />
-    <Compile Include="SQLifeEntities\RoomRateW.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="CRSDataMappingSQLite.edps">
-      <DependentUpon>CRSDataMappingSQLite.lqml</DependentUpon>
-    </None>
-    <None Include="crsdatamappingsqlite.LinqConnect.tmpl" />
-    <None Include="CRSDataMappingSQLite.lqml">
-      <Generator>DevartLinqToSqlGenerator</Generator>
-      <LastGenOutput>CRSDataMappingSQLite.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="CRSDataMappingSQLite.MainDataContextDiagram.view">
-      <DependentUpon>CRSDataMappingSQLite.lqml</DependentUpon>
-    </None>
     <None Include="estay_ecsdb.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>estay_ecsdb.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>estay_ecsdb1.designer.cs</LastGenOutput>
     </None>
-    <None Include="packages.config" />
     <None Include="Properties\DataSources\Account.datasource" />
     <None Include="Properties\DataSources\AccountRole.datasource" />
     <None Include="Properties\DataSources\Activity.datasource" />

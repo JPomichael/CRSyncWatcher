@@ -1,7 +1,8 @@
-﻿using MainContext;
+﻿using CRS.Sync.Watcher.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace CRS.Sync.Watcher.Service.RatePlan
@@ -18,10 +19,18 @@ namespace CRS.Sync.Watcher.Service.RatePlan
         CRS.Sync.Watcher.Service.WCFMobileServer.LowPriceGet GetCRSHotelHotelLowComCode(int hotelId, string rateCode, DateTime start, DateTime end, string comCode, string channel);
         #endregion
 
-        bool CheckIsAnyRateCodeControl(MainContext.RateCodeControl rateCodeControl);
+        #region Check
+        bool CheckIsAnyRateCodeControl(RateCodeControl rateCodeControl);
         bool CheckIsAnyRateCodeInfor(RateCodeInfor rateCodeInfor);
-        void DeleteRoomRateW(RoomRateW roomRate);
+        bool CheckIsAnyRoomRateWS(RoomRateWS roomRateWS);
+        #endregion
+
+        #region Delete
+        void DeleteRoomRateWS(RoomRateWS roomRate);
         void DeleteRateCodeControl(RateCodeControl rateCodeControl);
         void DeleteRateCodeInfor(RateCodeInfor rateCodeInfor);
+        #endregion
+
+        IEnumerable<RoomRateWS> GetRoomRateWSList(Expression<Func<RoomRateWS, bool>> expression);
     }
 }

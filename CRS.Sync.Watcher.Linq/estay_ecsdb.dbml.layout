@@ -92,7 +92,7 @@
         <elementListCompartment Id="cd34ee0e-d1cd-4931-bc96-e457434cf2d4" absoluteBounds="3.515, 3.46, 1.9700000000000002, 12.988922119140625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.96875 : 16.5489221191406); (3.96875 : 19.6); (8.625 : 19.6)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(3.9687505 : 16.5489221191406); (3.9687505 : 19.6); (8.625 : 19.6)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/estay_ecsdbDataContext/hotel_info/hotel_info_hotel_room_RP_info" />
       <nodes>
         <classShapeMoniker Id="54feef54-3b51-484b-99d9-9d8febc7cfd6" />
@@ -106,7 +106,7 @@
         <classShapeMoniker Id="54feef54-3b51-484b-99d9-9d8febc7cfd6" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.875 : 5.67625549316406); (3.5 : 5.67625549316406)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.875 : 5.67625549316406); (3.5 : 4.64692645733173)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/estay_ecsdbDataContext/source_type_info/source_type_info_hotel_info" />
       <nodes>
         <classShapeMoniker Id="550fea4f-f9b0-40f9-9ebf-d7d6cac6b95d" />
@@ -119,12 +119,30 @@
         <elementListCompartment Id="7b9e0f1a-5f3e-4f01-bf01-188d15034027" absoluteBounds="8.14, 10.335, 1.9700000000000002, 6.890716552734375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.5 : 13.2119610595703); (8.125 : 13.2119610595703)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 13.2119610595703); (8.125 : 13.2119610595703)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/estay_ecsdbDataContext/hotel_info/hotel_info_hotel_room_info" />
       <nodes>
         <classShapeMoniker Id="54feef54-3b51-484b-99d9-9d8febc7cfd6" />
         <classShapeMoniker Id="0abecffa-048c-495e-a89f-9abc6c409097" />
       </nodes>
     </associationConnector>
+    <classShape Id="c78ffccf-4df7-4b39-a2a5-6632a02a0e38" absoluteBounds="2.625, 2.75, 2, 3.3852461751302081">
+      <DataClassMoniker Name="/estay_ecsdbDataContext/RateCodeControl" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c0a4a5e4-57a5-4e9d-8702-b0a799cf9e7c" absoluteBounds="2.64, 3.21, 1.9700000000000002, 2.825246175130208" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e4f020f8-b5c6-4da7-955f-04605de45bc1" absoluteBounds="1.375, 2.5, 2, 8.0050988769531255">
+      <DataClassMoniker Name="/estay_ecsdbDataContext/RateCodeInfor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e21b8bf0-7fbb-4941-9243-9aae20194d52" absoluteBounds="1.3900000000000001, 2.96, 1.9700000000000002, 7.445098876953125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="45d353c8-1c38-4231-bfdd-5f2c5dcf090f" absoluteBounds="0.5, 3.375, 2, 4.3092167154947916">
+      <DataClassMoniker Name="/estay_ecsdbDataContext/RoomRateWS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9b399a73-ba0c-477f-882b-03b5cdabbc92" absoluteBounds="0.515, 3.835, 1.9700000000000002, 3.749216715494792" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

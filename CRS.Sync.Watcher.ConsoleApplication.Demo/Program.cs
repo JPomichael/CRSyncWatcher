@@ -41,7 +41,6 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
             //!  Title
             Console.Title = ("CRS SYNC WATHER");
 
-
             #region 文件保存目录
             if (!Directory.Exists(staticFolderSavePath))
             {
@@ -74,12 +73,24 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                 //Tip("定时启动于： " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " 线程：" + Thread.CurrentThread.ManagedThreadId.ToString() + "", null);
                 Thread.Sleep(100);
             }
-
+            //x System.Diagnostics.Process.Start().WaitForExit();
+            ////等待此程序执行完毕后在执行
             #endregion
         }
 
-
-
+        public static void OnTimedEvent(object source, ElapsedEventArgs e)
+        {
+            Stopwatch s = new Stopwatch();
+            s.Start();
+            Tip("\r\n 同步于：" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "", ConsoleColor.Green);
+            Tip("", ConsoleColor.Gray);
+            //! 收费计划
+            RatePlan _ratePlan = new RatePlan();
+            _ratePlan.PriceService();
+            _ratePlan.PriceDescriptService();
+            _ratePlan.SyncDataBaseService();
+            s.Stop();
+        }
 
         #region 控制台设置
         /// <summary>
@@ -124,19 +135,5 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
         //记录警告信息  
         //log.Warn("警告：warn");   
         #endregion
-
-
-        public static void OnTimedEvent(object source, ElapsedEventArgs e)
-        {
-            Stopwatch s = new Stopwatch();
-            s.Start();
-            Tip("\r\n 同步于：" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "", ConsoleColor.Green);
-            Tip("", ConsoleColor.Gray);
-            //! 收费计划
-            RatePlan _ratePlan = new RatePlan();
-            //x _ratePlan.PriceService();
-            _ratePlan.PriceDescriptService();
-            s.Stop();
-        }
     }
 }

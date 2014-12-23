@@ -9,11 +9,10 @@ using CRS.Sync.Watcher.Linq;
 using System.Linq.Expressions;
 using System.Collections;
 using log4net;
-using MainContext;
-using Devart.Data.SQLite;
 using Devart.Data.Linq;
 using CRS.Sync.Watcher.Domain.Dto;
 using System.Threading;
+using System.Data.SqlClient;
 
 namespace CRS.Sync.Watcher.ConsoleApplication.Demo
 {
@@ -24,7 +23,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
 
         //! 创建日志记录组件实例  
         public static ILog log = log4net.LogManager.GetLogger(typeof(RatePlan));
-        public static MainDataContext SQLifeDC = new MainDataContext();
+        estay_ecsdbDataContext dc = ConnHelper.estay_ecsdb();
 
         /// <summary>
         /// 价格
@@ -34,6 +33,8 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
         {
             //! 1. 获取source_id=6的供应商数据
             List<hotel_info> hoteList = GetCRSHotelList().ToList();
+            DateTime Check_in = System.DateTime.Now.Date;
+            DateTime Check_out = Check_in.AddMonths(3).Date;
             foreach (hotel_info _hoteList in hoteList)
             {
                 //! CRS开发人员官方解释如下：
@@ -51,40 +52,62 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                     {
                         if (_roomRateWsGet.roomRateWS != null)
                         {
-                            IEnumerable<RoomRateW> roomRateWSList = _roomRateWsGet.roomRateWS
-                                .Select(o => new RoomRateW
+                            IEnumerable<RoomRateWS> roomRateWSList = _roomRateWsGet.roomRateWS
+                                .Select(o => new RoomRateWS
                                 {
-                                    HotelId = int.Parse(_hoteList.h_id),
-                                    RmTypeEName = o.rmTypeEName,
-                                    BreakfastEDesc = o.breakfastEDesc,
-                                    MinVacRooms = o.minVacRooms,
-                                    RateCodeCName = o.rateCodeCName,
-                                    RateCodeEName = o.rateCodeEName,
-                                    RmTypeEDesc = o.rmTypeEDesc,
-                                    RatePrice = o.ratePrice.ToString(),
-                                    RateCode = o.rateCode,
-                                    RateDate = o.rateDate,
-                                    RmType = o.rmType,
-                                    RmTypeCDesc = o.rmTypeCDesc,
-                                    RmTypeCName = o.rmTypeCName,
-                                    VacRooms = o.vacRooms,
-                                    BreakfastDesc = o.breakfastDesc,
-                                    NeedPay = o.needPay,
-                                    NeedGuarant = o.needGuarant
+                                    guid = System.Guid.NewGuid().ToString(),
+                                    hotelId = int.Parse(_hoteList.h_id),
+                                    rmTypeEName = o.rmTypeEName,
+                                    breakfastEDesc = o.breakfastEDesc,
+                                    minVacRooms = o.minVacRooms,
+                                    rateCodeCName = o.rateCodeCName,
+                                    rateCodeEName = o.rateCodeEName,
+                                    rmTypeEDesc = o.rmTypeEDesc,
+                                    ratePrice = Convert.ToDecimal(o.ratePrice),
+                                    rateCode = o.rateCode,
+                                    rateDate = o.rateDate,
+                                    rmType = o.rmType,
+                                    rmTypeCDesc = o.rmTypeCDesc,
+                                    rmTypeCName = o.rmTypeCName,
+                                    vacRooms = o.vacRooms,
+                                    breakfastDesc = o.breakfastDesc,
+                                    needPay = o.needPay,
+                                    needGuarant = o.needGuarant
+                                    //x intro = o.intro
                                 });
                             if (roomRateWSList != null && roomRateWSList.Count() > 0)
                             {
                                 try
                                 {
-                                    IEnumerable<RoomRateW> deList = SQLifeDC.RoomRateWs.Where(o => o.HotelId == Convert.ToInt32(_hoteList.h_id) && o.RateDate.Value.Date >= System.DateTime.Now.Date && o.RateDate.Value.Date <= System.DateTime.Now.Date.AddMonths(3));
+
+                                    //List<RoomRateWS> deList =
+                                    //dc.RoomRateWS.Where(o => o.hotelId ==
+                                    //Convert.ToInt32(_hoteList.h_id) &&
+                                    //o.rateDate.Value.Date >=
+                                    //System.DateTime.Now.Date &&
+                                    //o.rateDate.Value.Date <=
+                                    //System.DateTime.Now.Date.AddMonths(3).Date).ToList();
+                                    IEnumerable<RoomRateWS> deList = dc.ExecuteQuery<RoomRateWS>(@"select id,guid,hotelId,rmTypeEName,breakfastEDesc,minVacRooms,rateCodeCName,rateCodeEName,rmTypeEDesc,ratePrice,rateCode,rateDate,rmType,rmTypeCDesc,rmTypeCName,vacRooms,breakfastDesc,needPay,needGuarant from RoomRateWS where hotelId={0} and rateDate>={1} and rateDate<={2}", int.Parse(_hoteList.h_id), Check_in, Check_out);
                                     if (deList != null && deList.Count() > 0)
                                     {
-                                        SQLifeDC.RoomRateWs.DeleteAllOnSubmit(deList);
-                                        SQLifeDC.SubmitChanges();
+                                        dc.ExecuteCommand(@"delete from RoomRateWS where id in (select id from RoomRateWS  where hotelId= {0} and rateDate>= {1} and rateDate<= {2})", int.Parse(_hoteList.h_id), Check_in, Check_out);
+                                        // LinqHelper _linqHelper = new   
+                                        // LinqHelper();
+                                        //_linqHelper.DeletesEntity<RoomRateWS>(deList.ToList());
+                                        //    foreach (RoomRateWS _deList in
+                                        //    deList) {
+                                        //        dc.RoomRateWS.DeleteOnSubmit(_deList);
+                                        //        //x dc.ExecuteCommand("delete * from RoomRateWS where hotelId={0} and rateDate>={1} and rateDate<={2}", _hoteList.h_id, System.DateTime.Now.Date, System.DateTime.Now.Date.AddMonths(3).Date);
+                                        //        dc.SubmitChanges();
+                                        //    }
                                     }
-                                    SQLifeDC.RoomRateWs.InsertAllOnSubmit(roomRateWSList);
-                                    SQLifeDC.SubmitChanges();
-                                    Console.WriteLine("更新 h_id=" + _hoteList.h_id + "价格" + roomRateWSList.Count() + " 条");
+                                    foreach (RoomRateWS _roomRateWSList in roomRateWSList)
+                                    {
+                                        dc.RoomRateWS.InsertOnSubmit(_roomRateWSList);
+                                    }
+
+                                    dc.SubmitChanges();
+                                    Console.WriteLine("更新 h_id=" + _hoteList.h_id + "酒店价格" + roomRateWSList.Count() + " 条");
                                 }
                                 catch (Exception e)
                                 {
@@ -112,33 +135,79 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
         /// <returns></returns>
         public void PriceDescriptService()
         {
-            IEnumerable<RoomRateWSDTO> RoomRateWSDTO = SQLifeDC.RoomRateWs
-                .GroupBy(o => new { o.HotelId, o.RateCode, o.RmType })
+            IEnumerable<RoomRateWSDTO> RoomRateWSDTO = dc.RoomRateWS
+                .GroupBy(o => new { o.hotelId, o.rateCode, o.rmType })
                 .Select(o => new CRS.Sync.Watcher.Domain.Dto.RoomRateWSDTO
                 {
-                    hotelId = o.Key.HotelId,
-                    rmType = o.Key.RmType,
-                    rateCode = o.Key.RateCode
+                    hotelId = o.Key.hotelId,
+                    rmType = o.Key.rmType,
+                    rateCode = o.Key.rateCode
                 });
             if (RoomRateWSDTO != null)
             {
                 foreach (var _RoomRateWSDTO in RoomRateWSDTO)
                 {
                     PriceDescriptThreadPoolService(_RoomRateWSDTO);
+                    //ThreadPool.QueueUserWorkItem(PriceDescriptThreadPoolService, _RoomRateWSDTO);
                 }
 
             }
         }
 
+        /// <summary>
+        /// 临时数据入库处理服务
+        /// </summary>
+        public void SyncDataBaseService()
+        {
+            //TODO: Price
+            Expression<Func<hotel_info, bool>> hotel_info_expression = PredicateBuilder.True<hotel_info>();
+            IEnumerable<hotel_room_RP_info> resultRoomRateWS =(from rate in dc.RoomRateWS
+                                                       join control in dc.RateCodeControl on rate.rateCode equals control.rateCode
+                                                       join infor  in dc.RateCodeInfor on rate.rateCode equals infor.rateCode
+                                                       where control.hotelId==rate.hotelId && infor.hotelId==rate.hotelId&&control.rmType==rate.rmType
+                                                       select new hotel_room_RP_info
+                                                       {
+                                                           RatePlanId = rate.rateCode,
+                                                           hotel_id = _hotelService.GetHotelInfoByHid(rate.hotelId.ToString()).hotel_id,
+                                                           h_room_rp_state=rate.ratePrice<=Convert.ToDecimal(0.00)?false:true,
+                                                           h_room_rp_name_cn=rate.rateCodeCName,
+                                                           h_room_rp_name_en=rate.rateCodeEName,
+                                                           h_room_rp_is_pay_online=true,
+                                                           h_room_rp_check_in="00:00:00",
+                                                           h_room_rp_check_out="23:59:00",
+                                                           h_room_rp_least_day=!string.IsNullOrEmpty(control.minStay)?(Convert.ToInt32(!string.IsNullOrEmpty(control.minStay))>0?Convert.ToInt32(!string.IsNullOrEmpty(control.minStay)):1):1,
+                                                           h_room_rp_longest_day=!string.IsNullOrEmpty(control.maxStay)?(Convert.ToInt32(!string.IsNullOrEmpty(control.maxStay))>0?Convert.ToInt32(!string.IsNullOrEmpty(control.minStay)):365):365,
+                                                           h_room_rp_invoice=true,
+                                                           h_room_rp_breakfast_title=rate.breakfastDesc,
+                                                           h_room_rp_ctime=System.DateTime.Now,
+                                                           SuffixName=rate.rmType,
+                                                           CurrentAlloment=rate.vacRooms,
+                                                           PaymentType=control.needPay=="1"?"Prepay":null,
+                                                       });
+            if (resultRoomRateWS != null && resultRoomRateWS.Count() > 0)
+            {
+                //foreach (RoomRateWS _resultRoomRateWS in resultRoomRateWS)
+                //{
+                //    hotel_room_RP_info RP = new hotel_room_RP_info();
+                //    RP.RatePlanId = _resultRoomRateWS.rateCode;
+                //    hotel_info_expression = hotel_info_expression.And(o => o.h_id == null ? false : o.h_id == _resultRoomRateWS.hotelId.ToString());
+                //    RP.hotel_id = _hotelService.GetHoteListInfo(hotel_info_expression).FirstOrDefault().hotel_id;
+                //    RP.h_room_rp_state=
+                //}
+            }
 
+
+            //TODO: PriceDescript
+
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="_RoomRateWSDTO"></param>
-        public void PriceDescriptThreadPoolService(CRS.Sync.Watcher.Domain.Dto.RoomRateWSDTO CodeDTO)
+        public void PriceDescriptThreadPoolService(RoomRateWSDTO CodeDTO)
         {
-            //x  var CodeDTO = _RoomRateWSDTO as RoomRateWSDTO;
+            //x var CodeDTO = _RoomRateWSDTO as RoomRateWSDTO;
 
             #region GetRateControl
             CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeControlGet _rateCodeControlGet = _ratePlanService.GetCRSRateCodeControl(CodeDTO.hotelId, CodeDTO.rateCode, CodeDTO.rmType, System.DateTime.Now.ToString("yyyy-MM-dd"), System.DateTime.Now.Date.AddMonths(3).ToString("yyyy-MM-dd"));
@@ -149,19 +218,19 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                     if (_rateCodeControlGet.rateCodeControl != null && !string.IsNullOrEmpty(_rateCodeControlGet.rateCodeControl.amendStatus))
                     {
                         RateCodeControl RateCodeControlModel = new RateCodeControl();
-                        RateCodeControlModel.HotelId = CodeDTO.hotelId;
-                        RateCodeControlModel.RateCode = CodeDTO.rateCode;
-                        RateCodeControlModel.RmType = CodeDTO.rmType;
-                        RateCodeControlModel.AmendStatus = _rateCodeControlGet.rateCodeControl.amendStatus;
-                        RateCodeControlModel.AmendDays = _rateCodeControlGet.rateCodeControl.amendDays;
-                        RateCodeControlModel.CancelStatus = _rateCodeControlGet.rateCodeControl.cancelStatus;
-                        RateCodeControlModel.CancelDays = _rateCodeControlGet.rateCodeControl.cancelDays;
-                        RateCodeControlModel.NeedPay = _rateCodeControlGet.rateCodeControl.needPay;
-                        RateCodeControlModel.MinStay = _rateCodeControlGet.rateCodeControl.minStay;
-                        RateCodeControlModel.MaxStay = _rateCodeControlGet.rateCodeControl.maxStay;
-                        RateCodeControlModel.Booking = _rateCodeControlGet.rateCodeControl.booking;
-                        RateCodeControlModel.RmLimit = _rateCodeControlGet.rateCodeControl.rmLimit;
-
+                        RateCodeControlModel.guid = System.Guid.NewGuid().ToString();
+                        RateCodeControlModel.hotelId = CodeDTO.hotelId;
+                        RateCodeControlModel.rateCode = CodeDTO.rateCode;
+                        RateCodeControlModel.rmType = CodeDTO.rmType;
+                        RateCodeControlModel.amendStatus = _rateCodeControlGet.rateCodeControl.amendStatus;
+                        RateCodeControlModel.amendDays = _rateCodeControlGet.rateCodeControl.amendDays;
+                        RateCodeControlModel.cancelStatus = _rateCodeControlGet.rateCodeControl.cancelStatus;
+                        RateCodeControlModel.cancelDays = _rateCodeControlGet.rateCodeControl.cancelDays;
+                        RateCodeControlModel.needPay = _rateCodeControlGet.rateCodeControl.needPay;
+                        RateCodeControlModel.minStay = _rateCodeControlGet.rateCodeControl.minStay;
+                        RateCodeControlModel.maxStay = _rateCodeControlGet.rateCodeControl.maxStay;
+                        RateCodeControlModel.booking = _rateCodeControlGet.rateCodeControl.booking;
+                        RateCodeControlModel.rmLimit = _rateCodeControlGet.rateCodeControl.rmLimit;
                         if (_ratePlanService.CheckIsAnyRateCodeControl(RateCodeControlModel))
                         {
                             //! 存在则删除!!!
@@ -170,8 +239,8 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
 
                         try
                         {
-                            SQLifeDC.RateCodeControls.InsertOnSubmit(RateCodeControlModel);
-                            SQLifeDC.SubmitChanges();
+                            dc.RateCodeControl.InsertOnSubmit(RateCodeControlModel);
+                            dc.SubmitChanges();
                             Console.WriteLine("更新 h_id=" + CodeDTO.hotelId + " RateCodeControl数据");
                         }
                         catch (Exception e)
@@ -200,43 +269,44 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                     if (_rateCodeInforGet.rateCodeInfor != null)
                     {
                         RateCodeInfor RateCodeInforModel = new RateCodeInfor();
-                        RateCodeInforModel.HotelId = CodeDTO.hotelId;
-                        RateCodeInforModel.RateCode = CodeDTO.rateCode;
-                        RateCodeInforModel.CName = _rateCodeInforGet.rateCodeInfor.cName;
-                        RateCodeInforModel.EName = _rateCodeInforGet.rateCodeInfor.eName;
-                        RateCodeInforModel.MemberType = _rateCodeInforGet.rateCodeInfor.memberType;
-                        RateCodeInforModel.CardType = _rateCodeInforGet.rateCodeInfor.cardType;
-                        RateCodeInforModel.IsContract = _rateCodeInforGet.rateCodeInfor.isContract;
-                        RateCodeInforModel.Currency = _rateCodeInforGet.rateCodeInfor.currency;
-                        RateCodeInforModel.RateCat = _rateCodeInforGet.rateCodeInfor.rateCat;
-                        RateCodeInforModel.BegDate = _rateCodeInforGet.rateCodeInfor.begDate;
-                        RateCodeInforModel.EndDate = _rateCodeInforGet.rateCodeInfor.endDate;
-                        RateCodeInforModel.Isdiscount = _rateCodeInforGet.rateCodeInfor.isdiscount;
-                        RateCodeInforModel.Market = _rateCodeInforGet.rateCodeInfor.market;
-                        RateCodeInforModel.Source = _rateCodeInforGet.rateCodeInfor.source;
-                        RateCodeInforModel.Weekenddays = _rateCodeInforGet.rateCodeInfor.weekenddays;
-                        RateCodeInforModel.PtCoef = Convert.ToInt32(_rateCodeInforGet.rateCodeInfor.ptCoef);
-                        RateCodeInforModel.DiscountOf = _rateCodeInforGet.rateCodeInfor.discountOf;
-                        RateCodeInforModel.DiscountType = _rateCodeInforGet.rateCodeInfor.discountType;
-                        RateCodeInforModel.DiscountValue = Convert.ToInt32(_rateCodeInforGet.rateCodeInfor.discountValue);
-                        RateCodeInforModel.RoundType = _rateCodeInforGet.rateCodeInfor.roundType;
-                        RateCodeInforModel.TargetRound = _rateCodeInforGet.rateCodeInfor.targetround;
-                        RateCodeInforModel.Status = _rateCodeInforGet.rateCodeInfor.status;
-                        RateCodeInforModel.DefaultShow = _rateCodeInforGet.rateCodeInfor.defaultShow;
-                        RateCodeInforModel.SellBegDate = _rateCodeInforGet.rateCodeInfor.sellBegDate;
-                        RateCodeInforModel.SellEndDate = _rateCodeInforGet.rateCodeInfor.sellEndDate;
-                        RateCodeInforModel.BookingThrough = _rateCodeInforGet.rateCodeInfor.bookingThrough;
-                        RateCodeInforModel.AliasCn = _rateCodeInforGet.rateCodeInfor.aliasCn;
-                        RateCodeInforModel.AliasEn = _rateCodeInforGet.rateCodeInfor.aliasEn;
-                        RateCodeInforModel.ContractId = Convert.ToInt32(_rateCodeInforGet.rateCodeInfor.contractId);
-                        RateCodeInforModel.Dailyinvallocation = Convert.ToInt32(_rateCodeInforGet.rateCodeInfor.dailyinvallocation);
-                        RateCodeInforModel.Descript = _rateCodeInforGet.rateCodeInfor.descript;
-                        RateCodeInforModel.Edescript = _rateCodeInforGet.rateCodeInfor.edescript;
-                        RateCodeInforModel.FrtMarket = _rateCodeInforGet.rateCodeInfor.frtMarket;
-                        RateCodeInforModel.FrtSource = _rateCodeInforGet.rateCodeInfor.frtSource;
-                        RateCodeInforModel.IsUpward = _rateCodeInforGet.rateCodeInfor.isUpward;
-                        RateCodeInforModel.Remarks = _rateCodeInforGet.rateCodeInfor.remarks;
-                        RateCodeInforModel.Syncstatus = _rateCodeInforGet.rateCodeInfor.syncstatus;
+                        RateCodeInforModel.guid = System.Guid.NewGuid().ToString();
+                        RateCodeInforModel.hotelId = CodeDTO.hotelId;
+                        RateCodeInforModel.rateCode = CodeDTO.rateCode;
+                        RateCodeInforModel.cName = _rateCodeInforGet.rateCodeInfor.cName;
+                        RateCodeInforModel.eName = _rateCodeInforGet.rateCodeInfor.eName;
+                        RateCodeInforModel.memberType = _rateCodeInforGet.rateCodeInfor.memberType;
+                        RateCodeInforModel.cardType = _rateCodeInforGet.rateCodeInfor.cardType;
+                        RateCodeInforModel.isContract = _rateCodeInforGet.rateCodeInfor.isContract;
+                        RateCodeInforModel.currency = _rateCodeInforGet.rateCodeInfor.currency;
+                        RateCodeInforModel.rateCat = _rateCodeInforGet.rateCodeInfor.rateCat;
+                        RateCodeInforModel.begDate = _rateCodeInforGet.rateCodeInfor.begDate;
+                        RateCodeInforModel.endDate = _rateCodeInforGet.rateCodeInfor.endDate;
+                        RateCodeInforModel.isdiscount = _rateCodeInforGet.rateCodeInfor.isdiscount;
+                        RateCodeInforModel.market = _rateCodeInforGet.rateCodeInfor.market;
+                        RateCodeInforModel.source = _rateCodeInforGet.rateCodeInfor.source;
+                        RateCodeInforModel.weekenddays = _rateCodeInforGet.rateCodeInfor.weekenddays;
+                        RateCodeInforModel.ptCoef = Convert.ToInt32(_rateCodeInforGet.rateCodeInfor.ptCoef);
+                        RateCodeInforModel.discountOf = _rateCodeInforGet.rateCodeInfor.discountOf;
+                        RateCodeInforModel.discountType = _rateCodeInforGet.rateCodeInfor.discountType;
+                        RateCodeInforModel.discountValue = Convert.ToInt32(_rateCodeInforGet.rateCodeInfor.discountValue);
+                        RateCodeInforModel.roundType = _rateCodeInforGet.rateCodeInfor.roundType;
+                        RateCodeInforModel.targetRound = _rateCodeInforGet.rateCodeInfor.targetround;
+                        RateCodeInforModel.status = _rateCodeInforGet.rateCodeInfor.status;
+                        RateCodeInforModel.defaultShow = _rateCodeInforGet.rateCodeInfor.defaultShow;
+                        RateCodeInforModel.sellBegDate = _rateCodeInforGet.rateCodeInfor.sellBegDate;
+                        RateCodeInforModel.sellEndDate = _rateCodeInforGet.rateCodeInfor.sellEndDate;
+                        RateCodeInforModel.bookingThrough = _rateCodeInforGet.rateCodeInfor.bookingThrough;
+                        RateCodeInforModel.aliasCn = _rateCodeInforGet.rateCodeInfor.aliasCn;
+                        RateCodeInforModel.aliasEn = _rateCodeInforGet.rateCodeInfor.aliasEn;
+                        RateCodeInforModel.contractId = Convert.ToInt32(_rateCodeInforGet.rateCodeInfor.contractId);
+                        RateCodeInforModel.dailyinvallocation = Convert.ToInt32(_rateCodeInforGet.rateCodeInfor.dailyinvallocation);
+                        RateCodeInforModel.descript = _rateCodeInforGet.rateCodeInfor.descript;
+                        RateCodeInforModel.edescript = _rateCodeInforGet.rateCodeInfor.edescript;
+                        RateCodeInforModel.frtMarket = _rateCodeInforGet.rateCodeInfor.frtMarket;
+                        RateCodeInforModel.frtSource = _rateCodeInforGet.rateCodeInfor.frtSource;
+                        RateCodeInforModel.isUpward = _rateCodeInforGet.rateCodeInfor.isUpward;
+                        RateCodeInforModel.remarks = _rateCodeInforGet.rateCodeInfor.remarks;
+                        RateCodeInforModel.syncstatus = _rateCodeInforGet.rateCodeInfor.syncstatus;
 
                         if (_ratePlanService.CheckIsAnyRateCodeInfor(RateCodeInforModel))
                         {
@@ -245,8 +315,8 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
 
                         try
                         {
-                            SQLifeDC.RateCodeInfors.InsertOnSubmit(RateCodeInforModel);
-                            SQLifeDC.SubmitChanges();
+                            dc.RateCodeInfor.InsertOnSubmit(RateCodeInforModel);
+                            dc.SubmitChanges();
                             Console.WriteLine("更新 h_id=" + CodeDTO.hotelId + " RateCodeInfor数据");
                         }
                         catch (Exception e)
@@ -270,7 +340,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
 
 
         /// <summary>
-        /// 获取公寓信息-构建动态
+        /// 获取公寓信息-动态
         /// </summary>
         /// <returns></returns>
         public IEnumerable<hotel_info> GetCRSHotelList()
