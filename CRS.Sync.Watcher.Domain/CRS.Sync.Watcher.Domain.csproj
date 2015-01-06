@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\PriceDTO.cs" />
+    <Compile Include="Dto\RatePlanDTO.cs" />
     <Compile Include="Dto\RoomRateWSDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

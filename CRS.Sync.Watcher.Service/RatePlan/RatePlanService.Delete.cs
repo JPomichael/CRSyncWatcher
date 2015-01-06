@@ -14,7 +14,7 @@ namespace CRS.Sync.Watcher.Service.RatePlan
         public void DeleteRoomRateWS(RoomRateWS roomRate)
         {
             RoomRateWS _roomRate = new RoomRateWS();
-            _roomRate = dc.RoomRateWS.Where(o => o.hotelId == roomRate.hotelId && o.rateCode == roomRate.rateCode && o.rmType == roomRate.rmType && o.rateDate.Value.Date == roomRate.rateDate.Value.Date).FirstOrDefault();
+            _roomRate = dc.RoomRateWS.Where(o => o.hotelId == roomRate.hotelId && o.rateCode == roomRate.rateCode && o.rmType == roomRate.rmType && o.rateDate.Date == roomRate.rateDate.Date).FirstOrDefault();
             if (_roomRate != null)
             {
                 try

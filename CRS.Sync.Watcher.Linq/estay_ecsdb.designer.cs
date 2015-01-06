@@ -84,13 +84,16 @@ namespace CRS.Sync.Watcher.Linq
         partial void InsertRateCodeInfor(RateCodeInfor instance);
         partial void UpdateRateCodeInfor(RateCodeInfor instance);
         partial void DeleteRateCodeInfor(RateCodeInfor instance);
+        partial void Inserthotel_room_RP_price_batch(hotel_room_RP_price_batch instance);
+        partial void Updatehotel_room_RP_price_batch(hotel_room_RP_price_batch instance);
+        partial void Deletehotel_room_RP_price_batch(hotel_room_RP_price_batch instance);
         partial void InsertRoomRateWS(RoomRateWS instance);
         partial void UpdateRoomRateWS(RoomRateWS instance);
         partial void DeleteRoomRateWS(RoomRateWS instance);
         #endregion
 
         public estay_ecsdbDataContext() :
-            base(global::CRS.Sync.Watcher.Linq.Properties.Settings.Default.estay_ecs_1210ConnectionString, mappingSource)
+            base(global::CRS.Sync.Watcher.Linq.Properties.Settings.Default.estay_ecs_1210ConnectionString1, mappingSource)
         {
             OnCreated();
         }
@@ -260,6 +263,14 @@ namespace CRS.Sync.Watcher.Linq
             get
             {
                 return this.GetTable<RateCodeInfor>();
+            }
+        }
+
+        public System.Data.Linq.Table<hotel_room_RP_price_batch> hotel_room_RP_price_batch
+        {
+            get
+            {
+                return this.GetTable<hotel_room_RP_price_batch>();
             }
         }
 
@@ -8787,6 +8798,644 @@ namespace CRS.Sync.Watcher.Linq
         }
     }
 
+    [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.hotel_room_RP_price_batch")]
+    public partial class hotel_room_RP_price_batch : INotifyPropertyChanging, INotifyPropertyChanged
+    {
+
+        private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+
+        private int _Hpbid;
+
+        private int _Hotel_id;
+
+        private int _Room_id;
+
+        private int _Room_rp_id;
+
+        private string _RoomTypeId;
+
+        private System.Nullable<int> _PriceID;
+
+        private decimal _Price;
+
+        private System.Nullable<decimal> _Cost;
+
+        private System.Nullable<decimal> _Weekend;
+
+        private System.Nullable<decimal> _MemberCost;
+
+        private System.Nullable<decimal> _WeekendCost;
+
+        private System.Nullable<decimal> _Addbed;
+
+        private string _Uid;
+
+        private string _HotelUid;
+
+        private System.Nullable<System.DateTime> _Idate;
+
+        private System.DateTime _Room_rp_start_time;
+
+        private System.DateTime _Room_rp_end_time;
+
+        private System.Nullable<System.DateTime> _Hpdate;
+
+        private System.Nullable<int> _Status;
+
+        private System.Nullable<int> _HpStatus;
+
+        private System.Nullable<bool> _IsAudit;
+
+        private string _AuditUid;
+
+        private System.Nullable<System.DateTime> _AuditDate;
+
+        private System.Nullable<int> _AuditStatus;
+
+        private System.Nullable<decimal> _Commission;
+
+        #region 可扩展性方法定义
+        partial void OnLoaded();
+        partial void OnValidate(System.Data.Linq.ChangeAction action);
+        partial void OnCreated();
+        partial void OnHpbidChanging(int value);
+        partial void OnHpbidChanged();
+        partial void OnHotel_idChanging(int value);
+        partial void OnHotel_idChanged();
+        partial void OnRoom_idChanging(int value);
+        partial void OnRoom_idChanged();
+        partial void OnRoom_rp_idChanging(int value);
+        partial void OnRoom_rp_idChanged();
+        partial void OnRoomTypeIdChanging(string value);
+        partial void OnRoomTypeIdChanged();
+        partial void OnPriceIDChanging(System.Nullable<int> value);
+        partial void OnPriceIDChanged();
+        partial void OnPriceChanging(decimal value);
+        partial void OnPriceChanged();
+        partial void OnCostChanging(System.Nullable<decimal> value);
+        partial void OnCostChanged();
+        partial void OnWeekendChanging(System.Nullable<decimal> value);
+        partial void OnWeekendChanged();
+        partial void OnMemberCostChanging(System.Nullable<decimal> value);
+        partial void OnMemberCostChanged();
+        partial void OnWeekendCostChanging(System.Nullable<decimal> value);
+        partial void OnWeekendCostChanged();
+        partial void OnAddbedChanging(System.Nullable<decimal> value);
+        partial void OnAddbedChanged();
+        partial void OnUidChanging(string value);
+        partial void OnUidChanged();
+        partial void OnHotelUidChanging(string value);
+        partial void OnHotelUidChanged();
+        partial void OnIdateChanging(System.Nullable<System.DateTime> value);
+        partial void OnIdateChanged();
+        partial void OnRoom_rp_start_timeChanging(System.DateTime value);
+        partial void OnRoom_rp_start_timeChanged();
+        partial void OnRoom_rp_end_timeChanging(System.DateTime value);
+        partial void OnRoom_rp_end_timeChanged();
+        partial void OnHpdateChanging(System.Nullable<System.DateTime> value);
+        partial void OnHpdateChanged();
+        partial void OnStatusChanging(System.Nullable<int> value);
+        partial void OnStatusChanged();
+        partial void OnHpStatusChanging(System.Nullable<int> value);
+        partial void OnHpStatusChanged();
+        partial void OnIsAuditChanging(System.Nullable<bool> value);
+        partial void OnIsAuditChanged();
+        partial void OnAuditUidChanging(string value);
+        partial void OnAuditUidChanged();
+        partial void OnAuditDateChanging(System.Nullable<System.DateTime> value);
+        partial void OnAuditDateChanged();
+        partial void OnAuditStatusChanging(System.Nullable<int> value);
+        partial void OnAuditStatusChanged();
+        partial void OnCommissionChanging(System.Nullable<decimal> value);
+        partial void OnCommissionChanged();
+        #endregion
+
+        public hotel_room_RP_price_batch()
+        {
+            OnCreated();
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Hpbid", AutoSync = AutoSync.OnInsert, DbType = "Int NOT NULL IDENTITY", IsPrimaryKey = true, IsDbGenerated = true)]
+        public int Hpbid
+        {
+            get
+            {
+                return this._Hpbid;
+            }
+            set
+            {
+                if ((this._Hpbid != value))
+                {
+                    this.OnHpbidChanging(value);
+                    this.SendPropertyChanging();
+                    this._Hpbid = value;
+                    this.SendPropertyChanged("Hpbid");
+                    this.OnHpbidChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Hotel_id", DbType = "Int NOT NULL")]
+        public int Hotel_id
+        {
+            get
+            {
+                return this._Hotel_id;
+            }
+            set
+            {
+                if ((this._Hotel_id != value))
+                {
+                    this.OnHotel_idChanging(value);
+                    this.SendPropertyChanging();
+                    this._Hotel_id = value;
+                    this.SendPropertyChanged("Hotel_id");
+                    this.OnHotel_idChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Room_id", DbType = "Int NOT NULL")]
+        public int Room_id
+        {
+            get
+            {
+                return this._Room_id;
+            }
+            set
+            {
+                if ((this._Room_id != value))
+                {
+                    this.OnRoom_idChanging(value);
+                    this.SendPropertyChanging();
+                    this._Room_id = value;
+                    this.SendPropertyChanged("Room_id");
+                    this.OnRoom_idChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Room_rp_id", DbType = "Int NOT NULL")]
+        public int Room_rp_id
+        {
+            get
+            {
+                return this._Room_rp_id;
+            }
+            set
+            {
+                if ((this._Room_rp_id != value))
+                {
+                    this.OnRoom_rp_idChanging(value);
+                    this.SendPropertyChanging();
+                    this._Room_rp_id = value;
+                    this.SendPropertyChanged("Room_rp_id");
+                    this.OnRoom_rp_idChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_RoomTypeId", DbType = "VarChar(50)")]
+        public string RoomTypeId
+        {
+            get
+            {
+                return this._RoomTypeId;
+            }
+            set
+            {
+                if ((this._RoomTypeId != value))
+                {
+                    this.OnRoomTypeIdChanging(value);
+                    this.SendPropertyChanging();
+                    this._RoomTypeId = value;
+                    this.SendPropertyChanged("RoomTypeId");
+                    this.OnRoomTypeIdChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_PriceID", DbType = "Int")]
+        public System.Nullable<int> PriceID
+        {
+            get
+            {
+                return this._PriceID;
+            }
+            set
+            {
+                if ((this._PriceID != value))
+                {
+                    this.OnPriceIDChanging(value);
+                    this.SendPropertyChanging();
+                    this._PriceID = value;
+                    this.SendPropertyChanged("PriceID");
+                    this.OnPriceIDChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Price", DbType = "Decimal(18,2) NOT NULL")]
+        public decimal Price
+        {
+            get
+            {
+                return this._Price;
+            }
+            set
+            {
+                if ((this._Price != value))
+                {
+                    this.OnPriceChanging(value);
+                    this.SendPropertyChanging();
+                    this._Price = value;
+                    this.SendPropertyChanged("Price");
+                    this.OnPriceChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Cost", DbType = "Decimal(18,2)")]
+        public System.Nullable<decimal> Cost
+        {
+            get
+            {
+                return this._Cost;
+            }
+            set
+            {
+                if ((this._Cost != value))
+                {
+                    this.OnCostChanging(value);
+                    this.SendPropertyChanging();
+                    this._Cost = value;
+                    this.SendPropertyChanged("Cost");
+                    this.OnCostChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Weekend", DbType = "Decimal(18,2)")]
+        public System.Nullable<decimal> Weekend
+        {
+            get
+            {
+                return this._Weekend;
+            }
+            set
+            {
+                if ((this._Weekend != value))
+                {
+                    this.OnWeekendChanging(value);
+                    this.SendPropertyChanging();
+                    this._Weekend = value;
+                    this.SendPropertyChanged("Weekend");
+                    this.OnWeekendChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_MemberCost", DbType = "Decimal(18,2)")]
+        public System.Nullable<decimal> MemberCost
+        {
+            get
+            {
+                return this._MemberCost;
+            }
+            set
+            {
+                if ((this._MemberCost != value))
+                {
+                    this.OnMemberCostChanging(value);
+                    this.SendPropertyChanging();
+                    this._MemberCost = value;
+                    this.SendPropertyChanged("MemberCost");
+                    this.OnMemberCostChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_WeekendCost", DbType = "Decimal(18,2)")]
+        public System.Nullable<decimal> WeekendCost
+        {
+            get
+            {
+                return this._WeekendCost;
+            }
+            set
+            {
+                if ((this._WeekendCost != value))
+                {
+                    this.OnWeekendCostChanging(value);
+                    this.SendPropertyChanging();
+                    this._WeekendCost = value;
+                    this.SendPropertyChanged("WeekendCost");
+                    this.OnWeekendCostChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Addbed", DbType = "Decimal(18,2)")]
+        public System.Nullable<decimal> Addbed
+        {
+            get
+            {
+                return this._Addbed;
+            }
+            set
+            {
+                if ((this._Addbed != value))
+                {
+                    this.OnAddbedChanging(value);
+                    this.SendPropertyChanging();
+                    this._Addbed = value;
+                    this.SendPropertyChanged("Addbed");
+                    this.OnAddbedChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Uid", DbType = "VarChar(50)")]
+        public string Uid
+        {
+            get
+            {
+                return this._Uid;
+            }
+            set
+            {
+                if ((this._Uid != value))
+                {
+                    this.OnUidChanging(value);
+                    this.SendPropertyChanging();
+                    this._Uid = value;
+                    this.SendPropertyChanged("Uid");
+                    this.OnUidChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_HotelUid", DbType = "VarChar(50)")]
+        public string HotelUid
+        {
+            get
+            {
+                return this._HotelUid;
+            }
+            set
+            {
+                if ((this._HotelUid != value))
+                {
+                    this.OnHotelUidChanging(value);
+                    this.SendPropertyChanging();
+                    this._HotelUid = value;
+                    this.SendPropertyChanged("HotelUid");
+                    this.OnHotelUidChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Idate", DbType = "DateTime")]
+        public System.Nullable<System.DateTime> Idate
+        {
+            get
+            {
+                return this._Idate;
+            }
+            set
+            {
+                if ((this._Idate != value))
+                {
+                    this.OnIdateChanging(value);
+                    this.SendPropertyChanging();
+                    this._Idate = value;
+                    this.SendPropertyChanged("Idate");
+                    this.OnIdateChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Room_rp_start_time", DbType = "DateTime NOT NULL")]
+        public System.DateTime Room_rp_start_time
+        {
+            get
+            {
+                return this._Room_rp_start_time;
+            }
+            set
+            {
+                if ((this._Room_rp_start_time != value))
+                {
+                    this.OnRoom_rp_start_timeChanging(value);
+                    this.SendPropertyChanging();
+                    this._Room_rp_start_time = value;
+                    this.SendPropertyChanged("Room_rp_start_time");
+                    this.OnRoom_rp_start_timeChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Room_rp_end_time", DbType = "DateTime NOT NULL")]
+        public System.DateTime Room_rp_end_time
+        {
+            get
+            {
+                return this._Room_rp_end_time;
+            }
+            set
+            {
+                if ((this._Room_rp_end_time != value))
+                {
+                    this.OnRoom_rp_end_timeChanging(value);
+                    this.SendPropertyChanging();
+                    this._Room_rp_end_time = value;
+                    this.SendPropertyChanged("Room_rp_end_time");
+                    this.OnRoom_rp_end_timeChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Hpdate", DbType = "DateTime")]
+        public System.Nullable<System.DateTime> Hpdate
+        {
+            get
+            {
+                return this._Hpdate;
+            }
+            set
+            {
+                if ((this._Hpdate != value))
+                {
+                    this.OnHpdateChanging(value);
+                    this.SendPropertyChanging();
+                    this._Hpdate = value;
+                    this.SendPropertyChanged("Hpdate");
+                    this.OnHpdateChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Status", DbType = "Int")]
+        public System.Nullable<int> Status
+        {
+            get
+            {
+                return this._Status;
+            }
+            set
+            {
+                if ((this._Status != value))
+                {
+                    this.OnStatusChanging(value);
+                    this.SendPropertyChanging();
+                    this._Status = value;
+                    this.SendPropertyChanged("Status");
+                    this.OnStatusChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_HpStatus", DbType = "Int")]
+        public System.Nullable<int> HpStatus
+        {
+            get
+            {
+                return this._HpStatus;
+            }
+            set
+            {
+                if ((this._HpStatus != value))
+                {
+                    this.OnHpStatusChanging(value);
+                    this.SendPropertyChanging();
+                    this._HpStatus = value;
+                    this.SendPropertyChanged("HpStatus");
+                    this.OnHpStatusChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_IsAudit", DbType = "Bit")]
+        public System.Nullable<bool> IsAudit
+        {
+            get
+            {
+                return this._IsAudit;
+            }
+            set
+            {
+                if ((this._IsAudit != value))
+                {
+                    this.OnIsAuditChanging(value);
+                    this.SendPropertyChanging();
+                    this._IsAudit = value;
+                    this.SendPropertyChanged("IsAudit");
+                    this.OnIsAuditChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_AuditUid", DbType = "VarChar(50)")]
+        public string AuditUid
+        {
+            get
+            {
+                return this._AuditUid;
+            }
+            set
+            {
+                if ((this._AuditUid != value))
+                {
+                    this.OnAuditUidChanging(value);
+                    this.SendPropertyChanging();
+                    this._AuditUid = value;
+                    this.SendPropertyChanged("AuditUid");
+                    this.OnAuditUidChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_AuditDate", DbType = "DateTime")]
+        public System.Nullable<System.DateTime> AuditDate
+        {
+            get
+            {
+                return this._AuditDate;
+            }
+            set
+            {
+                if ((this._AuditDate != value))
+                {
+                    this.OnAuditDateChanging(value);
+                    this.SendPropertyChanging();
+                    this._AuditDate = value;
+                    this.SendPropertyChanged("AuditDate");
+                    this.OnAuditDateChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_AuditStatus", DbType = "Int")]
+        public System.Nullable<int> AuditStatus
+        {
+            get
+            {
+                return this._AuditStatus;
+            }
+            set
+            {
+                if ((this._AuditStatus != value))
+                {
+                    this.OnAuditStatusChanging(value);
+                    this.SendPropertyChanging();
+                    this._AuditStatus = value;
+                    this.SendPropertyChanged("AuditStatus");
+                    this.OnAuditStatusChanged();
+                }
+            }
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_Commission", DbType = "Decimal(18,2)")]
+        public System.Nullable<decimal> Commission
+        {
+            get
+            {
+                return this._Commission;
+            }
+            set
+            {
+                if ((this._Commission != value))
+                {
+                    this.OnCommissionChanging(value);
+                    this.SendPropertyChanging();
+                    this._Commission = value;
+                    this.SendPropertyChanged("Commission");
+                    this.OnCommissionChanged();
+                }
+            }
+        }
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void SendPropertyChanging()
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, emptyChangingEventArgs);
+            }
+        }
+
+        protected virtual void SendPropertyChanged(String propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+
     [global::System.Data.Linq.Mapping.TableAttribute(Name = "dbo.RoomRateWS")]
     public partial class RoomRateWS : INotifyPropertyChanging, INotifyPropertyChanged
     {
@@ -8815,7 +9464,7 @@ namespace CRS.Sync.Watcher.Linq
 
         private string _rateCode;
 
-        private System.Nullable<System.DateTime> _rateDate;
+        private System.DateTime _rateDate;
 
         private string _rmType;
 
@@ -8857,7 +9506,7 @@ namespace CRS.Sync.Watcher.Linq
         partial void OnratePriceChanged();
         partial void OnrateCodeChanging(string value);
         partial void OnrateCodeChanged();
-        partial void OnrateDateChanging(System.Nullable<System.DateTime> value);
+        partial void OnrateDateChanging(System.DateTime value);
         partial void OnrateDateChanged();
         partial void OnrmTypeChanging(string value);
         partial void OnrmTypeChanged();
@@ -9100,8 +9749,8 @@ namespace CRS.Sync.Watcher.Linq
             }
         }
 
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_rateDate", DbType = "DateTime")]
-        public System.Nullable<System.DateTime> rateDate
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_rateDate", DbType = "DateTime NOT NULL")]
+        public System.DateTime rateDate
         {
             get
             {

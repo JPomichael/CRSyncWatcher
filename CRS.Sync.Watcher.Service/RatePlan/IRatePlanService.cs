@@ -32,5 +32,6 @@ namespace CRS.Sync.Watcher.Service.RatePlan
         #endregion
 
         IEnumerable<RoomRateWS> GetRoomRateWSList(Expression<Func<RoomRateWS, bool>> expression);
+        hotel_room_RP_info GetRatePlanInfo(int hotel_id, string rateCode);
     }
 }

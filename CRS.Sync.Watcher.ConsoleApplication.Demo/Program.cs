@@ -29,6 +29,8 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
         public static CRS.Sync.Watcher.Service.Province.IProvinceService _provinceService = new CRS.Sync.Watcher.Service.Province.ProvinceService();
         public static CRS.Sync.Watcher.Service.City.ICityService _cityService = new CRS.Sync.Watcher.Service.City.CityService();
         public static CRS.Sync.Watcher.Service.Star.IStarService _starService = new CRS.Sync.Watcher.Service.Star.StarService();
+        private static object ojb = new object();
+
         #endregion
 
         //!  通用代码保存目录
@@ -49,7 +51,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
             #endregion
 
             #region Start Sync...
-            System.Timers.Timer t = new System.Timers.Timer();
+            //System.Timers.Timer t = new System.Timers.Timer();
 
             //!  基础信息
             //Base _base = new Base();
@@ -62,17 +64,29 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
 
 
 
-
-            t = new System.Timers.Timer(60000);//实例化Timer类，设置时间间隔 1分钟
-            t.Start();
-            t.Elapsed += new System.Timers.ElapsedEventHandler(OnTimedEvent);//到达时间的时候执行事件
-            t.AutoReset = true;//设置是执行一次（false）还是一直执行(true)
-            t.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件
-            while (true)
+            locking locking = new locking();
+            //在t1线程中调用LockMe，并将deadlock设为true（将出现死锁）
+            Thread T = new Thread(locking.LockMe);
+            T.Start(true);
+            Thread.Sleep(18000);
+            //在主线程中lock c1
+            lock (locking)
             {
-                //Tip("定时启动于： " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " 线程：" + Thread.CurrentThread.ManagedThreadId.ToString() + "", null);
-                Thread.Sleep(100);
+                //调用被lock的方法，并试图将deadlock解除
+                locking.LockMe(false);
             }
+
+
+            //t = new System.Timers.Timer(18000);//实例化Timer类，设置时间间隔 
+            //t.Start();
+            //t.Elapsed += new System.Timers.ElapsedEventHandler(OnTimedEvent);//到达时间的时候执行事件
+            //t.AutoReset = true;//设置是执行一次（false）还是一直执行(true)
+            //t.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件
+            //while (true)
+            //{
+            //    //Tip("定时启动于： " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " 线程：" + Thread.CurrentThread.ManagedThreadId.ToString() + "", null);
+            //    Thread.Sleep(100);
+            //}
             //x System.Diagnostics.Process.Start().WaitForExit();
             ////等待此程序执行完毕后在执行
             #endregion
@@ -82,14 +96,45 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
         {
             Stopwatch s = new Stopwatch();
             s.Start();
+
             Tip("\r\n 同步于：" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "", ConsoleColor.Green);
             Tip("", ConsoleColor.Gray);
             //! 收费计划
             RatePlan _ratePlan = new RatePlan();
-            _ratePlan.PriceService();
-            _ratePlan.PriceDescriptService();
+            //x _ratePlan.PriceService();
+            //x _ratePlan.PriceDescriptService();
             _ratePlan.SyncDataBaseService();
             s.Stop();
+        }
+
+
+        public class locking
+        {
+            private bool deadlocked = true;
+            //这个方法用到了lock，我们希望lock的代码在同一时刻只能由一个线程访问
+            public void LockMe(object o)
+            {
+                lock (this)
+                {
+                    while (deadlocked)
+                    {
+                        //x Console.WriteLine("Foo: I am locked :(");
+                        Stopwatch s = new Stopwatch();
+                        s.Start();
+
+                        Tip("\r\n 同步于：" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "", ConsoleColor.Green);
+                        Tip("", ConsoleColor.Gray);
+                        //! 收费计划
+                        RatePlan _ratePlan = new RatePlan();
+                        //x _ratePlan.PriceService();
+                        //x _ratePlan.PriceDescriptService();
+                        _ratePlan.SyncDataBaseService();
+                        s.Stop();
+                        deadlocked = (bool)o;
+                        Thread.Sleep(18000);
+                    }
+                }
+            }
         }
 
         #region 控制台设置

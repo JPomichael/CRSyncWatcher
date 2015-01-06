@@ -13,6 +13,7 @@ using Devart.Data.Linq;
 using CRS.Sync.Watcher.Domain.Dto;
 using System.Threading;
 using System.Data.SqlClient;
+using System.Data.Common;
 
 namespace CRS.Sync.Watcher.ConsoleApplication.Demo
 {
@@ -20,6 +21,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
     {
         CRS.Sync.Watcher.Service.RatePlan.IRatePlanService _ratePlanService = new CRS.Sync.Watcher.Service.RatePlan.RatePlanService();
         CRS.Sync.Watcher.Service.Hotel.IHotelService _hotelService = new CRS.Sync.Watcher.Service.Hotel.HotelService();
+        CRS.Sync.Watcher.Service.House.IHouseService _houseService = new CRS.Sync.Watcher.Service.House.HouseService();
 
         //! 创建日志记录组件实例  
         public static ILog log = log4net.LogManager.GetLogger(typeof(RatePlan));
@@ -65,7 +67,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                                     rmTypeEDesc = o.rmTypeEDesc,
                                     ratePrice = Convert.ToDecimal(o.ratePrice),
                                     rateCode = o.rateCode,
-                                    rateDate = o.rateDate,
+                                    rateDate = Convert.ToDateTime(o.rateDate),
                                     rmType = o.rmType,
                                     rmTypeCDesc = o.rmTypeCDesc,
                                     rmTypeCName = o.rmTypeCName,
@@ -159,45 +161,153 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
         /// </summary>
         public void SyncDataBaseService()
         {
-            //TODO: Price
-            Expression<Func<hotel_info, bool>> hotel_info_expression = PredicateBuilder.True<hotel_info>();
-            IEnumerable<hotel_room_RP_info> resultRoomRateWS =(from rate in dc.RoomRateWS
-                                                       join control in dc.RateCodeControl on rate.rateCode equals control.rateCode
-                                                       join infor  in dc.RateCodeInfor on rate.rateCode equals infor.rateCode
-                                                       where control.hotelId==rate.hotelId && infor.hotelId==rate.hotelId&&control.rmType==rate.rmType
-                                                       select new hotel_room_RP_info
-                                                       {
-                                                           RatePlanId = rate.rateCode,
-                                                           hotel_id = _hotelService.GetHotelInfoByHid(rate.hotelId.ToString()).hotel_id,
-                                                           h_room_rp_state=rate.ratePrice<=Convert.ToDecimal(0.00)?false:true,
-                                                           h_room_rp_name_cn=rate.rateCodeCName,
-                                                           h_room_rp_name_en=rate.rateCodeEName,
-                                                           h_room_rp_is_pay_online=true,
-                                                           h_room_rp_check_in="00:00:00",
-                                                           h_room_rp_check_out="23:59:00",
-                                                           h_room_rp_least_day=!string.IsNullOrEmpty(control.minStay)?(Convert.ToInt32(!string.IsNullOrEmpty(control.minStay))>0?Convert.ToInt32(!string.IsNullOrEmpty(control.minStay)):1):1,
-                                                           h_room_rp_longest_day=!string.IsNullOrEmpty(control.maxStay)?(Convert.ToInt32(!string.IsNullOrEmpty(control.maxStay))>0?Convert.ToInt32(!string.IsNullOrEmpty(control.minStay)):365):365,
-                                                           h_room_rp_invoice=true,
-                                                           h_room_rp_breakfast_title=rate.breakfastDesc,
-                                                           h_room_rp_ctime=System.DateTime.Now,
-                                                           SuffixName=rate.rmType,
-                                                           CurrentAlloment=rate.vacRooms,
-                                                           PaymentType=control.needPay=="1"?"Prepay":null,
-                                                       });
-            if (resultRoomRateWS != null && resultRoomRateWS.Count() > 0)
+            //TODO: RatePlan
+            #region RatePlan
+
+            List<RatePlanDTO> ConvertRatePlan = dc.RoomRateWS.GroupBy(o => new { o.hotelId, o.rateCode, o.rateCodeCName, o.needGuarant })
+                .Select(o => new CRS.Sync.Watcher.Domain.Dto.RatePlanDTO
+                {
+                    ratePlanId = o.Key.rateCode, //! 同rateCode 下皆同RatePlan
+                    Hotel_id = _hotelService.GetHotelInfoByHid(o.Key.hotelId.ToString()).hotel_id,
+                    H_room_rp_state = true,
+                    H_room_rp_name_cn = o.Key.rateCodeCName,
+                    H_room_rp_name_en = "",
+                    H_room_rp_is_pay_online = true,
+                    H_room_rp_check_in = "00:00:00",
+                    H_room_rp_check_out = "23:59:00",
+                    H_room_rp_least_day = 1, //!string.IsNullOrEmpty(control.minStay) ? (Convert.ToInt32(!string.IsNullOrEmpty(control.minStay)) > 0 ? Convert.ToInt32(!string.IsNullOrEmpty(control.minStay)) : 1) : 1,
+                    H_room_rp_longest_day = 365, //!string.IsNullOrEmpty(control.maxStay) ? (Convert.ToInt32(!string.IsNullOrEmpty(control.maxStay)) > 0 ? Convert.ToInt32(!string.IsNullOrEmpty(control.minStay)) : 365) : 365,
+                    H_room_rp_invoice = true,
+                    H_room_rp_breakfast_title = "",
+                    //H_room_rp_ctime = System.DateTime.Now,
+                    paymentType = null, //control.needPay == "1" ? "Prepay" : null
+                    guaranteeRuleIds = o.Key.needGuarant != null ? Convert.ToInt32(o.Key.needGuarant).ToString() : null,
+
+                }).ToList();
+            if (ConvertRatePlan != null)
             {
-                //foreach (RoomRateWS _resultRoomRateWS in resultRoomRateWS)
-                //{
-                //    hotel_room_RP_info RP = new hotel_room_RP_info();
-                //    RP.RatePlanId = _resultRoomRateWS.rateCode;
-                //    hotel_info_expression = hotel_info_expression.And(o => o.h_id == null ? false : o.h_id == _resultRoomRateWS.hotelId.ToString());
-                //    RP.hotel_id = _hotelService.GetHoteListInfo(hotel_info_expression).FirstOrDefault().hotel_id;
-                //    RP.h_room_rp_state=
-                //}
+                foreach (RatePlanDTO _ConvertRatePlan in ConvertRatePlan)
+                {
+                    hotel_room_RP_info rp_info = _ratePlanService.GetRatePlanInfo(_ConvertRatePlan.Hotel_id, _ConvertRatePlan.ratePlanId);
+                    if (rp_info != null)
+                    {
+                        #region edit
+                        using (estay_ecsdbDataContext db = ConnHelper.estay_ecsdb())
+                        {
+                            hotel_room_RP_info editRP = dc.hotel_room_RP_info.Where(o => o.h_room_rp_id == rp_info.h_room_rp_id).FirstOrDefault();
+                            //editRP.RatePlanId = _ConvertRatePlan.ratePlanId;
+                            //editRP.hotel_id = _ConvertRatePlan.Hotel_id;
+                            editRP.h_room_rp_state = _ConvertRatePlan.H_room_rp_state;
+                            editRP.h_room_rp_name_cn = _ConvertRatePlan.H_room_rp_name_cn;
+                            editRP.h_room_rp_name_en = _ConvertRatePlan.H_room_rp_name_en;
+                            editRP.h_room_rp_is_pay_online = _ConvertRatePlan.H_room_rp_is_pay_online;
+                            editRP.h_room_rp_check_in = _ConvertRatePlan.H_room_rp_check_in;
+                            editRP.h_room_rp_check_out = _ConvertRatePlan.H_room_rp_check_out;
+                            editRP.h_room_rp_least_day = _ConvertRatePlan.H_room_rp_least_day; //!string.IsNullOrEmpty(control.minStay) ? (Convert.ToInt32(!string.IsNullOrEmpty(control.minStay)) > 0 ? Convert.ToInt32(!string.IsNullOrEmpty(control.minStay)) : 1) : 1,
+                            editRP.h_room_rp_longest_day = _ConvertRatePlan.H_room_rp_longest_day; //!string.IsNullOrEmpty(control.maxStay) ? (Convert.ToInt32(!string.IsNullOrEmpty(control.maxStay)) > 0 ? Convert.ToInt32(!string.IsNullOrEmpty(control.minStay)) : 365) : 365,
+                            editRP.h_room_rp_invoice = _ConvertRatePlan.H_room_rp_invoice;
+                            editRP.h_room_rp_breakfast_title = _ConvertRatePlan.H_room_rp_breakfast_title;
+                            editRP.h_room_rp_ctime = System.DateTime.Now;
+                            editRP.CustomerType = _ConvertRatePlan.paymentType; //control.needPay == "1" ? "Prepay" : null
+                            editRP.GuaranteeRuleIds = _ConvertRatePlan.guaranteeRuleIds;
+                            //x db.hotel_room_RP_info.DeleteOnSubmit(db.hotel_room_RP_info.Where(o => o.h_room_rp_id == rp_info.h_room_rp_id).FirstOrDefault());
+                            List<hotel_room_RP_price> price = db.hotel_room_RP_price.Where(o => o.Room_rp_id == rp_info.h_room_rp_id).ToList();
+                            if (price != null && price.Count() > 0)
+                            {
+                                foreach (hotel_room_RP_price _price in price)
+                                    db.hotel_room_RP_price.DeleteOnSubmit(_price);
+                            }
+                            db.SubmitChanges();
+                        }
+                        #endregion
+                    }
+                    else
+                    {
+                        #region add
+                        hotel_room_RP_info RP = new hotel_room_RP_info();
+                        RP.RatePlanId = _ConvertRatePlan.ratePlanId;
+                        RP.hotel_id = _ConvertRatePlan.Hotel_id;
+                        RP.h_room_rp_state = _ConvertRatePlan.H_room_rp_state;
+                        RP.h_room_rp_name_cn = _ConvertRatePlan.H_room_rp_name_cn;
+                        RP.h_room_rp_name_en = _ConvertRatePlan.H_room_rp_name_en;
+                        RP.h_room_rp_is_pay_online = _ConvertRatePlan.H_room_rp_is_pay_online;
+                        RP.h_room_rp_check_in = _ConvertRatePlan.H_room_rp_check_in;
+                        RP.h_room_rp_check_out = _ConvertRatePlan.H_room_rp_check_out;
+                        RP.h_room_rp_least_day = _ConvertRatePlan.H_room_rp_least_day; //!string.IsNullOrEmpty(control.minStay) ? (Convert.ToInt32(!string.IsNullOrEmpty(control.minStay)) > 0 ? Convert.ToInt32(!string.IsNullOrEmpty(control.minStay)) : 1) : 1,
+                        RP.h_room_rp_longest_day = _ConvertRatePlan.H_room_rp_longest_day; //!string.IsNullOrEmpty(control.maxStay) ? (Convert.ToInt32(!string.IsNullOrEmpty(control.maxStay)) > 0 ? Convert.ToInt32(!string.IsNullOrEmpty(control.minStay)) : 365) : 365,
+                        RP.h_room_rp_invoice = _ConvertRatePlan.H_room_rp_invoice;
+                        RP.h_room_rp_breakfast_title = _ConvertRatePlan.H_room_rp_breakfast_title;
+                        RP.h_room_rp_ctime = System.DateTime.Now;
+                        RP.CustomerType = _ConvertRatePlan.paymentType; //control.needPay == "1" ? "Prepay" : null
+                        RP.GuaranteeRuleIds = _ConvertRatePlan.guaranteeRuleIds;
+                        using (estay_ecsdbDataContext db = ConnHelper.estay_ecsdb())
+                        {
+                            db.hotel_room_RP_info.InsertOnSubmit(RP);
+                            db.SubmitChanges();
+                        }
+                        #endregion
+                    }
+                }
+
             }
 
+            #endregion
 
-            //TODO: PriceDescript
+            //TODO: Price
+            #region Price
+            List<PriceDTO> ConvertPriceBatch = dc.RoomRateWS.Select(o => new PriceDTO
+            {
+                Hotel_id = _hotelService.GetHotelInfoByHid(o.hotelId.ToString()).hotel_id,
+                Room_id = _houseService.GetRoomInfo(o.rmType, _hotelService.GetHotelInfoByHid(o.hotelId.ToString()).hotel_id).room_id,
+                //!  这里会出现找不到 rpid
+                Room_rp_id = _ratePlanService.GetRatePlanInfo(_hotelService.GetHotelInfoByHid(o.hotelId.ToString()).hotel_id, o.rateCode).h_room_rp_id,
+                RoomTypeId = 0,
+                PriceID = 0,
+                Room_rp_price = Convert.ToDecimal(o.ratePrice),
+                Status = Convert.ToDecimal(o.ratePrice) == Convert.ToDecimal(-1.00) ? false : true,    //默认值1 ，1有效，-1无效
+                Cost = 0,
+                Weekend = 0,
+                MemberCost = 0,
+                WeekendCost = 0,
+                Addbed = -1,
+                Effectdate = Convert.ToDateTime(o.rateDate),
+                Ebeds = -1,
+                Aviebeds = -1,
+                Commission = 0,
+                //LastUpTime = System.DateTime.Now
+            }).ToList();
+
+            if (ConvertPriceBatch != null && ConvertPriceBatch.Count() > 0)
+            {
+                foreach (PriceDTO _ConvertPriceBatch in ConvertPriceBatch)
+                {
+                    hotel_room_RP_price price = new hotel_room_RP_price();
+                    price.Hotel_id = _ConvertPriceBatch.Hotel_id;
+                    price.Room_id = _ConvertPriceBatch.Room_id;
+                    price.Room_rp_id = _ConvertPriceBatch.Room_rp_id;
+                    price.RoomTypeId = _ConvertPriceBatch.RoomTypeId;
+                    price.PriceID = _ConvertPriceBatch.PriceID;
+                    price.Room_rp_price = _ConvertPriceBatch.Room_rp_price;
+                    price.Cost = _ConvertPriceBatch.Cost;
+                    price.Weekend = _ConvertPriceBatch.Weekend;
+                    price.MemberCost = _ConvertPriceBatch.MemberCost;
+                    price.WeekendCost = _ConvertPriceBatch.WeekendCost;
+                    price.Addbed = _ConvertPriceBatch.Addbed;
+                    price.Effectdate = _ConvertPriceBatch.Effectdate;
+                    price.Ebeds = _ConvertPriceBatch.Ebeds;
+                    price.Aviebeds = _ConvertPriceBatch.Aviebeds;
+                    price.Status = _ConvertPriceBatch.Status;
+                    price.Commission = _ConvertPriceBatch.Commission;
+                    price.LastUpTime = System.DateTime.Now;
+                    using (estay_ecsdbDataContext db = ConnHelper.estay_ecsdb())
+                    {
+                        db.hotel_room_RP_price.InsertOnSubmit(price);
+                        db.SubmitChanges();
+                    }
+                }
+                //x dc.SubmitChanges();
+            }
+            #endregion
 
         }
 

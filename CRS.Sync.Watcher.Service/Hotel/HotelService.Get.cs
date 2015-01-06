@@ -103,7 +103,12 @@ namespace CRS.Sync.Watcher.Service.Hotel
 
         public hotel_info GetHotelInfoByHid(string h_id)
         {
-            return dc.hotel_info.Where(o => o.h_id == h_id).FirstOrDefault();
+            hotel_info result = null;
+            using (estay_ecsdbDataContext db = ConnHelper.estay_ecsdb())
+            {
+                result = dc.hotel_info.Where(o => o.h_id == h_id).FirstOrDefault();
+            }
+            return result;
         }
 
         /// <summary>

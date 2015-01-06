@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="estay_ecs_1210" Class="estay_ecsdbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=202.104.149.179\MSSQL2012QY,1455;Initial Catalog=estay_ecs_1210;Persist Security Info=True;User ID=webApplication" SettingsObjectName="CRS.Sync.Watcher.Linq.Properties.Settings" SettingsPropertyName="estay_ecs_1210ConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=202.104.149.179\MSSQL2012QY,1455;Initial Catalog=estay_ecs_1210;User ID=webApplication" SettingsObjectName="CRS.Sync.Watcher.Linq.Properties.Settings" SettingsPropertyName="estay_ecs_1210ConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.city_info" Member="city_info">
     <Type Name="city_info">
       <Column Name="city_id" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -383,6 +383,35 @@
       <Column Name="syncstatus" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.hotel_room_RP_price_batch" Member="hotel_room_RP_price_batch">
+    <Type Name="hotel_room_RP_price_batch">
+      <Column Name="Hpbid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Hotel_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Room_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Room_rp_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoomTypeId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PriceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Cost" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Weekend" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="MemberCost" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="WeekendCost" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Addbed" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="Uid" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="HotelUid" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Idate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Room_rp_start_time" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Room_rp_end_time" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Hpdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HpStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsAudit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AuditUid" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AuditDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AuditStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Commission" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.RoomRateWS" Member="RoomRateWS">
     <Type Name="RoomRateWS">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -396,7 +425,7 @@
       <Column Name="rmTypeEDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ratePrice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
       <Column Name="rateCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="rateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="rateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="rmType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="rmTypeCDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="rmTypeCName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />

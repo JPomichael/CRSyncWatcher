@@ -158,6 +158,18 @@ namespace CRS.Sync.Watcher.Service.RatePlan
             return null;
         }
 
+        /// <summary>
+        /// 获取产品信息- 酒店编号（我库）， rateCode
+        /// </summary>
+        /// <param name="hotel_id"></param>
+        /// <param name="rateCode"></param>
+        /// <returns></returns>
+        public hotel_room_RP_info GetRatePlanInfo(int hotel_id, string rateCode)
+        {
+            return dc.hotel_room_RP_info.Where(o => o.hotel_id == hotel_id && o.RatePlanId == rateCode).FirstOrDefault();
+
+        }
+
 
     }
 }
