@@ -57,15 +57,18 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Hotel
                         //! 检测/更新本机
                         foreach (var _hoteList in hoteList)
                         {
+
                             if (!_hotelService.CheckIsAny(_hoteList))
                             {
                                 //!  录入公寓
+                                _hoteList.h_ctime = System.DateTime.Now;
                                 _hotelService.Add(_hoteList);
                                 HotelUpperService(_fileSavePath, _hoteList);
                             }
                             else
                             {
                                 //!  更新
+                                _hoteList.h_utime = System.DateTime.Now;
                                 _hotelService.Update(_hoteList);
                                 HotelUpperService(_fileSavePath, _hoteList);
                             }
@@ -118,12 +121,18 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Hotel
                         {
                             //! 检验是否存在当前房型
                             if (!_houseService.CheckIsAny(_roomList))
+                            {
+                                _roomList.h_r_ctime = System.DateTime.Now;
                                 _houseService.Add(_roomList);
+                            }
                             else
-                                //! 已存在 则更新
+                            {       //! 已存在 则更新
+                                _roomList.h_r_utime = System.DateTime.Now;
                                 _houseService.Update(_roomList);
+                            }
                             //! 房型图片
                             RoomPhotoUpdate(rmTypes, _roomList);
+
                         }
                     }
                 }
