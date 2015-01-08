@@ -16,7 +16,7 @@ using System.Xml;
 using System.Xml.Linq;
 
 [assembly: log4net.Config.XmlConfigurator(Watch = true)]
-namespace CRS.Sync.Watcher.ConsoleApplication.Demo
+namespace CRS.Sync.Watcher.ConsoleApplication.Hotel
 {
     /// <summary>
     /// demo 尝试调用接口
@@ -37,11 +37,10 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
         //! 创建日志记录组件实例  
         public static ILog log = log4net.LogManager.GetLogger(typeof(Program));
 
-
         public static void Main(string[] args)
         {
             //!  Title
-            Console.Title = ("CRS SYNC WATHER");
+            Console.Title = ("CRS HotelInfo Sync");
 
             #region 文件保存目录
             if (!Directory.Exists(staticFolderSavePath))
@@ -52,58 +51,26 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
 
             #region Start Sync...
 
-            //!  基础信息
-            //Base _base = new Base();
-            //messages += _base.SyncService(staticFolderSavePath);
 
-            //!  公寓信息
-            //Hotel _hotel = new Hotel();
-            //CRS.Sync.Watcher.Service.WCFMobileServer.CRSHotelParamsDTO _CRSHotelParamsDTO = new Service.WCFMobileServer.CRSHotelParamsDTO();
-            //messages += _hotel.SyncService(_CRSHotelParamsDTO, staticFolderSavePath);
-
-            locking locking = new locking();
-            //在t1线程中调用LockMe，并将deadlock设为true（将出现死锁）
-            Thread T = new Thread(locking.LockMe);
-            T.Start(true);
-            Thread.Sleep(Convert.ToInt32(StringHelper.appSettings("RatePlanSyncTime")));
+            HoteLocking hoteLocking = new HoteLocking();
+            Thread T2 = new Thread(hoteLocking.LockHotelMe);
+            T2.Start(true);
+            Thread.Sleep(Convert.ToInt32(StringHelper.appSettings("HotelSyncTime")));//x Convert.ToInt32(StringHelper.appSettings("HotelSyncTime"))
             //在主线程中lock c1
-            lock (locking)
+            lock (hoteLocking)
             {
                 //调用被lock的方法，并试图将deadlock解除
-                locking.LockMe(false);
+                hoteLocking.LockHotelMe(false);
             }
 
             #endregion
         }
 
-        /// <summary>
-        /// 到达时间的时候执行事件
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="e"></param>
-        public static void OnTimedEvent(object source, ElapsedEventArgs e)
-        {
-            Stopwatch s = new Stopwatch();
-            s.Start();
-
-            Tip("\r\n 同步于：" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "", ConsoleColor.Green);
-            Tip("", ConsoleColor.Gray);
-            //! 收费计划
-            RatePlan _ratePlan = new RatePlan();
-            //x _ratePlan.PriceService();
-            //x _ratePlan.PriceDescriptService();
-            _ratePlan.SyncDataBaseService();
-            s.Stop();
-        }
-
-        /// <summary>
-        /// 加锁
-        /// </summary>
-        public class locking
+        public class HoteLocking
         {
             private bool deadlocked = true;
             //这个方法用到了lock，我们希望lock的代码在同一时刻只能由一个线程访问
-            public void LockMe(object o)
+            public void LockHotelMe(object o)
             {
                 lock (this)
                 {
@@ -113,21 +80,28 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                         Stopwatch s = new Stopwatch();
                         s.Start();
 
-                        Tip("\r\n 同步于：" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "", ConsoleColor.Green);
-                        Tip("", ConsoleColor.Gray);
-                        //! 收费计划
-                        RatePlan _ratePlan = new RatePlan();
-                        //x _ratePlan.PriceService();
-                        //x _ratePlan.PriceDescriptService();
-                        _ratePlan.SyncDataBaseService();
+                        //x Tip("\r\n 同步于：" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "", ConsoleColor.Green);
+                        //x Tip("", ConsoleColor.Gray);
+                        log.Info("\r\n HotelSync同步于：" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "");
+
+                        //!  公寓信息
+                        Hotel _hotel = new Hotel();
+                        CRS.Sync.Watcher.Service.WCFMobileServer.CRSHotelParamsDTO _CRSHotelParamsDTO = new Service.WCFMobileServer.CRSHotelParamsDTO();
+                        _hotel.SyncService(_CRSHotelParamsDTO, staticFolderSavePath);
+
                         s.Stop();
-                        Console.WriteLine("耗时：" + s.Elapsed.Minutes);
+                        log.Info("\r\n 耗时：" + s.Elapsed.Minutes + "");
                         deadlocked = (bool)o;
-                        Thread.Sleep(100);
+                        log.Info("\r\n 下次同步将于：" + Convert.ToInt32(StringHelper.appSettings("HotelSyncTime")) / 60000 + "分钟后");
+                        Thread.Sleep(Convert.ToInt32(StringHelper.appSettings("HotelSyncTime")));
+
                     }
                 }
             }
+
         }
+
+
 
         #region 控制台设置
         /// <summary>

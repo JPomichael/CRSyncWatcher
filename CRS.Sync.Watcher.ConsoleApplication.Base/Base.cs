@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
-namespace CRS.Sync.Watcher.ConsoleApplication.Demo
+namespace CRS.Sync.Watcher.ConsoleApplication.Base
 {
     /// <summary>
     /// 公寓基础

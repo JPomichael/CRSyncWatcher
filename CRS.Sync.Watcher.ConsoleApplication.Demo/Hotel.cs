@@ -7,7 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace CRS.Sync.Watcher.ConsoleApplication.Demo
+namespace CRS.Sync.Watcher.ConsoleApplication.Hotel
 {
     public class Hotel
     {
@@ -24,9 +24,8 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
         /// <param name="_CRSHotelParamsDTO">请求对象</param>
         /// <param name="staticFolderSavePath">保存目录</param>
         /// <returns></returns>
-        public string SyncService(CRS.Sync.Watcher.Service.WCFMobileServer.CRSHotelParamsDTO _CRSHotelParamsDTO, string staticFolderSavePath)
+        public void SyncService(CRS.Sync.Watcher.Service.WCFMobileServer.CRSHotelParamsDTO _CRSHotelParamsDTO, string staticFolderSavePath)
         {
-            string messages = "";
             string _filename = "hotel.xml";
             //!   获取完整路径
             string _fileSavePath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory + "\\", staticFolderSavePath + _filename);
@@ -62,23 +61,23 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                             {
                                 //!  录入公寓
                                 _hotelService.Add(_hoteList);
-                                messages = HotelUpperService(messages, _fileSavePath, _hoteList);
+                                HotelUpperService(_fileSavePath, _hoteList);
                             }
                             else
                             {
                                 //!  更新
                                 _hotelService.Update(_hoteList);
-                                messages = HotelUpperService(messages, _fileSavePath, _hoteList);
+                                HotelUpperService(_fileSavePath, _hoteList);
                             }
                         }
                     }
                     else
-                        messages += "GetCRSHotelInterface 接口返回 NULL!\r\n";
+                        Console.WriteLine("GetCRSHotelInterface 接口返回 NULL!");
                 }
                 else
-                    messages += "GetCRSHotelInterface 接口返回出错！！！\r\n";
+                    Console.WriteLine("GetCRSHotelInterface 接口返回 hotelGetList.result=" + hotelGetList.result + "");
             }
-            return messages;
+            Console.WriteLine("GetCRSHotelInterface 返回为NULL!");
         }
 
         /// <summary>
@@ -88,7 +87,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
         /// <param name="_fileSavePath"></param>
         /// <param name="_hoteList"></param>
         /// <returns></returns>
-        public string HotelUpperService(string messages, string _fileSavePath, hotel_info _hoteList)
+        public void HotelUpperService(string _fileSavePath, hotel_info _hoteList)
         {
             hotel_info hotel = GetHotelIdByHID(_hoteList);
             if (hotel != null)
@@ -96,18 +95,16 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                 //!  公寓图片操作
                 HotelPhotoUpdate(_fileSavePath, _hoteList, hotel.hotel_id);
                 //! 房型操作
-                messages += HouseService(_hoteList, hotel.hotel_id);
+                HouseService(_hoteList, hotel.hotel_id);
             }
-            return messages;
         }
 
         /// <summary>
         /// 房型操作
         /// </summary>
         /// <param name="_hoteList"></param>
-        public string HouseService(hotel_info _hoteList, int hotel_id)
+        public void HouseService(hotel_info _hoteList, int hotel_id)
         {
-            string messages = "";
             CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeGet _RmTypeGet = _houseService.GetCRSRmTypeInterface(int.Parse(_hoteList.h_id), "", "", "");
             if (_RmTypeGet != null)
             {
@@ -131,10 +128,10 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                     }
                 }
                 else
-                    messages = "GetCRSRmTypeInterface 接口返回出错！！！\r\n";
+                    Console.WriteLine("监测 hotel_id= " + hotel_id + " GetCRSRmTypeInterface 接口返回result == " + _RmTypeGet.result + "");
             }
-
-            return messages;
+            else
+                Console.WriteLine("监测 hotel_id= " + hotel_id + " GetCRSRmTypeInterface 接口返回为NULL");
         }
 
         /// <summary>

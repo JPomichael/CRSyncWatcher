@@ -9,13 +9,12 @@ using CRS.Sync.Watcher.Linq;
 using System.Linq.Expressions;
 using System.Collections;
 using log4net;
-using Devart.Data.Linq;
 using CRS.Sync.Watcher.Domain.Dto;
 using System.Threading;
 using System.Data.SqlClient;
 using System.Data.Common;
 
-namespace CRS.Sync.Watcher.ConsoleApplication.Demo
+namespace CRS.Sync.Watcher.ConsoleApplication.RatePlan
 {
     public class RatePlan
     {
@@ -248,7 +247,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                         #endregion
                     }
 
-                    Console.WriteLine("检测到 ratePlanId= " + _ConvertRatePlan.ratePlanId + " 有变动");
+                    Console.WriteLine("\r\n 监测到 ratePlanId= " + _ConvertRatePlan.ratePlanId + " 产品数据有变动");
 
 
                     //TODO: Price
@@ -304,7 +303,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                                 {
                                     db.hotel_room_RP_price.InsertOnSubmit(price);
                                     db.SubmitChanges();
-                                    Console.WriteLine("监测到 Room_rp_id= " + _ConvertPriceBatch.Room_rp_id + " 价格数据有变动");
+                                    Console.WriteLine("监测到 Rp_price_id= " + price.Rp_price_id + " 价格数据有变动");
                                 }
                                 catch (Exception e)
                                 {

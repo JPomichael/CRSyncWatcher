@@ -7,8 +7,8 @@
     <ProjectGuid>{D5A161A1-899F-4CC0-936F-DACE2272C694}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CRS.Sync.Watcher.ConsoleApplication.Demo</RootNamespace>
-    <AssemblyName>CRS.Sync.Watcher.ConsoleApplication.Demo</AssemblyName>
+    <RootNamespace>CRS.Sync.Watcher.ConsoleApplication.Hotel</RootNamespace>
+    <AssemblyName>CRS.Sync.Watcher.ConsoleApplication.Hotel</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -54,7 +54,7 @@
     <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>CRS.Sync.Watcher.ConsoleApplication.Demo.Program</StartupObject>
+    <StartupObject>CRS.Sync.Watcher.ConsoleApplication.Hotel.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>Custom</TargetZone>
@@ -101,7 +101,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Hotel.cs" />
-    <Compile Include="Base.cs" />
     <Compile Include="House.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,7 +114,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="RatePlan.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CRS.Sync.Watcher.DLL\CRS.Sync.Watcher.DLL.csproj">
