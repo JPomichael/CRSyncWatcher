@@ -32,7 +32,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.RatePlan
         //	// 用API安装事件处理
         //	static ConsoleCtrlDelegate newDelegate=new ConsoleCtrlDelegate(HandlerRoutine);
 
-     
+
         static void Main(string[] args)
         {
             //!  Title
@@ -83,13 +83,32 @@ namespace CRS.Sync.Watcher.ConsoleApplication.RatePlan
                         s.Stop();
                         log.Info("\r\n 耗时：" + s.Elapsed.Minutes + "");
                         deadlocked = (bool)o;
-                        log.Info("\r\n 下次同步将于：" + Convert.ToInt32(StringHelper.appSettings("RatePlanSyncTime")) / 60000 + "分钟后");
+                        //x log.Info("\r\n 下次同步将于：" + Convert.ToInt32(StringHelper.appSettings("RatePlanSyncTime")) / 60000 + "分钟后");
+                        TipTime(Convert.ToInt32(StringHelper.appSettings("RatePlanSyncTime")) / 1000);
                         Thread.Sleep(Convert.ToInt32(StringHelper.appSettings("RatePlanSyncTime")));
-                        
+
                     }
                 }
             }
 
+        }
+
+        public static void TipTime(int dueInSeconds)
+        {
+            DateTime dueTime = DateTime.Now + TimeSpan.FromSeconds(dueInSeconds);
+            int top = Console.CursorTop, left = Console.CursorLeft;
+
+            System.Threading.ThreadPool.QueueUserWorkItem(delegate(object o)
+            {
+                while (true)
+                {
+                    TimeSpan remaining = dueTime - DateTime.Now;
+                    if (remaining.TotalSeconds <= 0) return;
+                    Console.SetCursorPosition(left, top);
+                    Console.Write(string.Format("距下次执行时间：{0,2}", (int)remaining.TotalSeconds + " 秒..."));
+                    System.Threading.Thread.Sleep(1000);
+                }
+            });
         }
 
     }

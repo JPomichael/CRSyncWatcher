@@ -48,39 +48,34 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Hotel
                         //! 保存/更新本机
                         XmlUtil.SerializeToXml(hotelGetList, hotelGetList.GetType(), _fileSavePath, null);
 
-                        //! 加载XML 到 HotelDTO
+                        //! 加载本地XML 到 HotelDTO
                         List<CRS.Sync.Watcher.Service.WCFMobileServer.HotelDTO> _hotelDtoList = _hotelService.GetReadXMLToObject(_fileSavePath);
 
-                        //!  模型转换
+                        //!  转换 Table Model
                         IEnumerable<hotel_info> hoteList = _hotelService.HotelDTOToModel(_hotelDtoList);
 
                         //! 检测/更新本机
                         foreach (var _hoteList in hoteList)
                         {
-
+                            int hotelid = 0;
                             if (!_hotelService.CheckIsAny(_hoteList))
                             {
-                                //!  录入公寓
-                                _hoteList.h_ctime = System.DateTime.Now;
-                                _hotelService.Add(_hoteList);
-                                HotelUpperService(_fileSavePath, _hoteList);
+                                hotelid = _hotelService.Add(_hoteList);
                             }
                             else
                             {
-                                //!  更新
                                 _hoteList.h_utime = System.DateTime.Now;
-                                _hotelService.Update(_hoteList);
-                                HotelUpperService(_fileSavePath, _hoteList);
+                                hotelid = _hotelService.Update(_hoteList);
                             }
+                            Console.WriteLine("监测到 hotel_id= " + hotelid + " 的公寓数据已更新.");
+                            HotelUpperService(_fileSavePath, _hoteList);
+
                         }
                     }
-                    else
-                        Console.WriteLine("GetCRSHotelInterface 接口返回 NULL!");
                 }
                 else
-                    Console.WriteLine("GetCRSHotelInterface 接口返回 hotelGetList.result=" + hotelGetList.result + "");
+                    Console.WriteLine("GetCRSHotelInterface 接口返回 hotelGetList.result=" + hotelGetList.result + "!");
             }
-            Console.WriteLine("GetCRSHotelInterface 返回为NULL!");
         }
 
         /// <summary>
@@ -119,28 +114,27 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Hotel
                         IEnumerable<hotel_room_info> roomList = _houseService.DTOToModel(rmTypes, hotel_id);
                         foreach (var _roomList in roomList)
                         {
+                            int roomid = 0;
                             //! 检验是否存在当前房型
                             if (!_houseService.CheckIsAny(_roomList))
                             {
-                                _roomList.h_r_ctime = System.DateTime.Now;
-                                _houseService.Add(_roomList);
+                                roomid = _houseService.Add(_roomList);
                             }
                             else
                             {       //! 已存在 则更新
                                 _roomList.h_r_utime = System.DateTime.Now;
-                                _houseService.Update(_roomList);
+                                roomid = _houseService.Update(_roomList);
                             }
                             //! 房型图片
                             RoomPhotoUpdate(rmTypes, _roomList);
+                            Console.WriteLine("监测到 room_id= " + roomid + " 的房型数据已更新. ");
 
                         }
                     }
                 }
                 else
-                    Console.WriteLine("监测 hotel_id= " + hotel_id + " GetCRSRmTypeInterface 接口返回result == " + _RmTypeGet.result + "");
+                    Console.WriteLine("监测 hotel_id= " + hotel_id + " GetCRSRmTypeInterface 接口返回 RmTypeGet.result == " + _RmTypeGet.result + "");
             }
-            else
-                Console.WriteLine("监测 hotel_id= " + hotel_id + " GetCRSRmTypeInterface 接口返回为NULL");
         }
 
         /// <summary>

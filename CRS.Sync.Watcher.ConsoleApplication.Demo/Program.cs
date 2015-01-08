@@ -51,7 +51,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Hotel
         //	// 用API安装事件处理
         //	static ConsoleCtrlDelegate newDelegate=new ConsoleCtrlDelegate(HandlerRoutine);
 
-     
+
         public static void Main(string[] args)
         {
             //!  Title
@@ -112,7 +112,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Hotel
                         s.Stop();
                         log.Info("\r\n 耗时：" + s.Elapsed.Minutes + "");
                         deadlocked = (bool)o;
-                        log.Info("\r\n 下次同步将于：" + Convert.ToInt32(StringHelper.appSettings("HotelSyncTime")) / 60000 + "分钟后");
+                        TipTime(Convert.ToInt32(StringHelper.appSettings("HotelSyncTime")) / 60000);
                         Thread.Sleep(Convert.ToInt32(StringHelper.appSettings("HotelSyncTime")));
 
                     }
@@ -121,7 +121,24 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Hotel
 
         }
 
+        public static void TipTime(int dueInMinutes)
+        {
+            DateTime dueTime = DateTime.Now + TimeSpan.FromMinutes(dueInMinutes);
+            int top = Console.CursorTop, left = Console.CursorLeft;
 
+            System.Threading.ThreadPool.QueueUserWorkItem(delegate(object o)
+            {
+                while (true)
+                {
+                    TimeSpan remaining = dueTime - DateTime.Now;
+                    if (remaining.Minutes <= 0) return;
+
+                    Console.SetCursorPosition(left, top);
+                    Console.Write(string.Format("距下次执行时间：{0,2}", (int)remaining.TotalMinutes) + " 分钟...");
+                    System.Threading.Thread.Sleep(1000);
+                }
+            });
+        }
 
         #region 控制台设置
         /// <summary>

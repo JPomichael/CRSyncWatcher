@@ -192,6 +192,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.RatePlan
             {
                 foreach (RatePlanDTO _ConvertRatePlan in ConvertRatePlan)
                 {
+                    int h_room_rp_id = 0;
                     hotel_room_RP_info rp_info = _ratePlanService.GetRatePlanInfo(_ConvertRatePlan.Hotel_id, _ConvertRatePlan.ratePlanId);
                     if (rp_info != null)
                     {
@@ -211,7 +212,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.RatePlan
                             editRP.h_room_rp_longest_day = _ConvertRatePlan.H_room_rp_longest_day; //!string.IsNullOrEmpty(control.maxStay) ? (Convert.ToInt32(!string.IsNullOrEmpty(control.maxStay)) > 0 ? Convert.ToInt32(!string.IsNullOrEmpty(control.minStay)) : 365) : 365,
                             editRP.h_room_rp_invoice = _ConvertRatePlan.H_room_rp_invoice;
                             editRP.h_room_rp_breakfast_title = _ConvertRatePlan.H_room_rp_breakfast_title;
-                            editRP.h_room_rp_ctime = System.DateTime.Now;
+                            editRP.h_room_rp_utime = System.DateTime.Now;
                             editRP.CustomerType = _ConvertRatePlan.paymentType; //control.needPay == "1" ? "Prepay" : null
                             editRP.GuaranteeRuleIds = _ConvertRatePlan.guaranteeRuleIds;
                             //x db.hotel_room_RP_info.DeleteOnSubmit(db.hotel_room_RP_info.Where(o => o.h_room_rp_id == rp_info.h_room_rp_id).FirstOrDefault());
@@ -222,6 +223,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.RatePlan
                                     db.hotel_room_RP_price.DeleteOnSubmit(_price);
                             }
                             db.SubmitChanges();
+                            h_room_rp_id = editRP.h_room_rp_id;
                         }
                         #endregion
                     }
@@ -248,37 +250,37 @@ namespace CRS.Sync.Watcher.ConsoleApplication.RatePlan
                         {
                             db.hotel_room_RP_info.InsertOnSubmit(RP);
                             db.SubmitChanges();
+                            h_room_rp_id = RP.h_room_rp_id;
                         }
                         #endregion
                     }
 
-                    Console.WriteLine("\r\n 监测到 ratePlanId= " + _ConvertRatePlan.ratePlanId + " 产品数据有变动");
+                    Console.WriteLine("监测到 h_room_rp_id= " + h_room_rp_id + " 产品数据有变动");
 
-
-                    //TODO: Price
                     //x  若不及时补充RatePlan 下Price 会造成有RP 无Price
                     #region Price
-                    List<PriceDTO> ConvertPriceBatch = dc.RoomRateWS.Where(o => o.rateCode == _ConvertRatePlan.ratePlanId).Select(o => new PriceDTO
-                    {
-                        Hotel_id = _ConvertRatePlan.Hotel_id,
-                        Room_id = _houseService.GetRoomInfo(o.rmType, _ConvertRatePlan.Hotel_id).room_id,
-                        //!  这里会出现找不到 rpid
-                        Room_rp_id = _ratePlanService.GetRatePlanInfo(_ConvertRatePlan.Hotel_id, o.rateCode).h_room_rp_id,
-                        RoomTypeId = 0,
-                        PriceID = 0,
-                        Room_rp_price = Convert.ToDecimal(o.ratePrice),
-                        Status = Convert.ToDecimal(o.ratePrice) == Convert.ToDecimal(-1.00) ? false : true,    //默认值1 ，1有效，-1无效
-                        Cost = 0,
-                        Weekend = 0,
-                        MemberCost = 0,
-                        WeekendCost = 0,
-                        Addbed = -1,
-                        Effectdate = Convert.ToDateTime(o.rateDate),
-                        Ebeds = -1,
-                        Aviebeds = -1,
-                        Commission = 0,
-                        //LastUpTime = System.DateTime.Now
-                    }).ToList();
+                    List<PriceDTO> ConvertPriceBatch = dc.RoomRateWS.Where(o => o.rateCode == _ConvertRatePlan.ratePlanId)
+                        .Select(o => new PriceDTO
+                        {
+                            Hotel_id = _ConvertRatePlan.Hotel_id,
+                            Room_id = _houseService.GetRoomInfo(o.rmType, _ConvertRatePlan.Hotel_id).room_id,
+                            //!  这里会出现找不到 rpid
+                            Room_rp_id = _ratePlanService.GetRatePlanInfo(_ConvertRatePlan.Hotel_id, o.rateCode).h_room_rp_id,
+                            RoomTypeId = 0,
+                            PriceID = 0,
+                            Room_rp_price = Convert.ToDecimal(o.ratePrice),
+                            Status = Convert.ToDecimal(o.ratePrice) == Convert.ToDecimal(-1.00) ? false : true,    //默认值1 ，1有效，-1无效
+                            Cost = 0,
+                            Weekend = 0,
+                            MemberCost = 0,
+                            WeekendCost = 0,
+                            Addbed = -1,
+                            Effectdate = Convert.ToDateTime(o.rateDate),
+                            Ebeds = -1,
+                            Aviebeds = -1,
+                            Commission = 0,
+                            //LastUpTime = System.DateTime.Now
+                        }).ToList();
 
                     if (ConvertPriceBatch != null && ConvertPriceBatch.Count() > 0)
                     {

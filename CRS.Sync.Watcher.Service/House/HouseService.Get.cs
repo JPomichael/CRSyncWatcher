@@ -58,7 +58,6 @@ namespace CRS.Sync.Watcher.Service.House
                 h_r_acreage = "1",
                 h_r_floor = "1",
                 h_r_bed_type = o.CName,
-
             }).ToList();
             return result;
         }

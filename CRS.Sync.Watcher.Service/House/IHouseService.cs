@@ -13,9 +13,11 @@ namespace CRS.Sync.Watcher.Service.House
         #endregion
 
         bool AddList(IEnumerable<hotel_room_info> roomlist);
-        bool Add(hotel_room_info room);
+        //bool Add(hotel_room_info room);
+        int Add(hotel_room_info room);
 
-        bool Update(hotel_room_info house);
+        //bool Update(hotel_room_info house);
+        int Update(hotel_room_info house);
         bool Delete(int room_id, int? hotel_id);
         bool Delete(int[] idList);
         bool DeleteTrue(IEnumerable<hotel_room_info> houselist);

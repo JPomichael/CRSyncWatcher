@@ -24,21 +24,28 @@ namespace CRS.Sync.Watcher.Service.House
             return result;
         }
 
-        public bool Add(hotel_room_info room)
+        //public bool Add(hotel_room_info room)
+        //{
+        //    bool result = false;
+        //    try
+        //    {
+
+        //        dc.hotel_room_info.InsertOnSubmit(room);
+        //        dc.SubmitChanges();
+        //        result = true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //    }
+        //    return result;
+        //}
+
+        public int Add(hotel_room_info room)
         {
-            bool result = false;
-            try
-            {
-
-                dc.hotel_room_info.InsertOnSubmit(room);
-                dc.SubmitChanges();
-                result = true;
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return result;
+            dc.hotel_room_info.InsertOnSubmit(room);
+            dc.SubmitChanges();
+            return room.room_id;
         }
     }
 }

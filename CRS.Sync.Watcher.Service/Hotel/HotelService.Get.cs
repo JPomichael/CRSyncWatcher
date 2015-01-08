@@ -195,7 +195,8 @@ namespace CRS.Sync.Watcher.Service.Hotel
                 //photo1 = o.Element("photo1").Value,
                 //photo2 = o.Element("photo2").Value,
                 //photo3 = o.Element("photo3").Value,
-                code = o.code
+                code = o.code,
+                h_ctime = System.DateTime.Now,
             }).AsEnumerable();
             return hoteList;
         }
