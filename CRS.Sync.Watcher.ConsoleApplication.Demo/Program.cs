@@ -29,14 +29,14 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
         public static CRS.Sync.Watcher.Service.Province.IProvinceService _provinceService = new CRS.Sync.Watcher.Service.Province.ProvinceService();
         public static CRS.Sync.Watcher.Service.City.ICityService _cityService = new CRS.Sync.Watcher.Service.City.CityService();
         public static CRS.Sync.Watcher.Service.Star.IStarService _starService = new CRS.Sync.Watcher.Service.Star.StarService();
-        private static object ojb = new object();
-
         #endregion
 
+        private static object ojb = new object();
         //!  通用代码保存目录
         public static string staticFolderSavePath = StringHelper.appSettings("staticFolderSavePath");
         //! 创建日志记录组件实例  
         public static ILog log = log4net.LogManager.GetLogger(typeof(Program));
+
 
         public static void Main(string[] args)
         {
@@ -51,7 +51,6 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
             #endregion
 
             #region Start Sync...
-            //System.Timers.Timer t = new System.Timers.Timer();
 
             //!  基础信息
             //Base _base = new Base();
@@ -62,13 +61,11 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
             //CRS.Sync.Watcher.Service.WCFMobileServer.CRSHotelParamsDTO _CRSHotelParamsDTO = new Service.WCFMobileServer.CRSHotelParamsDTO();
             //messages += _hotel.SyncService(_CRSHotelParamsDTO, staticFolderSavePath);
 
-
-
             locking locking = new locking();
             //在t1线程中调用LockMe，并将deadlock设为true（将出现死锁）
             Thread T = new Thread(locking.LockMe);
             T.Start(true);
-            Thread.Sleep(18000);
+            Thread.Sleep(Convert.ToInt32(StringHelper.appSettings("RatePlanSyncTime")));
             //在主线程中lock c1
             lock (locking)
             {
@@ -76,22 +73,14 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                 locking.LockMe(false);
             }
 
-
-            //t = new System.Timers.Timer(18000);//实例化Timer类，设置时间间隔 
-            //t.Start();
-            //t.Elapsed += new System.Timers.ElapsedEventHandler(OnTimedEvent);//到达时间的时候执行事件
-            //t.AutoReset = true;//设置是执行一次（false）还是一直执行(true)
-            //t.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件
-            //while (true)
-            //{
-            //    //Tip("定时启动于： " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " 线程：" + Thread.CurrentThread.ManagedThreadId.ToString() + "", null);
-            //    Thread.Sleep(100);
-            //}
-            //x System.Diagnostics.Process.Start().WaitForExit();
-            ////等待此程序执行完毕后在执行
             #endregion
         }
 
+        /// <summary>
+        /// 到达时间的时候执行事件
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="e"></param>
         public static void OnTimedEvent(object source, ElapsedEventArgs e)
         {
             Stopwatch s = new Stopwatch();
@@ -107,7 +96,9 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
             s.Stop();
         }
 
-
+        /// <summary>
+        /// 加锁
+        /// </summary>
         public class locking
         {
             private bool deadlocked = true;
@@ -130,8 +121,9 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                         //x _ratePlan.PriceDescriptService();
                         _ratePlan.SyncDataBaseService();
                         s.Stop();
+                        Console.WriteLine("耗时：" + s.Elapsed.Minutes);
                         deadlocked = (bool)o;
-                        Thread.Sleep(18000);
+                        Thread.Sleep(100);
                     }
                 }
             }

@@ -247,67 +247,86 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo
                         }
                         #endregion
                     }
-                }
 
-            }
+                    Console.WriteLine("检测到 ratePlanId= " + _ConvertRatePlan.ratePlanId + " 有变动");
 
-            #endregion
 
-            //TODO: Price
-            #region Price
-            List<PriceDTO> ConvertPriceBatch = dc.RoomRateWS.Select(o => new PriceDTO
-            {
-                Hotel_id = _hotelService.GetHotelInfoByHid(o.hotelId.ToString()).hotel_id,
-                Room_id = _houseService.GetRoomInfo(o.rmType, _hotelService.GetHotelInfoByHid(o.hotelId.ToString()).hotel_id).room_id,
-                //!  这里会出现找不到 rpid
-                Room_rp_id = _ratePlanService.GetRatePlanInfo(_hotelService.GetHotelInfoByHid(o.hotelId.ToString()).hotel_id, o.rateCode).h_room_rp_id,
-                RoomTypeId = 0,
-                PriceID = 0,
-                Room_rp_price = Convert.ToDecimal(o.ratePrice),
-                Status = Convert.ToDecimal(o.ratePrice) == Convert.ToDecimal(-1.00) ? false : true,    //默认值1 ，1有效，-1无效
-                Cost = 0,
-                Weekend = 0,
-                MemberCost = 0,
-                WeekendCost = 0,
-                Addbed = -1,
-                Effectdate = Convert.ToDateTime(o.rateDate),
-                Ebeds = -1,
-                Aviebeds = -1,
-                Commission = 0,
-                //LastUpTime = System.DateTime.Now
-            }).ToList();
-
-            if (ConvertPriceBatch != null && ConvertPriceBatch.Count() > 0)
-            {
-                foreach (PriceDTO _ConvertPriceBatch in ConvertPriceBatch)
-                {
-                    hotel_room_RP_price price = new hotel_room_RP_price();
-                    price.Hotel_id = _ConvertPriceBatch.Hotel_id;
-                    price.Room_id = _ConvertPriceBatch.Room_id;
-                    price.Room_rp_id = _ConvertPriceBatch.Room_rp_id;
-                    price.RoomTypeId = _ConvertPriceBatch.RoomTypeId;
-                    price.PriceID = _ConvertPriceBatch.PriceID;
-                    price.Room_rp_price = _ConvertPriceBatch.Room_rp_price;
-                    price.Cost = _ConvertPriceBatch.Cost;
-                    price.Weekend = _ConvertPriceBatch.Weekend;
-                    price.MemberCost = _ConvertPriceBatch.MemberCost;
-                    price.WeekendCost = _ConvertPriceBatch.WeekendCost;
-                    price.Addbed = _ConvertPriceBatch.Addbed;
-                    price.Effectdate = _ConvertPriceBatch.Effectdate;
-                    price.Ebeds = _ConvertPriceBatch.Ebeds;
-                    price.Aviebeds = _ConvertPriceBatch.Aviebeds;
-                    price.Status = _ConvertPriceBatch.Status;
-                    price.Commission = _ConvertPriceBatch.Commission;
-                    price.LastUpTime = System.DateTime.Now;
-                    using (estay_ecsdbDataContext db = ConnHelper.estay_ecsdb())
+                    //TODO: Price
+                    //x  若不及时补充RatePlan 下Price 会造成有RP 无Price
+                    #region Price
+                    List<PriceDTO> ConvertPriceBatch = dc.RoomRateWS.Where(o => o.rateCode == _ConvertRatePlan.ratePlanId).Select(o => new PriceDTO
                     {
-                        db.hotel_room_RP_price.InsertOnSubmit(price);
-                        db.SubmitChanges();
+                        Hotel_id = _ConvertRatePlan.Hotel_id,
+                        Room_id = _houseService.GetRoomInfo(o.rmType, _ConvertRatePlan.Hotel_id).room_id,
+                        //!  这里会出现找不到 rpid
+                        Room_rp_id = _ratePlanService.GetRatePlanInfo(_ConvertRatePlan.Hotel_id, o.rateCode).h_room_rp_id,
+                        RoomTypeId = 0,
+                        PriceID = 0,
+                        Room_rp_price = Convert.ToDecimal(o.ratePrice),
+                        Status = Convert.ToDecimal(o.ratePrice) == Convert.ToDecimal(-1.00) ? false : true,    //默认值1 ，1有效，-1无效
+                        Cost = 0,
+                        Weekend = 0,
+                        MemberCost = 0,
+                        WeekendCost = 0,
+                        Addbed = -1,
+                        Effectdate = Convert.ToDateTime(o.rateDate),
+                        Ebeds = -1,
+                        Aviebeds = -1,
+                        Commission = 0,
+                        //LastUpTime = System.DateTime.Now
+                    }).ToList();
+
+                    if (ConvertPriceBatch != null && ConvertPriceBatch.Count() > 0)
+                    {
+                        foreach (PriceDTO _ConvertPriceBatch in ConvertPriceBatch)
+                        {
+                            hotel_room_RP_price price = new hotel_room_RP_price();
+                            price.Hotel_id = _ConvertPriceBatch.Hotel_id;
+                            price.Room_id = _ConvertPriceBatch.Room_id;
+                            price.Room_rp_id = _ConvertPriceBatch.Room_rp_id;
+                            price.RoomTypeId = _ConvertPriceBatch.RoomTypeId;
+                            price.PriceID = _ConvertPriceBatch.PriceID;
+                            price.Room_rp_price = _ConvertPriceBatch.Room_rp_price;
+                            price.Cost = _ConvertPriceBatch.Cost;
+                            price.Weekend = _ConvertPriceBatch.Weekend;
+                            price.MemberCost = _ConvertPriceBatch.MemberCost;
+                            price.WeekendCost = _ConvertPriceBatch.WeekendCost;
+                            price.Addbed = _ConvertPriceBatch.Addbed;
+                            price.Effectdate = _ConvertPriceBatch.Effectdate;
+                            price.Ebeds = _ConvertPriceBatch.Ebeds;
+                            price.Aviebeds = _ConvertPriceBatch.Aviebeds;
+                            price.Status = _ConvertPriceBatch.Status;
+                            price.Commission = _ConvertPriceBatch.Commission;
+                            price.LastUpTime = System.DateTime.Now;
+                            using (estay_ecsdbDataContext db = ConnHelper.estay_ecsdb())
+                            {
+                                try
+                                {
+                                    db.hotel_room_RP_price.InsertOnSubmit(price);
+                                    db.SubmitChanges();
+                                    Console.WriteLine("监测到 Room_rp_id= " + _ConvertPriceBatch.Room_rp_id + " 价格数据有变动");
+                                }
+                                catch (Exception e)
+                                {
+                                    log.Error(e);
+                                    log.Debug("友好消息：" + e.Message + " \r\n Develoer：" + e.StackTrace + " ");
+                                }
+
+                            }
+
+                        }
+
+                        //x dc.SubmitChanges();
                     }
+                    #endregion
+
                 }
-                //x dc.SubmitChanges();
+
             }
+
             #endregion
+
+
 
         }
 
