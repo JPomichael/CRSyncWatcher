@@ -75,7 +75,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Hotel
             HoteLocking hoteLocking = new HoteLocking();
             Thread T2 = new Thread(hoteLocking.LockHotelMe);
             T2.Start(true);
-            Thread.Sleep(Convert.ToInt32(StringHelper.appSettings("HotelSyncTime")));//x Convert.ToInt32(StringHelper.appSettings("HotelSyncTime"))
+            Thread.Sleep(Convert.ToInt32(StringHelper.appSettings("HotelSyncTime")));
             //在主线程中lock c1
             lock (hoteLocking)
             {
@@ -110,7 +110,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Hotel
                         _hotel.SyncService(_CRSHotelParamsDTO, staticFolderSavePath);
 
                         s.Stop();
-                        log.Info("\r\n 耗时：" + s.Elapsed.Minutes + "");
+                        log.Info("本次耗时：" + s.Elapsed.Minutes + " 分钟.");
                         deadlocked = (bool)o;
                         TipTime(Convert.ToInt32(StringHelper.appSettings("HotelSyncTime")) / 60000);
                         Thread.Sleep(Convert.ToInt32(StringHelper.appSettings("HotelSyncTime")));

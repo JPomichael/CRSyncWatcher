@@ -87,7 +87,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Base
                         _base.SyncService(staticFolderSavePath);
 
                         s.Stop();
-                        log.Info("\r\n 耗时：" + s.Elapsed.Minutes + "");
+                        log.Info("本次耗时：" + s.Elapsed.Minutes + " 分钟.");
                         deadlocked = (bool)o;
                         //log.Info("\r\n 下次同步将于：" + Convert.ToInt32(StringHelper.appSettings("BaseSyncTime")) / 60000 + "分钟后");
                         TipTime(Convert.ToInt32(StringHelper.appSettings("BaseSyncTime")) / 60000);
