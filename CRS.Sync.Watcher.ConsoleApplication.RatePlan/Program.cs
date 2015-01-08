@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 
@@ -18,11 +19,29 @@ namespace CRS.Sync.Watcher.ConsoleApplication.RatePlan
         //! 创建日志记录组件实例  
         public static ILog log = log4net.LogManager.GetLogger(typeof(Program));
 
+        [DllImport("User32.dll", EntryPoint = "FindWindow")]
+        private static extern int FindWindow(string lpClassName, string lpWindowName);
+
+        [DllImport("user32.dll", EntryPoint = "GetSystemMenu")]
+        extern static IntPtr GetSystemMenu(IntPtr hWnd, IntPtr bRevert);
+
+        [DllImport("user32.dll", EntryPoint = "RemoveMenu")]
+        extern static int RemoveMenu(IntPtr hMenu, int nPos, int flags);
+
+
+        //	// 用API安装事件处理
+        //	static ConsoleCtrlDelegate newDelegate=new ConsoleCtrlDelegate(HandlerRoutine);
+
+     
         static void Main(string[] args)
         {
             //!  Title
             Console.Title = ("CRS RatePlanInfo Sync");
 
+            IntPtr windowHandle = (IntPtr)FindWindow(null, Process.GetCurrentProcess().MainWindowTitle);
+            IntPtr closeMenu = GetSystemMenu(windowHandle, IntPtr.Zero);
+            int SC_CLOSE = 0xF060;
+            RemoveMenu(closeMenu, SC_CLOSE, 0x0);
 
             //在t1线程中调用LockMe，并将deadlock设为true（将出现死锁）
             RatePlanLocking ratePlanLocking = new RatePlanLocking();
