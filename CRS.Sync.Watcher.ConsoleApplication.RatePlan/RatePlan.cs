@@ -33,7 +33,12 @@ namespace CRS.Sync.Watcher.ConsoleApplication.RatePlan
         public void PriceService()
         {
             //! 1. 获取source_id=6的供应商数据
-            List<hotel_info> hoteList = GetCRSHotelList().ToList();
+            List<hotel_info> hoteList = GetCRSHotelList().Select(o => new hotel_info
+            {
+                hotel_id = o.hotel_id,
+                h_id = o.h_id,
+                source_id = o.source_id
+            }).ToList();
             DateTime Check_in = System.DateTime.Now.Date;
             DateTime Check_out = Check_in.AddMonths(3).Date;
             foreach (hotel_info _hoteList in hoteList)
