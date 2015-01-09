@@ -27,7 +27,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FE5E497E-3AC8-4B3A-92A6-495522EED3B9}"
 	ProjectSection(SolutionItems) = preProject
 		changelog.md = changelog.md
+		Documents\CRSInterFaceResult.db = Documents\CRSInterFaceResult.db
+		Documents\CRS公寓数据入库表设计.docx = Documents\CRS公寓数据入库表设计.docx
+		Documents\CRS接口缺少字段.docx = Documents\CRS接口缺少字段.docx
+		Documents\Hotel Chain Guest Web Service - CRS中央预定XML数据接口说明.doc = Documents\Hotel Chain Guest Web Service - CRS中央预定XML数据接口说明.doc
+		Documents\Hotel Chain Guest Web Service - CRS中央预定XML数据接口说明（2014-12-23）.doc = Documents\Hotel Chain Guest Web Service - CRS中央预定XML数据接口说明（2014-12-23）.doc
 		README.md = README.md
+		Documents\SQL TABLE.sql = Documents\SQL TABLE.sql
+		Documents\SQLife TABLE.sql = Documents\SQLife TABLE.sql
 	EndProjectSection
 EndProject
 Global
