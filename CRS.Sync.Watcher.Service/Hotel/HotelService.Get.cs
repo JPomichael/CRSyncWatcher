@@ -101,6 +101,16 @@ namespace CRS.Sync.Watcher.Service.Hotel
             return dc.hotel_info.Where(o => o.hotel_id == hotel_id).FirstOrDefault();
         }
 
+        public hotel_info GetHotelInfoByHid(string h_id)
+        {
+            hotel_info result = null;
+            using (estay_ecsdbDataContext db = ConnHelper.estay_ecsdb())
+            {
+                result = dc.hotel_info.Where(o => o.h_id == h_id).FirstOrDefault();
+            }
+            return result;
+        }
+
         /// <summary>
         /// 获取多个hotel_info - 动态
         /// </summary>
@@ -185,7 +195,8 @@ namespace CRS.Sync.Watcher.Service.Hotel
                 //photo1 = o.Element("photo1").Value,
                 //photo2 = o.Element("photo2").Value,
                 //photo3 = o.Element("photo3").Value,
-
+                code = o.code,
+                h_ctime = System.DateTime.Now,
             }).AsEnumerable();
             return hoteList;
         }

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database Name="main" EntityNamespace="MainContext" ContextNamespace="MainContext" Class="MainDataContext" xmlns:ed="http://devart.com/schemas/EntityDeveloper/1.0" ed:Guid="de929b6f-c347-4e72-b591-dfdfaaef1cad" Provider="Devart.Data.SQLite.Linq.Provider.SQLiteDataProvider, Devart.Data.SQLite.Linq" Extended="true" xmlns="http://schemas.devart.com/linqconnect/mapping">
+  <Connection Mode="ConnectionString" ConnectionString="Data Source=E:\CRSInterFaceResult.db" Provider="Devart.Data.SQLite" />
+  <Table Name="&quot;main&quot;.RoomRateWS" Member="RoomRateWs">
+    <Type Name="RoomRateW" ed:Guid="5a1646a7-ef80-43cd-b5a9-467ed28cc477">
+      <Column Name="hotelId" Member="HotelId" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="True" ed:Guid="5cd6fa55-a7e9-4fa4-a873-99ea5ade8c4c" />
+      <Column Name="rmTypeEName" Member="RmTypeEName" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="3a0caa6f-0811-4803-bc3f-c1aef1b6a66d" />
+      <Column Name="breakfastEDesc" Member="BreakfastEDesc" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="a107c6b1-81a8-42be-a76c-84e791a97918" />
+      <Column Name="minVacRooms" Member="MinVacRooms" Type="System.Int32" DbType="INT" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="ee4d0db0-d8d2-43e5-b8d2-923ff93543da" />
+      <Column Name="rateCodeCName" Member="RateCodeCName" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="9f5fb639-3368-4f9f-a2f3-ec61ce419bc6" />
+      <Column Name="rateCodeEName" Member="RateCodeEName" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="666b0672-3cc8-4b17-a901-1895e62811f5" />
+      <Column Name="rmTypeEDesc" Member="RmTypeEDesc" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="f6b75e07-f041-4884-8018-d7f044e9e54a" />
+      <Column Name="ratePrice" Member="RatePrice" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="52d5bb1e-9308-4377-b832-10e6e5c79669" />
+      <Column Name="rateCode" Member="RateCode" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="cf349816-0249-474e-87af-f6a0c7cfde65" />
+      <Column Name="rateDate" Member="RateDate" Type="System.DateTime" DbType="DATE" CanBeNull="true" UpdateCheck="Never" Precision="0" ed:ValidateRequired="False" ed:Guid="e67f72ab-a51a-4705-a522-51d6c0fcdc7f" />
+      <Column Name="rmType" Member="RmType" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="065a2407-e9b9-42ed-afc1-deb8e1b52e35" />
+      <Column Name="rmTypeCDesc" Member="RmTypeCDesc" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="30ada61a-2b86-4d38-97db-b0bb41eaf9f9" />
+      <Column Name="rmTypeCName" Member="RmTypeCName" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="e6c5d798-c573-4505-b073-909699cff943" />
+      <Column Name="vacRooms" Member="VacRooms" Type="System.Int32" DbType="INT" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="eb7077df-766f-40af-805a-49e32a8dd8c2" />
+      <Column Name="breakfastDesc" Member="BreakfastDesc" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="8c9f30d8-c1c8-47b2-abec-1122c3e3b896" />
+      <Column Name="needPay" Member="NeedPay" Type="System.Int32" DbType="INT" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="ae3c04dc-1b8b-4638-9de3-4bf1ce771a88" />
+      <Column Name="needGuarant" Member="NeedGuarant" Type="System.Int32" DbType="INT" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="f2ae3bfa-ebcb-46f2-9e97-091590ae92bf" />
+      <Column Name="id" Member="Id" Type="System.Int32" AutoSync="OnInsert" DbType="INTEGER NOT NULL" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="True" ed:Guid="2ccf73b5-f68a-49f0-83de-7f8699ec9462" />
+    </Type>
+  </Table>
+  <Table Name="&quot;main&quot;.RateCodeControl" Member="RateCodeControls">
+    <Type Name="RateCodeControl" ed:Guid="195745ea-d68f-486d-a101-45d0b19ceda2">
+      <Column Name="hotelId" Member="HotelId" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="True" ed:Guid="46c862ce-e951-4540-8410-63356ecfdecd" />
+      <Column Name="rateCode" Member="RateCode" Type="System.String" DbType="VARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="True" ed:Guid="380fd9ca-5fb1-4796-a706-aea902b957e9" />
+      <Column Name="amendStatus" Member="AmendStatus" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="72189da9-0a91-45d2-a55a-1666f8f4a856" />
+      <Column Name="amendDays" Member="AmendDays" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="2848b46a-35aa-4ca9-9021-8b8a209d0500" />
+      <Column Name="cancelStatus" Member="CancelStatus" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="7094b6e1-3506-47f3-a64d-51df377229be" />
+      <Column Name="cancelDays" Member="CancelDays" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="f02cc02d-15ad-477a-ad06-90a4737b961f" />
+      <Column Name="needPay" Member="NeedPay" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="5b5b7dcf-a0a9-4c9c-985a-d4cee1cb8a2d" />
+      <Column Name="minStay" Member="MinStay" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="8643509f-c4b0-4a35-ba8e-42d5759d78d7" />
+      <Column Name="maxStay" Member="MaxStay" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="fc75156c-e8be-478a-a6f0-dde75ee14c08" />
+      <Column Name="booking" Member="Booking" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="1865b409-5dff-493a-9da1-bd1c413cfdfe" />
+      <Column Name="rmLimit" Member="RmLimit" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="6eda1f7e-04c2-4ccc-b83f-6786f02ad1ba" />
+      <Column Name="id" Member="Id" Type="System.Int32" AutoSync="OnInsert" DbType="INTEGER NOT NULL" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="True" ed:Guid="67d1b498-bef7-4696-8c5c-6a3c04bbc1a8" />
+      <Column Name="rmType" Member="RmType" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="3720d543-9665-4c88-a177-9a434a2e8f1c" />
+    </Type>
+  </Table>
+  <Table Name="&quot;main&quot;.RateCodeInfor" Member="RateCodeInfors">
+    <Type Name="RateCodeInfor" ed:Guid="ca0f38bd-3f71-4e6f-984e-ef17ab4ae305">
+      <Column Name="hotelId" Member="HotelId" Type="System.Int32" DbType="INT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="True" ed:Guid="b0318d0f-3ac7-4450-8908-f0cb99f32f6e" />
+      <Column Name="rateCode" Member="RateCode" Type="System.String" DbType="VARCHAR NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="True" ed:Guid="766518e7-75ab-4b07-a26f-b29524bc64f2" />
+      <Column Name="cName" Member="CName" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="c1aca833-96b9-4203-90a0-4974e8580fb1" />
+      <Column Name="eName" Member="EName" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="15f9e42e-1e0f-42cb-b7df-b568f506d4e8" />
+      <Column Name="memberType" Member="MemberType" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="efc3c4ab-9439-422c-8b9a-e2406d5c8691" />
+      <Column Name="cardType" Member="CardType" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="1cd2d81f-c954-4892-a64c-dbd9ed991927" />
+      <Column Name="isContract" Member="IsContract" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="096757f0-eef6-426f-a6d9-d6d233f4fb5a" />
+      <Column Name="currency" Member="Currency" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="7971e756-b825-40d8-8536-0e82325e2215" />
+      <Column Name="rateCat" Member="RateCat" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="29ab2393-d333-4dbf-9bc2-887ccaaf493e" />
+      <Column Name="begDate" Member="BegDate" Type="System.DateTime" DbType="DATETIME" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="a63f0f12-c4d0-499b-945b-247c235f90ac" />
+      <Column Name="endDate" Member="EndDate" Type="System.DateTime" DbType="DATETIME" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="6b5ccb8d-a51a-485d-b927-64c62a5035e8" />
+      <Column Name="isdiscount" Member="Isdiscount" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="a76d1662-e784-4a42-abff-431071fa5578" />
+      <Column Name="market" Member="Market" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="afddf9e6-69ec-4c0f-861e-509f4d93a4b3" />
+      <Column Name="source" Member="Source" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="6a4f92c8-ed09-4e62-a036-6185d99fec6e" />
+      <Column Name="weekenddays" Member="Weekenddays" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="09a9a43e-2daa-45f5-aead-1198c51f58b0" />
+      <Column Name="ptCoef" Member="PtCoef" Type="System.Int32" DbType="INT" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="f6791850-1127-47bb-92b8-8735be7b5022" />
+      <Column Name="discountOf" Member="DiscountOf" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="7cf60680-4f12-40eb-938b-a60272f508db" />
+      <Column Name="discountType" Member="DiscountType" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="31ff5bc3-59fd-4184-ae0b-87c2b9abbf38" />
+      <Column Name="discountValue" Member="DiscountValue" Type="System.Int32" DbType="INT" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="b050ba7e-fbbc-4805-b3d2-93a5513327a5" />
+      <Column Name="roundType" Member="RoundType" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="94e6f04e-2c44-474e-8c61-dc1d22938e2e" />
+      <Column Name="targetRound" Member="TargetRound" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="3f099e8c-d94f-4ea2-9f9b-765d368a25e8" />
+      <Column Name="status" Member="Status" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="fae9e501-d26d-4de4-a916-f23e17cf84a7" />
+      <Column Name="defaultShow" Member="DefaultShow" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="06be7e2b-8ad7-41ba-9984-5070041baeec" />
+      <Column Name="sellBegDate" Member="SellBegDate" Type="System.DateTime" DbType="DATETIME" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="da50281e-915b-4166-97d9-4155ffb70806" />
+      <Column Name="sellEndDate" Member="SellEndDate" Type="System.DateTime" DbType="DATETIME" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="3f9d5c06-df4f-400f-bbbf-6711b9cb7ee2" />
+      <Column Name="bookingThrough" Member="BookingThrough" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="bb556dd8-bcdf-40b9-98b9-10cec570cc36" />
+      <Column Name="aliasCn" Member="AliasCn" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="b384b4cd-e699-4bf6-880e-d147c3ebdefb" />
+      <Column Name="aliasEn" Member="AliasEn" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="5d5af776-4348-44ed-90bd-f00260602eb4" />
+      <Column Name="contractId" Member="ContractId" Type="System.Int32" DbType="INT" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="05e0a5c5-2b6d-41fe-98e3-1eb3f40289b5" />
+      <Column Name="dailyinvallocation" Member="Dailyinvallocation" Type="System.Int32" DbType="INT" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="7c1dbc70-0f47-42cd-be07-3cc5bca6580a" />
+      <Column Name="descript" Member="Descript" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="2254789c-a5cb-477e-8570-cc873fc452d8" />
+      <Column Name="edescript" Member="Edescript" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="507d3af7-a4f6-4cd5-9426-4938f8b632d7" />
+      <Column Name="frtMarket" Member="FrtMarket" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="f5850d9d-d3ed-4fa8-92d8-0727bbf5e427" />
+      <Column Name="frtSource" Member="FrtSource" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="f3d58a3c-126a-4cee-a3f6-c0fcb9318cd7" />
+      <Column Name="isUpward" Member="IsUpward" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="d39528f9-8d43-4d71-b65e-dcb080b32c4f" />
+      <Column Name="remarks" Member="Remarks" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="c5adf8ef-425f-4853-95d5-15847310237e" />
+      <Column Name="syncstatus" Member="Syncstatus" Type="System.String" DbType="VARCHAR" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="False" ed:Guid="e1b41bf8-9c11-49a1-b572-b30cc8981fc1" />
+      <Column Name="id" Member="Id" Type="System.Int32" AutoSync="OnInsert" DbType="INTEGER NOT NULL" IsReadOnly="true" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="True" ed:Guid="f62660f5-0041-4a2b-9486-ee93d23ff7fa" />
+    </Type>
+  </Table>
+</Database>

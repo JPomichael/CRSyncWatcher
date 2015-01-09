@@ -28,7 +28,8 @@ namespace CRS.Sync.Watcher.Service.Hotel
         /// </summary>
         /// <param name="hotel"></param>
         /// <returns></returns>
-        bool Add(hotel_info hotel);
+        //bool Add(hotel_info hotel);
+        int Add(hotel_info hotel);
 
         /// <summary>
         /// 添加酒店List
@@ -70,7 +71,8 @@ namespace CRS.Sync.Watcher.Service.Hotel
         /// </summary>
         /// <param name="hotel"></param>
         /// <returns></returns>
-        bool Update(hotel_info hotel);
+        //bool Update(hotel_info hotel);
+        int Update(hotel_info hotel);
 
         /// <summary>
         /// 检测公寓是否存在
@@ -106,5 +108,8 @@ namespace CRS.Sync.Watcher.Service.Hotel
         /// <param name="status"></param>
         /// <returns></returns>
         int ConvertStatus(string status);
+
+
+        hotel_info GetHotelInfoByHid(string h_id);
     }
 }

@@ -26,21 +26,28 @@ namespace CRS.Sync.Watcher.Service.Hotel
             return result;
         }
 
-        public bool Add(hotel_info hotel)
+        //public bool Add(hotel_info hotel)
+        //{
+        //    bool result = false;
+        //    try
+        //    {
+
+        //        dc.hotel_info.InsertOnSubmit(hotel);
+        //        dc.SubmitChanges();
+        //        result = true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //    }
+        //    return result;
+        //}
+
+        public int Add(hotel_info hotel)
         {
-            bool result = false;
-            try
-            {
-
-                dc.hotel_info.InsertOnSubmit(hotel);
-                dc.SubmitChanges();
-                result = true;
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return result;
+            dc.hotel_info.InsertOnSubmit(hotel);
+            dc.SubmitChanges();
+            return hotel.hotel_id;
         }
 
     }

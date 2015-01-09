@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.ThirdInterfaceDTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.MyDTO.ThirdInterfaceDTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:19374/MyMobileServer.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" />
-  <xs:import schemaLocation="http://localhost:19374/MyMobileServer.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" />
+  <xs:import schemaLocation="http://localhost:19374/MyMobileServer.svc?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" />
   <xs:complexType name="ValidateCodeMappingDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
@@ -15,56 +15,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ValidateCodeMappingDTO" nillable="true" type="tns:ValidateCodeMappingDTO" />
-  <xs:complexType name="CreateElongOrderParamsDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Cin" type="xs:dateTime" />
-      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" minOccurs="0" name="ConfirmType" type="q2:EnumConfirmationType" />
-      <xs:element minOccurs="0" name="ContactEmail" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ContantMobile" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ContantName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Cout" type="xs:dateTime" />
-      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" minOccurs="0" name="Currency" type="q3:EnumCurrencyCode" />
-      <xs:element minOccurs="0" name="CustomerIPAddress" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="EarliestArrivalTime" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="EstayOrderId" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="GuestNames" nillable="true" type="xs:string" />
-      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" minOccurs="0" name="GuestType" type="q4:EnumGuestTypeCode" />
-      <xs:element minOccurs="0" name="HotelId" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="LatestArrivalTime" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="NumOfRooms" type="xs:int" />
-      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" minOccurs="0" name="PaymentType" type="q5:EnumPaymentType" />
-      <xs:element minOccurs="0" name="RoomTypeId" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="RpId" type="xs:int" />
-      <xs:element minOccurs="0" name="totalPrice" type="xs:decimal" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="CreateElongOrderParamsDTO" nillable="true" type="tns:CreateElongOrderParamsDTO" />
-  <xs:complexType name="CreditCardDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CVV" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ExpirationMonth" type="xs:int" />
-      <xs:element minOccurs="0" name="ExpirationYear" type="xs:int" />
-      <xs:element minOccurs="0" name="HolderName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdNo" nillable="true" type="xs:string" />
-      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" minOccurs="0" name="IdType" type="q6:EnumIdType" />
-      <xs:element minOccurs="0" name="Number" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="CreditCardDTO" nillable="true" type="tns:CreditCardDTO" />
-  <xs:complexType name="ElongValidateOrderParamsDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="EarliestArrivalTime" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="LatestArrivalTime" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="Price" type="xs:decimal" />
-      <xs:element minOccurs="0" name="RatePlanId" type="xs:int" />
-      <xs:element minOccurs="0" name="RoomTypedId" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="endTime" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="hotelId" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="roomsNumber" type="xs:int" />
-      <xs:element minOccurs="0" name="startTime" type="xs:dateTime" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ElongValidateOrderParamsDTO" nillable="true" type="tns:ElongValidateOrderParamsDTO" />
   <xs:complexType name="EmailSMSTemplateCategoryDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="ID" type="xs:int" />
@@ -101,7 +51,7 @@
       <xs:element minOccurs="0" name="EmailTitle" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ID" type="xs:int" />
       <xs:element minOccurs="0" name="SMSTemplateContent" nillable="true" type="xs:string" />
-      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="SystemID" type="q7:EnumSystemID" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="SystemID" type="q2:EnumSystemID" />
       <xs:element minOccurs="0" name="TemplateCatagoryID" type="xs:int" />
       <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
     </xs:sequence>
@@ -117,7 +67,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="ApplyTime" type="xs:dateTime" />
       <xs:element minOccurs="0" name="ID" type="xs:int" />
-      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="IsAudit" type="q8:EnumAudit" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="IsAudit" type="q3:EnumAudit" />
       <xs:element minOccurs="0" name="LasestSendTime" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="LoopSendInterval" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="LoopSendIntervalUnit" nillable="true" type="xs:string" />
@@ -129,10 +79,10 @@
       <xs:element minOccurs="0" name="SendContent" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SendPriority" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="SendRuleID" type="xs:int" />
-      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="SendRuleType" type="q9:EnumSendRuleType" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="SendRuleType" type="q4:EnumSendRuleType" />
       <xs:element minOccurs="0" name="SendTimeDateTime" nillable="true" type="xs:dateTime" />
-      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="SendType" nillable="true" type="q10:EnumSendType" />
-      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="SendWay" nillable="true" type="q11:EnumSendWay" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="SendType" nillable="true" type="q5:EnumSendType" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="SendWay" nillable="true" type="q6:EnumSendWay" />
       <xs:element minOccurs="0" name="SendedCnt" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="SourceIDName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
@@ -145,10 +95,60 @@
       <xs:element minOccurs="0" name="LoopSendInterval" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="LoopSendIntervalUnit" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PlanToSendCnt" nillable="true" type="xs:int" />
-      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="SendRuleType" type="q12:EnumSendRuleType" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/MobileInter.Servers.AssistantCls" minOccurs="0" name="SendRuleType" type="q7:EnumSendRuleType" />
       <xs:element minOccurs="0" name="SendTimeDateTime" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="SendedCnt" nillable="true" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SendRuleDTO" nillable="true" type="tns:SendRuleDTO" />
+  <xs:complexType name="CreateElongOrderParamsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cin" type="xs:dateTime" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" minOccurs="0" name="ConfirmType" type="q8:EnumConfirmationType" />
+      <xs:element minOccurs="0" name="ContactEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContantMobile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContantName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cout" type="xs:dateTime" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" minOccurs="0" name="Currency" type="q9:EnumCurrencyCode" />
+      <xs:element minOccurs="0" name="CustomerIPAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EarliestArrivalTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EstayOrderId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GuestNames" nillable="true" type="xs:string" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" minOccurs="0" name="GuestType" type="q10:EnumGuestTypeCode" />
+      <xs:element minOccurs="0" name="HotelId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LatestArrivalTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="NumOfRooms" type="xs:int" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" minOccurs="0" name="PaymentType" type="q11:EnumPaymentType" />
+      <xs:element minOccurs="0" name="RoomTypeId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RpId" type="xs:int" />
+      <xs:element minOccurs="0" name="totalPrice" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreateElongOrderParamsDTO" nillable="true" type="tns:CreateElongOrderParamsDTO" />
+  <xs:complexType name="CreditCardDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CVV" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExpirationMonth" type="xs:int" />
+      <xs:element minOccurs="0" name="ExpirationYear" type="xs:int" />
+      <xs:element minOccurs="0" name="HolderName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdNo" nillable="true" type="xs:string" />
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/MobileInter.ThirdInterface.Service" minOccurs="0" name="IdType" type="q12:EnumIdType" />
+      <xs:element minOccurs="0" name="Number" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreditCardDTO" nillable="true" type="tns:CreditCardDTO" />
+  <xs:complexType name="ElongValidateOrderParamsDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EarliestArrivalTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LatestArrivalTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Price" type="xs:decimal" />
+      <xs:element minOccurs="0" name="RatePlanId" type="xs:int" />
+      <xs:element minOccurs="0" name="RoomTypedId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="endTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="hotelId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="roomsNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="startTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ElongValidateOrderParamsDTO" nillable="true" type="tns:ElongValidateOrderParamsDTO" />
 </xs:schema>

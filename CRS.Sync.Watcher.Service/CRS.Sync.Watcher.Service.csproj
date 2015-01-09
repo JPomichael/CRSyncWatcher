@@ -32,11 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Devart.Data.Linq, Version=4.4.529.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -91,6 +89,9 @@
     <Compile Include="Public\PublicService.Get.cs" />
     <Compile Include="Province\ProvinceService.Modify.cs" />
     <Compile Include="Public\PublicService.Add.cs" />
+    <Compile Include="RatePlan\IRatePlanService.cs" />
+    <Compile Include="RatePlan\RatePlanService.cs" />
+    <Compile Include="RatePlan\RatePlanService.Delete.cs" />
     <Compile Include="Service References\CRSCrsServiceRef\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -111,6 +112,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <Compile Include="RatePlan\RatePlanService.Get.cs" />
     <None Include="Service References\CRSCrsServiceRef\CRS.Sync.Watcher.Service.CRSCrsServiceRef.CardTransGet.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -232,6 +234,9 @@
     <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.LoginResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.LowPriceGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.OrderGuaranteeRuleResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -247,13 +252,28 @@
     <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.OrderStateResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeControlGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeDescriptGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.RateCodeInforGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.ResultBase.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.ReviewableResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeDescriptGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.RmTypeGet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.RoomRateWsGet.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WCFMobileServer\CRS.Sync.Watcher.Service.WCFMobileServer.SearchCntResult.datasource">
@@ -376,10 +396,6 @@
     <ProjectReference Include="..\CRS.Sync.Watcher.DLL\CRS.Sync.Watcher.DLL.csproj">
       <Project>{92b1c535-386f-4a4f-9bd6-9bf95c619091}</Project>
       <Name>CRS.Sync.Watcher.DLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CRS.Sync.Watcher.Domain\CRS.Sync.Watcher.Domain.csproj">
-      <Project>{b6632f62-ff9d-4a99-b643-84e672c9d2d5}</Project>
-      <Name>CRS.Sync.Watcher.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\CRS.Sync.Watcher.Linq\CRS.Sync.Watcher.Linq.csproj">
       <Project>{47b9ee45-1c33-41fd-87b3-a4aca536b737}</Project>

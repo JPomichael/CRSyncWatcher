@@ -60,4 +60,113 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="RmTypeDescriptWS" nillable="true" type="tns:RmTypeDescriptWS" />
+  <xs:complexType name="RoomRateWsGet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="errorKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="errorMsgEn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="errorMsgZh" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="result" type="xs:int" />
+      <xs:element minOccurs="0" name="roomRateWS" nillable="true" type="tns:ArrayOfRoomRateWS" />
+      <xs:element minOccurs="0" name="tax" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RoomRateWsGet" nillable="true" type="tns:RoomRateWsGet" />
+  <xs:complexType name="ArrayOfRoomRateWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RoomRateWS" nillable="true" type="tns:RoomRateWS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRoomRateWS" nillable="true" type="tns:ArrayOfRoomRateWS" />
+  <xs:complexType name="RoomRateWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="aliasCn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="aliasEn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="amendDays" type="xs:int" />
+      <xs:element minOccurs="0" name="amendStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="breakfastDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="breakfastEDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cancelDays" type="xs:int" />
+      <xs:element minOccurs="0" name="cancelStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="contractCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="eintro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="intro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="minVacRooms" type="xs:int" />
+      <xs:element minOccurs="0" name="needGuarant" type="xs:int" />
+      <xs:element minOccurs="0" name="needPay" type="xs:int" />
+      <xs:element minOccurs="0" name="photo1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="photo2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rateCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rateCodeCName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rateCodeEName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rateDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ratePrice" type="xs:double" />
+      <xs:element minOccurs="0" name="ratecodeDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ratecodeEdesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rmType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rmTypeCDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rmTypeCName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rmTypeEDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rmTypeEName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rmtypeSwitch" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="vacRooms" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RoomRateWS" nillable="true" type="tns:RoomRateWS" />
+  <xs:complexType name="RateCodeControlGet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="errorKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="errorMsgEn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="errorMsgZh" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rateCodeControl" nillable="true" type="tns:RateCodeControl" />
+      <xs:element minOccurs="0" name="result" type="xs:int" />
+      <xs:element minOccurs="0" name="tax" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RateCodeControlGet" nillable="true" type="tns:RateCodeControlGet" />
+  <xs:complexType name="RateCodeControl">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="amendDays" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="amendStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="booking" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cancelDays" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="cancelStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="hotelId" type="xs:long" />
+      <xs:element minOccurs="0" name="maxStay" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="minStay" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="needPay" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rateCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rmLimit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rmType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RateCodeControl" nillable="true" type="tns:RateCodeControl" />
+  <xs:complexType name="LowPriceGet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="errorKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="errorMsg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="errorMsgEn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="errorMsgZh" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="lowPriceWS" nillable="true" type="tns:ArrayOfLowPriceWS" />
+      <xs:element minOccurs="0" name="result" type="xs:int" />
+      <xs:element minOccurs="0" name="tax" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LowPriceGet" nillable="true" type="tns:LowPriceGet" />
+  <xs:complexType name="ArrayOfLowPriceWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LowPriceWS" nillable="true" type="tns:LowPriceWS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLowPriceWS" nillable="true" type="tns:ArrayOfLowPriceWS" />
+  <xs:complexType name="LowPriceWS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="lowPrice" type="xs:double" />
+      <xs:element minOccurs="0" name="ratecode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rmtypecode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LowPriceWS" nillable="true" type="tns:LowPriceWS" />
 </xs:schema>

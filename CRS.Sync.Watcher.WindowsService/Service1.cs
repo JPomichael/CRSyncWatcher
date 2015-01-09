@@ -21,11 +21,23 @@ namespace CRS.Sync.Watcher.WindowsService
         protected override void OnStart(string[] args)
         {
             //TODO: 服务启动
+            StartDoSync();
         }
 
         protected override void OnStop()
         {
             //TODO: 服务停止
+        }
+
+        protected override void OnContinue()
+        {
+            //服务恢复执行代码
+            base.OnContinue();
+        }
+
+        private void StartDoSync()
+        {
+
         }
     }
 }

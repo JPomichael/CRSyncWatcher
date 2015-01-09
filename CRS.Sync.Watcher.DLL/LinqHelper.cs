@@ -88,6 +88,7 @@ namespace CRS.Sync.Watcher.DLL
         {
             using (estay_ecsdbDataContext db = ConnHelper.estay_ecsdb())
             {
+                db.Connection.Open();
                 db.Transaction = db.Connection.BeginTransaction();
                 try
                 {
@@ -105,6 +106,7 @@ namespace CRS.Sync.Watcher.DLL
                     db.Transaction.Rollback();
                     throw new Exception(ex.Message);
                 }
+                db.Connection.Close();
             }
         }
 
