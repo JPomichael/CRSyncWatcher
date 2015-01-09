@@ -67,7 +67,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Hotel
                                 _hoteList.h_utime = System.DateTime.Now;
                                 hotelid = _hotelService.Update(_hoteList);
                             }
-                            Console.WriteLine("监测到 hotel_id= " + hotelid + " 的公寓数据已更新.");
+                            Console.WriteLine(" hotel_id= " + hotelid + " 的公寓数据已更新.");
                             HotelUpperService(_fileSavePath, _hoteList);
 
                         }
@@ -127,13 +127,13 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Hotel
                             }
                             //! 房型图片
                             RoomPhotoUpdate(rmTypes, _roomList);
-                            Console.WriteLine("监测到 room_id= " + roomid + " 的房型数据已更新. ");
+                            Console.WriteLine(" room_id= " + roomid + " 的房型数据已更新. ");
 
                         }
                     }
                 }
                 else
-                    Console.WriteLine("监测 hotel_id= " + hotel_id + " GetCRSRmTypeInterface 接口返回 RmTypeGet.result == " + _RmTypeGet.result + "");
+                    Console.WriteLine("  hotel_id= " + hotel_id + " GetCRSRmTypeInterface 接口返回 RmTypeGet.result == " + _RmTypeGet.result + "");
             }
         }
 

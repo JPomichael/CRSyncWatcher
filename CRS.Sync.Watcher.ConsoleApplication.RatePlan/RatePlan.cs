@@ -255,7 +255,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.RatePlan
                         #endregion
                     }
 
-                    Console.WriteLine("监测到 h_room_rp_id= " + h_room_rp_id + " 产品数据有变动");
+                    Console.WriteLine(" h_room_rp_id= " + h_room_rp_id + " 产品数据有变动");
 
                     //x  若不及时补充RatePlan 下Price 会造成有RP 无Price
                     #region Price
@@ -310,7 +310,7 @@ namespace CRS.Sync.Watcher.ConsoleApplication.RatePlan
                                 {
                                     db.hotel_room_RP_price.InsertOnSubmit(price);
                                     db.SubmitChanges();
-                                    Console.WriteLine("监测到 Rp_price_id= " + price.Rp_price_id + " 价格数据有变动");
+                                    Console.WriteLine(" Rp_price_id= " + price.Rp_price_id + " 价格数据有变动");
                                 }
                                 catch (Exception e)
                                 {
