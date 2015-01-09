@@ -18,7 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRS.Sync.Watcher.Domain", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRS.Sync.Watcher.Service", "CRS.Sync.Watcher.Service\CRS.Sync.Watcher.Service.csproj", "{AD3FE0D3-9E6E-46BE-97B3-8132A39867B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRS.Sync.Watcher.ConsoleApplication.Hotel", "CRS.Sync.Watcher.ConsoleApplication.Demo\CRS.Sync.Watcher.ConsoleApplication.Hotel.csproj", "{D5A161A1-899F-4CC0-936F-DACE2272C694}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRS.Sync.Watcher.ConsoleApplication.Hotel", "CRS.Sync.Watcher.ConsoleApplication.Hotel\CRS.Sync.Watcher.ConsoleApplication.Hotel.csproj", "{D5A161A1-899F-4CC0-936F-DACE2272C694}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRS.Sync.Watcher.ConsoleApplication.Base", "CRS.Sync.Watcher.ConsoleApplication.Base\CRS.Sync.Watcher.ConsoleApplication.Base.csproj", "{FB544FCF-6099-4B5B-9F66-EAA831EB83D1}"
 EndProject
