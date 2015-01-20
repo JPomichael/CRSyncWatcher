@@ -146,6 +146,12 @@ namespace CRS.Sync.Watcher.Service.RatePlan
         {
             return dc.RoomRateWS.Where(o => o.hotelId == roomRateWS.hotelId && o.rateCode == roomRateWS.rateCode && o.rmType == roomRateWS.rmType && o.rateDate == roomRateWS.rateDate).Any();
         }
+
+        public bool CheckIsAnyRoomStatus(RoomStatus roomStatus)
+        {
+            return dc.RoomStatus.Where(o => o.hotel_id == roomStatus.hotel_id && o.room_id == roomStatus.room_id && o.r_s_time == roomStatus.r_s_time).Any();
+        }
+
         #endregion
 
         public IEnumerable<RoomRateWS> GetRoomRateWSList(Expression<Func<RoomRateWS, bool>> expression)
@@ -154,6 +160,17 @@ namespace CRS.Sync.Watcher.Service.RatePlan
             if (roomRateWSList != null)
             {
                 return roomRateWSList;
+            }
+            return null;
+        }
+
+
+        public IEnumerable<RoomStatus> GetRoomStatusList(Expression<Func<RoomStatus, bool>> expression)
+        {
+            IEnumerable<RoomStatus> result = dc.RoomStatus.Where<RoomStatus>(expression);
+            if (result != null)
+            {
+                return result;
             }
             return null;
         }

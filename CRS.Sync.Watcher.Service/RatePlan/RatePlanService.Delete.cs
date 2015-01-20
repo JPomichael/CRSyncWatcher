@@ -69,5 +69,27 @@ namespace CRS.Sync.Watcher.Service.RatePlan
             }
         }
 
+
+
+        public void DeleteRoomStatus(RoomStatus roomStatus)
+        {
+            RoomStatus _roomStatus = new RoomStatus();
+            _roomStatus = dc.RoomStatus.Where(o => o.hotel_id == _roomStatus.hotel_id && o.room_id == _roomStatus.room_id && o.r_s_time == _roomStatus.r_s_time).FirstOrDefault();
+            if (_roomStatus != null)
+            {
+                try
+                {
+                    dc.RoomStatus.DeleteOnSubmit(_roomStatus);
+                    dc.SubmitChanges();
+                }
+                catch (Exception e)
+                {
+                    log.Error("删除 RoomStatus 出错，出错参数 ：hotelId=" + _roomStatus.hotel_id + " room_id=" + _roomStatus.room_id + " r_s_time=" + _roomStatus.r_s_time + "");
+                    log.Debug(e);
+                }
+
+            }
+        }
+
     }
 }

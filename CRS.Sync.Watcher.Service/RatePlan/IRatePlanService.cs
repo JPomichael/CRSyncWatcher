@@ -23,15 +23,21 @@ namespace CRS.Sync.Watcher.Service.RatePlan
         bool CheckIsAnyRateCodeControl(RateCodeControl rateCodeControl);
         bool CheckIsAnyRateCodeInfor(RateCodeInfor rateCodeInfor);
         bool CheckIsAnyRoomRateWS(RoomRateWS roomRateWS);
+
+        bool CheckIsAnyRoomStatus(RoomStatus roomStatus);
         #endregion
 
         #region Delete
         void DeleteRoomRateWS(RoomRateWS roomRate);
         void DeleteRateCodeControl(RateCodeControl rateCodeControl);
         void DeleteRateCodeInfor(RateCodeInfor rateCodeInfor);
+
+        void DeleteRoomStatus(RoomStatus roomStatus);
         #endregion
 
         IEnumerable<RoomRateWS> GetRoomRateWSList(Expression<Func<RoomRateWS, bool>> expression);
         hotel_room_RP_info GetRatePlanInfo(int hotel_id, string rateCode);
+
+        IEnumerable<RoomStatus> GetRoomStatusList(Expression<Func<RoomStatus, bool>> expression);
     }
 }
