@@ -1,4 +1,5 @@
-﻿using CRS.Sync.Watcher.Linq;
+﻿using CRS.Sync.Watcher.DLL;
+using CRS.Sync.Watcher.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,7 @@ namespace CRS.Sync.Watcher.Service.Photo
         {
             List<hotel_picture_info> hotelpic = new List<hotel_picture_info>();
             hotel_picture_info p = null;
+            string crs_photo_url = StringHelper.appSettings("crs_photo_url");
 
             if (!string.IsNullOrEmpty(_hotelPics.photo1))
             {
@@ -51,8 +53,8 @@ namespace CRS.Sync.Watcher.Service.Photo
                 p.hotel_id = hotel_id;
                 p.h_p_time = System.DateTime.Now;
                 p.h_p_sort = 1000;
-                p.h_p_pic_original_url = _hotelPics.photo1;
-                p.h_p_pic_thumb_url = _hotelPics.photo1;
+                p.h_p_pic_original_url = crs_photo_url + _hotelPics.photo1;
+                p.h_p_pic_thumb_url = crs_photo_url + _hotelPics.photo1;
                 hotelpic.Add(p);
             }
             if (!string.IsNullOrEmpty(_hotelPics.photo2))
@@ -61,8 +63,8 @@ namespace CRS.Sync.Watcher.Service.Photo
                 p.hotel_id = hotel_id;
                 p.h_p_time = System.DateTime.Now;
                 p.h_p_sort = 1000;
-                p.h_p_pic_original_url = _hotelPics.photo2;
-                p.h_p_pic_thumb_url = _hotelPics.photo2;
+                p.h_p_pic_original_url = crs_photo_url + _hotelPics.photo2;
+                p.h_p_pic_thumb_url = crs_photo_url + _hotelPics.photo2;
                 hotelpic.Add(p);
             }
             if (!string.IsNullOrEmpty(_hotelPics.photo3))
@@ -71,8 +73,8 @@ namespace CRS.Sync.Watcher.Service.Photo
                 p.hotel_id = hotel_id;
                 p.h_p_time = System.DateTime.Now;
                 p.h_p_sort = 1000;
-                p.h_p_pic_original_url = _hotelPics.photo3;
-                p.h_p_pic_thumb_url = _hotelPics.photo3;
+                p.h_p_pic_original_url = crs_photo_url + _hotelPics.photo3;
+                p.h_p_pic_thumb_url = crs_photo_url + _hotelPics.photo3;
                 hotelpic.Add(p);
             }
             return hotelpic;
@@ -104,6 +106,7 @@ namespace CRS.Sync.Watcher.Service.Photo
         {
             List<hotel_room_picture_info> pics = new List<hotel_room_picture_info>();
             hotel_room_picture_info p = null;
+            string crs_photo_url = StringHelper.appSettings("crs_photo_url");
 
             if (!string.IsNullOrEmpty(rmType.photo1))
             {
@@ -111,19 +114,19 @@ namespace CRS.Sync.Watcher.Service.Photo
                 p.room_id = room_id;
                 p.h_r_p_time = System.DateTime.Now;
                 p.h_r_p_sort = 1000;
-                p.h_r_p_pic_original_url = rmType.photo1;
-                p.h_r_p_pic_thumb_url = rmType.photo1;
+                p.h_r_p_pic_original_url = crs_photo_url + rmType.photo1;
+                p.h_r_p_pic_thumb_url = crs_photo_url + rmType.photo1;
                 pics.Add(p);
             }
-    
+
             if (!string.IsNullOrEmpty(rmType.photo2))
             {
                 p = new hotel_room_picture_info();
                 p.room_id = room_id;
                 p.h_r_p_time = System.DateTime.Now;
                 p.h_r_p_sort = 1000;
-                p.h_r_p_pic_original_url = rmType.photo1;
-                p.h_r_p_pic_thumb_url = rmType.photo1;
+                p.h_r_p_pic_original_url = crs_photo_url + rmType.photo2;
+                p.h_r_p_pic_thumb_url = crs_photo_url + rmType.photo2;
                 pics.Add(p);
             }
             return pics;

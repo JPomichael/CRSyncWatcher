@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CRS.Sync.Watcher.ConsoleApplication.Demo.Properties {
+namespace CRS.Sync.Watcher.ConsoleApplication.Base.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -20,16 +20,6 @@ namespace CRS.Sync.Watcher.ConsoleApplication.Demo.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=E:\\CRSInterFaceResult.db")]
-        public string connectionStrings {
-            get {
-                return ((string)(this["connectionStrings"]));
             }
         }
     }

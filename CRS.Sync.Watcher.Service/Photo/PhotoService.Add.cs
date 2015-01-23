@@ -12,9 +12,9 @@ namespace CRS.Sync.Watcher.Service.Photo
         public bool AddList(IEnumerable<hotel_picture_info> piclist)
         {
             bool result = false;
+            dc.hotel_picture_info.InsertAllOnSubmit(piclist);
             try
             {
-                dc.hotel_picture_info.InsertAllOnSubmit(piclist);
                 dc.SubmitChanges();
                 result = true;
             }
@@ -28,10 +28,9 @@ namespace CRS.Sync.Watcher.Service.Photo
         public bool Add(hotel_picture_info pic)
         {
             bool result = false;
+            dc.hotel_picture_info.InsertOnSubmit(pic);
             try
             {
-
-                dc.hotel_picture_info.InsertOnSubmit(pic);
                 dc.SubmitChanges();
                 result = true;
             }
@@ -47,9 +46,9 @@ namespace CRS.Sync.Watcher.Service.Photo
         public bool AddList(IEnumerable<hotel_room_picture_info> piclist)
         {
             bool result = false;
+            dc.hotel_room_picture_info.InsertAllOnSubmit(piclist);
             try
             {
-                dc.hotel_room_picture_info.InsertAllOnSubmit(piclist);
                 dc.SubmitChanges();
                 result = true;
             }
@@ -63,10 +62,9 @@ namespace CRS.Sync.Watcher.Service.Photo
         public bool Add(hotel_room_picture_info pic)
         {
             bool result = false;
+            dc.hotel_room_picture_info.InsertOnSubmit(pic);
             try
             {
-
-                dc.hotel_room_picture_info.InsertOnSubmit(pic);
                 dc.SubmitChanges();
                 result = true;
             }
