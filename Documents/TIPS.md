@@ -1,1 +1,0 @@
-CRS Photo URL：http://202.96.137.106:8080/crs/UploadFile/Image/
